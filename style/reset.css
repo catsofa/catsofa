@@ -3,7 +3,7 @@
 /* reset */
 *{margin:0; padding:0;}
 html {margin:0; padding:0; height:100%;}
-body {margin:0; padding:0; height:100%; font-size:12px; color:#858585;}
+body {margin:0; padding:0; height:100%; font-size:12px; color:#19171c;}
 label {vertical-align:middle;}
 address, em {font-style:normal;}
 strong, b, th {font-weight:bold;}
@@ -11,23 +11,23 @@ fieldset, img {border:0; vertical-align:middle;}
 caption, legend {overflow:hidden; width:0; height:0; font-size:0; line-height:0;}
 ul, ol, dl, dd, li {list-style:none;}
 h1, h2, h3, h4, h5, h6 {font-weight:bold; font-size:100%;}
-input, textarea, select {border:0; color:#858585; vertical-align:middle;}
+input, textarea, select {border:0; color:#19171c; vertical-align:middle;}
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {display:block;}
 div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, iframe, fieldset, input, table, tr, th, td, button, textarea, select, thead,
-tbody, tfoot, pre, option {margin:0; padding:0; font-family:sans-serif; color:#333;}
-a {font-family:sans-serif; color:#858585; text-decoration:none;}
+tbody, tfoot, pre, option {margin:0; padding:0; font-family:sans-serif; color:#19171c;}
+a {font-family:sans-serif; color:#19171c; text-decoration:none;}
 a:hover {text-decoration:none;}
 table {width:100%; border-spacing:0; border-top:1px solid #c5c7cc; letter-spacing:-0.025em; table-layout:fixed; background:#fff;}
-table th {padding:9px; color:#333; font-weight:700; font-family:sans-serif; border-bottom:1px solid #c5c7cc; border-collapse:collapse; vertical-align:middle; *border-collapse:collapse;}
-table td {padding:9px; font-family:sans-serif; border-bottom:1px solid #c5c7cc; color:#929292; vertical-align:middle; border-collapse:collapse;}
+table th {padding:9px; color:#19171c; font-weight:700; font-family:sans-serif; border-bottom:1px solid #c5c7cc; border-collapse:collapse; vertical-align:middle; *border-collapse:collapse;}
+table td {padding:9px; font-family:sans-serif; border-bottom:1px solid #c5c7cc; color:#19171c; vertical-align:middle; border-collapse:collapse;}
 button {margin:0; padding:0; border:0 none; outline:none; background:none; background-color:transparent; cursor:pointer; font-family:sans-serif}
 figcaption {position:absolute; overflow:hidden; width:0; height:0; font-size:0; line-height:0;}
 iframe {margin:0; border:0; width:100%; height:100%}
 
 /* form */
 legend {overflow:hidden; width:0; height:0; font-size:0; line-height:0;}
-input, select, textarea {font-family:sans-serif, Malgun Gothic, Dotum, Arial, sans-serif; color:#858585; vertical-align:middle;}
-input[type="text"], input[type="password"], input[type="tel"], input[type="email"], select {width:100%; height:48px; padding:0 17px; word-break:break-all; word-wrap:break-word; color:#333; border:1px solid #c5c7cc; box-sizing:border-box; -webkit-border-radius:0; -webkit-appearance:none}
+input, select, textarea {font-family:sans-serif, Malgun Gothic, Dotum, Arial, sans-serif; color:#19171c; vertical-align:middle;}
+input[type="text"], input[type="password"], input[type="tel"], input[type="email"], select {width:100%; height:48px; padding:0 17px; word-break:break-all; word-wrap:break-word; color:#19171c; border:1px solid #c5c7cc; box-sizing:border-box; -webkit-border-radius:0; -webkit-appearance:none}
 input[type="text"], input[type="password"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"]:focus {vertical-align:middle}
 input::-webkit-input-placeholder {color:#c5c7cc;}
 textarea {-webkit-border-radius:0; -webkit-appearance:none}

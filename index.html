@@ -6,7 +6,10 @@
 	<title>[index]</title>
 	<link rel="stylesheet" href="./style/reset.css" />
 	<link rel="stylesheet" href="./style/screen.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-dark.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 	<script src="./js/common.js"></script>
 </head>
 <body>
@@ -39,24 +42,154 @@
 
 <!-- main view -->
 <article>
-	<svg width="100%" height="100%">
-		<text x="50%" y="50%" font-size="10vw" fill="none" stroke="#fc0">가나다라마</text>
-	</svg>
+	<!-- <svg width="100%" height="100%">
+		<text x="0" y="0" fill="none" stroke="#ffbccd">가나다라마</text>
+		<text x="0" y="0" fill="#ffbccd">바사아자차</text>
+	</svg> -->
+	<hgroup>
+		<h2>ABCDE<br />FGHIJK<br/>LMNOP</h2>
+		<h2>QRSTUV<br />WXYZA<br />BCDEF</h2>
+    </hgroup>
 </article>
 <!-- // main view -->
 
 <!-- list -->
-<section>
-	
-</section>
+<section class="txt_css"><!-- 1 -->
+	<h3>
+		<p class="info_0">Sass<span> : SCSS</span></p>
+		<!--
+		<ul class="info_1">
+			<li>CSS pre-processor</li>
+			<li>가장 역사가 오래된 전처리기다.</li>
+			<li>Ruby 언어를 기반으로 동작한다.</li>
+			<li>기존 CSS 문법과 호환성이 높다.</li>
+			<li>함수, 제어문까지 제공하며 완성도 높은 프로그래밍 언어처럼 동작한다.</li>
+		</ul>
+		<p class="info_2">
+			※ CSS pre-processor란? : 
+			CSS 를 확장하는 스크립팅 언어로서, 프로그래밍 개념을 사용하여 코드를 작성한 뒤 기존 CSS 문법으로 컴파일 해주는 전처리기
+		</p>
+		-->
+	</h3>
+	<div class="">
+		<h4>HTML5</h4>
+		<pre><code class="html">&lt;!-- header --&gt;
+&lt;header&gt;
+	&lt;!-- btn --&gt;
+	&lt;button class="menu"&gt;
+		&lt;span class="line"&gt;&lt;/span&gt;
+		&lt;span class="line"&gt;&lt;/span&gt;
+		&lt;span&gt;MENU&lt;/span&gt;
+	&lt;/button&gt;
+	&lt;!-- // btn --&gt;
+	&lt;!-- nav --&gt;
+	&lt;nav&gt;
+		&lt;ul&gt;
+			&lt;li&gt;SCSS&lt;/li&gt;
+			&lt;li&gt;SVG&lt;/li&gt;
+			&lt;li&gt;234&lt;/li&gt;
+			&lt;li&gt;456&lt;/li&gt;
+			&lt;li&gt;567&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/nav&gt;
+	&lt;!-- // nav --&gt;
+&lt;/header&gt;
+&lt;!-- // header --&gt;
+		</code></pre>
+	</div>
+	<div class="half">
+		<h4>SCSS</h4>
+		<pre><code class="css">article {
+	height:100vh;
+	overflow:hidden;
+	background-color:$colorBase;
+		
+	hgroup {
+		@include setAb($left:50%,$top:50%,$width:80%,$height:80%);
+		transform:translate(-50%,-50%);
+		text-align:center;
+		
+		h2 {
+			@include setAb($top:50%,$width:100%);
+			@include mq(pc){
+				font-size:200px;
+				line-height:200px;
+			}
+			transform:translateY(-50%);
+			font-size:20vw;
+			line-height:20vw;
+			color:$colorPit4;
+			mix-blend-mode:multiply;
+			
+			&:first-child {
+				color:$colorPit1;
+			}
+		}
+		
+	}
+}
+		</code></pre>
+	</div>
+	<div class="half">
+		<h4>CSS</h4>
+		<pre><code class="css">/* line 174, ../sass/screen.scss */
+article {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #6e5f96;
+}
+/* line 180, ../sass/screen.scss */
+article hgroup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* line 185, ../sass/screen.scss */
+article hgroup h2 {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  font-size: 20vw;
+  line-height: 20vw;
+  color: #e5d3ff;
+  mix-blend-mode: multiply;
+}
+@media (min-width: 1025px) {
+  /* line 185, ../sass/screen.scss */
+  article hgroup h2 {
+	font-size: 200px;
+	line-height: 200px;
+  }
+}
+/* line 197, ../sass/screen.scss */
+article hgroup h2:first-child {
+  color: #ffbccd;
+}
+		</code></pre>
+	</div>
+
+</section><!-- 1 // -->
+<section><!-- 2 -->
+	2
+</section><!-- 2 // -->
+<section><!-- 3 -->
+	3
+</section><!-- 3 // -->
 <!-- // list -->
 
+<!--
 <aside>
 	[사이드바 내용]
 </aside>
 <footer>
 	<address>[주소 내용]</address>
 </footer>
-
+-->
 </body>
 </html>
