@@ -30,7 +30,7 @@ header button {
   color: #f8f4fe;
   font-size: 10px;
   text-align: left;
-  z-index: 1;
+  z-index: 10;
 }
 /* line 107, ../sass/screen.scss */
 header button span.line {
@@ -78,8 +78,9 @@ header nav {
   /* transform:scaleY(0);
   transform-origin:100% 0 0; */
   opacity: 0;
+  z-index: 9;
 }
-/* line 151, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 header nav ul li {
   padding: 10px 0;
   text-align: center;
@@ -87,11 +88,11 @@ header nav ul li {
   color: #2b1d3e;
   cursor: pointer;
 }
-/* line 158, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 header nav ul li:hover {
   text-decoration: underline;
 }
-/* line 165, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 header nav.on {
   transition: all 0.5s ease-in;
   /* transform:scaleY(1);
@@ -100,7 +101,7 @@ header nav.on {
   opacity: 1;
 }
 
-/* line 175, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 article {
   position: relative;
   height: 100vh;
@@ -113,7 +114,7 @@ article {
   	}
   } */
 }
-/* line 181, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 article hgroup {
   position: absolute;
   top: 50%;
@@ -123,7 +124,7 @@ article hgroup {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-/* line 186, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 article hgroup h2 {
   position: absolute;
   top: 50%;
@@ -135,18 +136,18 @@ article hgroup h2 {
   mix-blend-mode: multiply;
 }
 @media (min-width: 1025px) {
-  /* line 186, ../sass/screen.scss */
+  /* line 187, ../sass/screen.scss */
   article hgroup h2 {
     font-size: 200px;
     line-height: 200px;
   }
 }
-/* line 198, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 article hgroup h2:first-child {
   color: #ffbccd;
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 section {
   position: relative;
   height: 100vh;
@@ -161,12 +162,12 @@ section {
   	}
   	*/
 }
-/* line 218, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 section h3 {
   margin: 50px auto;
   text-align: center;
 }
-/* line 222, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 section h3 p {
   display: inline-block;
   /*
@@ -182,16 +183,16 @@ section h3 p {
   }
   */
 }
-/* line 225, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 section h3 p.info_0 {
   border-bottom: 2px solid #19171c;
   font-size: 40px;
 }
-/* line 229, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 section h3 p.info_0 span {
   font-size: 30px;
 }
-/* line 249, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 section h4 {
   margin: 10px;
   padding: 10px 0;
@@ -202,23 +203,23 @@ section h4 {
   text-align: center;
   font-weight: normal;
 }
-/* line 260, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 section.txt_css {
   background-color: #f8f4fe;
 }
-/* line 266, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 section.txt_css > div.half {
   width: 50%;
   float: left;
 }
-/* line 282, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 section pre {
   margin: 10px;
   overflow: hidden;
   border-radius: 10px;
   background: #19171c;
 }
-/* line 288, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 section pre .hljs {
   height: 25vh;
   overflow-y: auto;
