@@ -94,6 +94,7 @@ header {
 	position:relative;
 	font-weight:bold;
 	$ease:ease-in; //var
+	z-index:1;
 	
 	button {
 		@include setAb($left:10px,$top:20px,$width:100px,$height:100px);
@@ -171,6 +172,11 @@ header {
 			opacity:1;
 		}
 	}
+	
+	i.btr {
+		@include setAb($right:10px,$top:10px);
+		position:fixed;
+	}
 }
 
 article {
@@ -232,23 +238,11 @@ section {
 				}
 			
 			}
-			/*
-			&.info_1 {
-				display:block;
-				font-size:18px;
-			}
-			&.info_2 {
-				padding:10px;
-				background:lighten($colorPit2,10%);
-				border:1px solid $colorPit2;
-				font-size:12px;
-			}
-			*/
 			
 		}
 	}
 	h4{
-		margin:10px;
+		margin:10px 20px;
 		padding:10px 0;
 		border-radius:5px;
 		background:$colorTxt;
@@ -258,19 +252,91 @@ section {
 		font-weight:normal;
 	}
 	
-	&.txt_css {
+	&#tab1 {
+		background-color:$colorPit2;
+		
+		.info {
+			text-align:center;
+		}
+		
+		ul {
+			margin:50px auto;
+			
+			li {
+				font-size:15px;
+				line-height:30px;
+			}
+			
+		}
+		
+	}
+	
+	&#tab2 {
 		background-color:$colorCore;
 		
 		& > div {
+			position:relative;
 			
+			pre {
+				margin:10px 20px;
+				overflow:hidden;
+				border-radius:10px;
+				background:$colorTxt;
+				
+				.hljs {
+					height:25vh;
+					overflow-y:auto;
+					margin:30px;
+				}
+			}
 			
 			&.half {
 				width:50%;
 				float:left;
+				
+				i {
+					@include setAb($right:-20px,$top:50%);
+					font-size:40px;
+					
+				}
+				
+			}
+
+		}
+	}
+	
+	&#tab3 {
+		background-color:$colorPit1;
+		
+		dl {
+			width:80%;
+			margin:0 auto 3vh;
+			overflow:hidden;
+			font-size:14px;
+			
+			&:nth-child(2) {
+				margin:20vh auto 3vh;
+			}
+
+			dt {
+				float:left;
+				width:40%;
+			}
+			
+			dd {
+				float:left;
+				width:60%;
+				
+				i {
+					vertical-align:middle;					
+				}
+				
 			}
 			
 		}
+		
 	}
+
 	/*
 	&:nth-child(2) {
 		background-color:$colorPit3;
@@ -280,16 +346,5 @@ section {
 		background-color:$colorPit4;
 	}
 	*/
-	pre {
-		margin:10px;
-		overflow:hidden;
-		border-radius:10px;
-		background:$colorTxt;
-		
-		.hljs {
-			height:25vh;
-			overflow-y:auto;
-			margin:30px;
-		}
-	}
+	
 }
