@@ -27,7 +27,10 @@ $(document).ready(function(){
 		}else if( $(this).index() == '1' ){
 			$('html,body').animate({scrollTop:$('section#tab2').offset().top},500);
 		}else if( $(this).index() == '2' ){
-			$('html,body').animate({scrollTop:$('section#tab3').offset().top},500);
+			$('html,body').animate({scrollTop:$('section#tab3').offset().top},1000);
+		}
+		else if( $(this).index() == '3' ){
+			$('html,body').animate({scrollTop:$('section#tab4').offset().top},1000);
 		}
 		
 	});

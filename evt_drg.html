@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./style/reset.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.rotate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//초기화
+	var eggTwItv,
+		toolTwItv,
+		popComb;
+	
+	//실행
+	btnEnter(); //btn:공룡알깨기 클릭
+	eggTwItvWp(1,-1); //img:공룡알
+	btnComb(); //btn:조합하기 클릭
+	
+	//공룡알 모션 인터벌
+	function eggTwItvWp(a,b){
+		setTimeout(function(){ 
+			eggTw(a,b);
+		},700);
+		eggTwItv = setInterval(function(){eggTw(a,b);},3500);
+		function eggTw(a,b){ //2싸이클
+			eggBasic(a,b);
+			setTimeout(function(){ //2
+				eggBasic(a,b);
+			},600);
+			function eggBasic(a,b){ //1
+				imgEgg(a);
+				setTimeout(function(){
+					imgEgg(b);
+				},300);	
+			}
+			function imgEgg(i){
+				$('.img_egg').rotate({ //0.5
+					angle:0,
+					center:['50%','100%'],
+					animateTo:i,
+					duration:150
+				});
+			}
+		}
+	}
+	
+	//곡괭이 모션 인터벌
+	function toolTwItv(){
+		$('.img_tool').show();
+		imgTool();
+		toolTw = setInterval(imgTool,800); //싸이클
+		function imgTool(){
+			$('.img_tool').rotate({ //0.5
+				angle:30,
+				center:['50%','100%'],
+				animateTo:-15,
+				duration:250
+			});
+		}
+	}
+	
+	//인터랙션 시작
+	function twItvStr(){
+		$('.btn.enter').hide(); //깨기버튼 클리어
+		clearInterval(eggTwItv); //공룡알 클리어
+		toolTwItv(); //곡괭이 실행
+		setTimeout(function(){ //곡괭이 클리어
+			clearInterval(toolTw);
+			setTimeout(function(){ //공룡알 이미지 깨기
+				$('.img_egg').addClass('on');
+				setTimeout(function(){ //팝업 노출
+					$('.evtPop.egg').show();
+					$('.evtPop.egg').find('.img').addClass('u'); // d,u,r,a,n,g,o
+				},800);
+			},200);
+		},800);
+	}
+	
+	//인터랙션 초기화
+	function twItvClr(){
+		btnEnter(); //뽑기 초기화
+		eggTwItvWp(1,-1); //공룡알 초기화
+		$('.img_egg').removeClass('on'); //공룡알 이미지 초기화
+		$('.btn.enter').show(); //깨기버튼 초기화
+		$('.img_tool').hide(); //곡괭이 초기화
+	}
+	
+	//btn:공룡알 깨기
+	function btnEnter(){
+		$('.btn.enter').bind('click',function(){
+			$(this).unbind('click');
+			twItvStr(); //인터랙션 시작
+		});
+	}
+	
+	//btn:공룡알 팝업 내 확인 클릭
+	$('.evtPop.egg .btn.close').click(function(){
+		$(this).parents('.evtPop').hide(); //팝업 닫기
+		twItvClr(); //인터랙션 초기화
+	});
+	
+	//btn:조합하기 클릭
+	function btnComb(){
+		$('.btn.comb').bind('click',function(){
+			$(this).unbind('click');
+			$(this).addClass('on');
+			$('.img_twst').rotate({
+				angle:0,
+				animateTo:1080, //540,720,900,1080
+				center:['50%','40%'],
+				duration:3500,
+				 callback:popComb //팝업 호출
+			});
+		});
+	}
+	
+	//팝업:조합하기 당첨
+	popComb = function(){
+		$('.evtPop.comb').show();
+		$('.evtPop.comb').find('.img').addClass('p'); // i:아이패드,m:마일리지,g:구글,p:패키지
+		$('.btn.comb').removeClass('on');
+	}
+	
+	//btn:조합하기 팝업 내 확인 클릭
+	$('.evtPop.comb .btn.close').click(function(){
+		$(this).parents('.evtPop').hide(); //팝업 닫기
+		btnComb(); //조합하기 초기화
+	});
+	
+	//구글기프트 프로그레스바
+	$('div.evtCon .progress .bar').width(50+'%'); //수치로 퍼센트 표현
+	
+	//btn:스크롤배너 클릭
+	$('.evtScroll a').click(function(){            
+	    $('html,body').stop().animate({scrollTop:$(this.hash).offset().top-50},500);
+	});
+	
+});
+$(window).scroll(function(){
+	
+	//스크롤 배너 위치
+	if( $(this).scrollTop() > 835 ){
+		$('.evtScroll').addClass('on');		
+	}else{
+		$('.evtScroll').removeClass('on');
+	}
+	
+});
+</script>
+<style type="text/css">
+div.evtWrap {position:relative; background-color:#080a06}
+div.evtWrap > div {min-width:1000px;}
+div.evtWrap a {text-indent:-9999px; font-size:0}
+div.evtWrap input {margin:0; padding:0}
+div.evtWrap input:focus,div.evtWrap input:hover {background:none}
+div.evtBg.bg1 {height:950px; background:url('./image/evt20180125_drg/bg1.jpg') 50% 0 no-repeat}
+div.evtBg.bg2 {height:2105px; background:url('./image/evt20180125_drg/bg2.jpg') 50% 0 no-repeat}
+div.evtCon {position:relative; margin:0 auto; width:1000px; height:100%}
+div.evtCon .none {width:1px; height:1px; font-size:0; line-height:0; position:absolute; top:0; left:-1000%; overflow:hidden}
+div.evtCon .date {position:absolute; right:0; top:20px; color:#fff}
+div.evtCon .btn {position:absolute}
+div.evtCon .btn.enter {left:400px; top:585px; width:197px; height:142px; background:url('./image/evt20180125_drg/img_tag.png') no-repeat 0 0}
+div.evtCon .btn.shop {left:49px; top:1171px; width:915px; height:80px}
+div.evtCon .btn.comb {left:620px; top:377px; width:264px; height:72px; background:url('./image/evt20180125_drg/btn_comb.png') no-repeat 0 0}
+div.evtCon .btn.google {left:445px; top:1585px; width:440px; height:82px; background:url('./image/evt20180125_drg/btn_google.png') no-repeat 0 0}
+div.evtCon .btn.comb.on, div.evtCon .btn.google.on {background-position-y:100%}
+div.evtCon .img_egg {position:absolute; top:485px; left:275px; width:450px; height:370px; cursor:pointer; background:url('./image/evt20180125_drg/img_egg_01.png') no-repeat 0 0}
+div.evtCon .img_egg.on {background:url('./image/evt20180125_drg/img_egg_02.png') no-repeat 0 0}
+div.evtCon .img_tool {display:none; position:absolute; top:475px; left:550px; width:350px; height:420px; background:url('./image/evt20180125_drg/img_tool.png') no-repeat 0 0}
+div.evtCon .img_z_01 {position:absolute; top:478px; left:-187.5px; width:1375px; height:470px; background:url('./image/evt20180125_drg/img_z_01.png') no-repeat 0 0}
+div.evtCon ul.inven {position:absolute; top:154px; left:117px; width:435px; height:265px; overflow:hidden}
+div.evtCon ul.inven li {position:relative; float:left; width:104px; height:100px; margin:0 4px 65px 0}
+div.evtCon ul.inven li:after {content:''; position:absolute; left:27px; top:20px; width:50px; height:60px; background:url('./image/evt20180125_drg/img_txt.png') no-repeat 0 0}
+div.evtCon ul.inven li.tool:after {background:none}
+div.evtCon ul.inven li.d:after {background-position-y:0%}
+div.evtCon ul.inven li.u:after {background-position-y:16.6%}
+div.evtCon ul.inven li.r:after {background-position-y:33.3%}
+div.evtCon ul.inven li.a:after {background-position-y:50%}
+div.evtCon ul.inven li.n:after {background-position-y:66.6%}
+div.evtCon ul.inven li.g:after {background-position-y:83.3%}
+div.evtCon ul.inven li.o:after {background-position-y:100%}
+div.evtCon ul.inven li span {position:absolute; right:-2px; bottom:6px; width:33px; text-align:center; font-size:16px; color:#fff; font-weight:bold}
+div.evtCon ul.inven li.off:after {opacity:0.15}
+div.evtCon .twister {position:absolute; right:109px; top:142px; width:278px; height:314px; overflow:hidden}
+div.evtCon .twister .img_twst {position:absolute; left:50%; top:50%; margin:-225px 0 0 -200px; width:400px; height:450px; background:url('./image/evt20180125_drg/img_twst.jpg') no-repeat -1px -21px}
+div.evtCon .img_z_02 {position:absolute; right:236px; top:104px; width:26px; height:62px; background:url('./image/evt20180125_drg/img_z_02.png') no-repeat 0 0}
+div.evtCon .progress {position:absolute; left:469px; top:1521px; width:386px; height:11px;}
+div.evtCon .progress .bar {height:100%; border-radius:5px; box-shadow:1px 1px 2px 0px rgba(0,0,0,0.5); background:url('./image/evt20180125_drg/img_bar.png') no-repeat 0 0}
+div.evtCon .notice {position:absolute; left:335px; top:1801px; width:700px; font:normal 16px notoCJK; color:#6b7358; line-height:24px}
+/* popup:공룡알 */
+div.evtWrap .evtPop.egg {display:none; position:absolute; top:326px; left:295px; width:422px; height:422px; z-index:998; background:url('./image/evt20180125_drg/img_popbg.png') no-repeat 0 0}
+div.evtWrap .evtPop.egg .btn.close {left:61px; bottom:38px; width:300px; height:80px}
+div.evtWrap .evtPop.egg .img {position:absolute; top:60px; left:111px; width:200px; height:210px; background:url('./image/evt20180125_drg/img_poptxt.png') no-repeat 0 0}
+div.evtWrap .evtPop.egg .img.d {background-position-y:0%} /* d */
+div.evtWrap .evtPop.egg .img.u {background-position-y:16.6%} /* u */
+div.evtWrap .evtPop.egg .img.r {background-position-y:33.3%} /* r */
+div.evtWrap .evtPop.egg .img.a {background-position-y:50%} /* a */
+div.evtWrap .evtPop.egg .img.n {background-position-y:66.6%} /* n */
+div.evtWrap .evtPop.egg .img.g {background-position-y:83.3%} /* g */
+div.evtWrap .evtPop.egg .img.o {background-position-y:100%} /* o */
+/* popup:조합하기 */
+div.evtWrap .evtPop.comb {display:none; position:absolute; top:103px; right:85px; width:325px; height:385px; z-index:998; background:url('./image/evt20180125_drg/img_popbg2.png') no-repeat 0 0}
+div.evtWrap .evtPop.comb .btn.close {left:76px; bottom:39px; width:172px; height:70px}
+div.evtWrap .evtPop.comb .img {position:absolute; top:35px; left:32px; width:260px; height:240px; background:url('./image/evt20180125_drg/img_poptxt2.png') no-repeat 0 0}
+div.evtWrap .evtPop.comb .img.i {background-position-y:0%} /* ipad */
+div.evtWrap .evtPop.comb .img.m {background-position-y:33.3%} /* mileage 5 */
+div.evtWrap .evtPop.comb .img.g {background-position-y:66.6%} /* google */
+div.evtWrap .evtPop.comb .img.p {background-position-y:100%} /* package */
+/* 스크롤배너 */
+div.evtWrap .evtScroll {position:absolute; top:827px; left:50%; margin-left:-687.5px; width:1375px; min-width:auto; height:150px; z-index:999; background:url('./image/evt20180125_drg/img_fix.png') no-repeat}
+div.evtWrap .evtScroll.on {position:fixed; top:-10px}
+div.evtWrap .evtScroll a {position:absolute; top:30px; width:325px; height:75px}
+div.evtWrap .evtScroll a.s1 {left:180px}
+div.evtWrap .evtScroll a.s2 {left:525px}
+div.evtWrap .evtScroll a.s3 {left:870px}
+</style>
+</head>
+<body>
+	<div class="evtWrap">
+		<!-- 이벤트 컨텐츠 //시작 -->
+		<div class="evtBg bg1">
+			<div class="evtCon">
+				<div class="none">
+					[듀랑고 완성하고 아이패드 받자!]
+					- 이벤트 기간: 2018.01.25~02.15
+				</div>
+				
+				<div class="date">이벤트 기간: 2018년 1월 25일 ~ 2월 15일</div>
+				<div class="img_egg"></div><!-- 공룡알 -->
+				<div class="img_tool"></div><!-- 곡괭이 -->
+				<div class="img_z_01"></div><!-- front img 01 -->
+				
+				<a href="javascript:;" class="btn enter" title="깨기!">깨기</a><!-- btn:깨기 -->
+				
+				<!-- 레이어팝업:공룡알 오픈 -->
+				<div class="evtPop egg">
+					<div class="img"></div><!-- d,u,r,a,n,g,o -->
+					<a href="javascript:;" class="btn close" title="확인">확인</a><!-- btn:확인 -->
+				</div>
+				<!-- 레이어팝업:공룡알 오픈 // -->
+				
+			</div>
+		</div>
+		<div class="evtBg bg2" id="evt1">
+			<div class="evtCon">
+			
+				<!-- 인벤토리 -->
+				<ul class="inven">
+					<li class="tool"><span>999</span></li>
+					<li class="d"><span>38</span></li>
+					<li class="u"><span>1</span></li>
+					<li class="r off"><span>0</span></li>
+					<li class="a off"><span>0</span></li>
+					<li class="n"><span>425</span></li>
+					<li class="g"><span>7</span></li>
+					<li class="o off"><span>0</span></li>
+				</ul>				
+				<!-- 인벤토리 // -->
+				<!-- 경품창 -->
+				<div class="twister">
+					<div class="img_twst"></div>
+				</div>
+				<div class="img_z_02"></div><!-- front img 02 -->
+				<!-- 경품창 // -->
+				
+				<!-- 레이어팝업:공룡알 오픈 -->
+				<div class="evtPop comb">
+					<div class="img"></div><!-- i:아이패드,m:마일리지,g:구글,p:패키지 -->
+					<a href="javascript:;" class="btn close" title="확인">확인</a><!-- btn:확인 -->
+				</div>
+				<!-- 레이어팝업:공룡알 오픈 // -->
+				
+				<a href="javascript:;" class="btn comb" id="evt2" title="조합하기">조합하기</a><!-- btn:조합 -->
+				<a href="javascript:;" class="btn google" title="구글 기프트카드 받기">구글 기프트카드 받기</a><!-- btn:구글 -->
+				
+				<!-- 구글 프로그레스바 -->
+				<div class="progress">
+					<div class="bar"></div>
+				</div>
+				<!-- 구글 프로그레스바// -->
+				
+				<a href="javascript:;" class="btn shop" id="evt3" title="장터 바로가기">장터 바로가기</a><!-- btn:장터 바로가기 -->
+				
+				<!-- 이벤트 안내사항 -->
+				<ul class="notice">
+					<li>이벤트 참여 방법은 이벤트 페이지 내 명시되어 있습니다.</li>
+					<li>할인 쿠폰의 경우 듀랑고 전용으로 지급되며, 할인 금액별 사용 금액이 제한됩니다.</li>
+					<li>보너스 이벤트의 경우 ID 당 1회만 참여 가능합니다.(구글 기프트카드 1회 당첨 시 참여 불가)</li>
+					<li>5만원 이상 경품의 경우 제세공과금 22%가 발생되며 고객님께서 부담합니다.</li>
+					<li>제세공과금 처리를 위한 개인 정보 수집 및 이용 동의서를 요청드립니다.</li>
+					<li>현물 경품에 당첨된 경우 이벤트 종료 후 개별 연락드립니다.</li>
+					<li>비정상적인 참여 및 이벤트 악용 시 경품 당첨 취소 등의 불이익이 발생할 수 있습니다.</li>
+					<li>내부 사정에 따라 별도 공지 없이 변경 또는 조기 종료될 수 있습니다.</li>
+					<li>19세 미만 회원은 이용하실 수 없습니다.</li>
+				</ul>
+				<!-- 이벤트 안내사항 // -->
+			</div>
+		</div>
+		
+		<!-- 스크롤 배너 -->
+		<div class="evtScroll">
+			<a href="#evt1" class="s1" title="조합하기">조합하기</a>
+			<a href="#evt2" class="s2" title="경품 및 참여방법">경품 및 참여방법</a>
+			<a href="#evt3" class="s3" title="보너스 이벤트">보너스 이벤트</a>
+		</div>
+		<!-- 스크롤 배너 // -->
+		
+		<!-- 이벤트 컨텐츠 //끝 -->
+	</div>
+</body>
+</html>

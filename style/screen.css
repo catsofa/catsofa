@@ -289,16 +289,24 @@ section#tab4 ul li:nth-child(3n+1) {
 }
 /* line 358, ../sass/screen.scss */
 section#tab4 ul li div {
+  height: 200px;
+  overflow: hidden;
   border-bottom: 1px solid #2b1d3e;
 }
 /* line 363, ../sass/screen.scss */
+section#tab4 ul li div img {
+  width: 200%;
+  transform: translateX(-25%);
+}
+/* line 369, ../sass/screen.scss */
 section#tab4 ul li a {
   float: left;
   width: 50%;
   box-sizing: border-box;
+  padding: 10px 0;
   text-align: center;
 }
-/* line 369, ../sass/screen.scss */
+/* line 376, ../sass/screen.scss */
 section#tab4 ul li a:last-child {
   border-left: 1px solid #2b1d3e;
 }

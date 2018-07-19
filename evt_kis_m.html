@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<link rel="stylesheet" href="./style/reset.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.rotate.js"></script>
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+/* event common */
+div.evtWrap {position:relative; text-size-adjust:none; -webkit-text-size-adjust:none; -moz-text-size-adjust:none; -ms-text-size-adjust:none}
+div.evtCon {position:relative; height:100%}
+div.evtCon img.evtBg {width:100%}
+div.evtWrap a {text-indent:-9999px; font-size:0}
+div.evtWrap input {margin:0; padding:0}
+div.evtWrap div.none {width:1px; height:1px;; font-size:0; line-height:0; position:absolute; top:0; left:-1000%; overflow:hidden}
+
+.bg0_1, .bg0_2 {position:absolute; left:0; top:0; width:100%; z-index:1}
+.evtWrap .conTit {height:auto; z-index:2}
+.evtWrap .conTit.on {position:fixed; top:-41vw; bottom:unset}
+.evtWrap .evtLogo {position:absolute; top:2vw; left:2vw; width:40%; height:2vw; z-index:2}
+.evtWrap .date {position:absolute; right:2vw; top:2vw; font-size:3vw; color:#cbd5dd; z-index:2}
+.evtWrap .evtTab {position:absolute; bottom:0; left:0; width:100%; overflow:hidden; background:url('./image/evt20180528_kis/mobile/bg_tab.png') 50% 0/100% no-repeat; z-index:3}
+.evtWrap .evtTab.on {background-position-y:100%}
+.evtWrap .evtTab li {float:left; width:50%; height:15.5vw; font-size:0; text-indent:-9999px}
+.evtTab_con {position:relative}
+.evtTab_con > div {position:relative}
+.evtTab_con > div.on {margin-top:35vw}
+.evtTab_con .btnCash {position:absolute; top:37%; width:26%; height:4%}
+.evtTab_con .btnCash.c2 {left:5%}
+.evtTab_con .btnCash.c5 {left:36.5%}
+.evtTab_con .btnCash.c10 {left:68%}
+.evtTab_con .btnCp {position:absolute; top:87%; width:17%; height:5%}
+.evtTab_con .btnCp.p1 {left:17%}
+.evtTab_con .btnCp.p2 {left:65.5%}
+.evtTab_con .notice {display:block !important; position:relative; background:#000 url('./image/evt20180528_kis/mobile/bg_ntc.jpg') 50% bottom/100% no-repeat}
+.evtTab_con .ntc_con {padding:5% 5% 18%}
+.evtTab_con .ntc_con ul {margin-top:10px; padding:10px; border:1px solid #373b3f; line-height:4vw}
+.evtTab_con .ntc_con ul li {font-size:2vw; color:#788e9b}
+.evtTab_con .ntc_con ul li:first-child {margin-bottom:10px; font-size:4vw; color:#fff; text-align:center; font-weight:bold} /* title */
+.evtTab_con .evt_align {display:flex; position:absolute; right:5%; top:31%; width:50%; height:3.5%; line-height:9vw; font-size:3vw; color:#fff}
+.evtTab_con .evt_align .a1, .evtTab_con .evt_align .a2 {}
+.evtTab_con .evt_align .a1 {margin-right:5%}
+.evtTab_con .evt_align .a2 {margin:0 5%}
+.evtTab_con .evt_align .enter {flex:1; height:100%; vertical-align:top; background:url('./image/evt20180528_kis/mobile/btn_sbm.png') 0 0/100% no-repeat; font-size:0; text-indent:-9999px} /* btn:등록하기 */
+.evtTab_con ul.evt_list {position:absolute; left:3%; top:35%; width:94%; height:65%; color:#2d3439}
+.evtTab_con ul.evt_list li {float:left; width:46%; margin:2%; height:21%; background:#fff}
+.evtTab_con ul.evt_list li h5 {height:13%; margin-top:2%; padding:0 10px; font-size:3vw; line-height:6vw} /* 제목 */
+.evtTab_con ul.evt_list li h6 {height:10%; margin-bottom:3%; padding:0 10px; font-size:2vw; font-weight:normal; line-height:4vw} /* 내용 */
+.evtTab_con ul.evt_list li h5, .evtTab_con ul.evt_list li h6 {box-sizing:border-box; text-overflow:ellipsis; overflow:hidden; white-space:nowrap}
+.evtTab_con ul.evt_list li p {height:57%; overflow:hidden} /* thumb */
+.evtTab_con ul.evt_list li p img {width:100%; height:100%; margin:0} /* thumb img */
+.evtTab_con ul.evt_list li dl {box-sizing:border-box; height:13%; margin-top:2%; padding:0 10px; overflow:hidden; font-size:2vw; line-height:4vw} 
+.evtTab_con ul.evt_list li dt {float:left}
+.evtTab_con ul.evt_list li dd {float:right; text-align:right}
+.evtTab_con ul.evt_list li dd:before {content:''; display:inline-block; width:4vw; height:3vw; margin-right:1vw; vertical-align:middle; background:url('./image/evt20180528_kis/mobile/bg_ico.png') 0 0/200% no-repeat}
+.evtTab_con dl.evt_paging {position:absolute; left:5%; bottom:0; width:90%; font-size:3vw; text-align:center}
+.evtTab_con dl.evt_paging dt, .evtTab_con dl.evt_paging dd {float:left; box-sizing:border-box; padding:10px 0; background:#04070a; border:1px solid #fff; color:#fff}
+.evtTab_con dl.evt_paging dt {width:15%}
+.evtTab_con dl.evt_paging dd {width:31%; margin:0 2%}
+/* layerpopup */
+.evtPop {display:none; position:fixed; left:3%; top:20%; width:94%; box-sizing:border-box; overflow:hidden; z-index:1}
+.evtPop .close {position:absolute; right:0; top:0; width:15%; height:15%; z-index:1}
+.evtPop.enter {}
+.evtPop.enter .popWrap {position:absolute; right:5.5%; top:26%; width:75%; height:90%; font-size:2vw}
+.evtPop.enter .textTit {width:100%; height:10%}
+.evtPop.enter .textCon {width:100%; height:30%; margin-top:5%; border:1px solid #c5c7cc}
+.evtPop.enter .textFileTxt {width:34%; height:7.5%; margin-top:5%}
+.evtPop.enter .textFileBtn {position:relative; display:inline-block; box-sizing:border-box; width:34%; height:7.5%; margin-top:5%; margin-left:-1.5%; vertical-align:top; background:#e4e9ed; border:1px solid #c5c7cc; text-align:center; line-height:5vw}
+.evtPop.enter .textFile {position:absolute; right:-10px; width:0; height:0; border:0}
+.evtPop .submit, .evtPop .recom {position:absolute; left:27.7%; top:87%; width:21.6%; height:7.8%}
+.evtPop .cancle {position:absolute; right:27.7%; top:87.2%; width:21.6%; height:7.8%}
+.evtPop.view {}
+.evtPop.view .popWrap {position:absolute; left:5%; top:5%; width:90%; height:90%; font-size:3vw; color:#2d3439}
+.evtPop.view h5 {font-size:3vw}
+.evtPop.view ul {width:100%; overflow:hidden; margin-top:5px}
+.evtPop.view li {float:left; margin-right:10px; font-size:2vw}
+.evtPop.view li .ht {color:#ff5759}
+.evtPop.view p.img {width:100%; height:59%; overflow-y:auto}
+.evtPop.view p.img img {width:100%; height:auto}
+.evtPop.view p.txt {height:13%; margin:5% 0 2%; overflow-y:auto}
+.evtPop .recom .ico {position:absolute; left:25%; top:31%; width:16%; height:50%; background:url('./image/evt20180528_kis/mobile/bg_ico.png') 100% 0/200% no-repeat}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//tab
+	$('.evtTab_con > div').hide().eq(0).show();
+	$('.evtTab li').click(function(){
+		$('.evtTab_con > div').hide().eq($(this).index()).show();
+		$('html,body').stop().animate({scrollTop:88},500); //컨텐츠 최상단 이동
+		if($(this).index() == 1){
+			$('.conTit .evtTab').addClass('on'); //2번째 탭
+			$('.evtTab_con .ntc_con').addClass('on');
+		}else{
+			$('.conTit .evtTab').removeClass('on'); //1번째 탭
+			$('.evtTab_con .ntc_con').removeClass('on');
+		}
+	});
+	
+	//top_bg
+	$('.evtBg.bg0_2').css('opacity',0);
+	bg0(3000);
+	setInterval(function(){
+		bg0(3000);
+	},12000);
+	function bg0(i){
+		$('.evtBg.bg0_1').fadeTo(i,0);
+		$('.evtBg.bg0_2').fadeTo(i,1);
+		$('.evtBg.bg0_2').delay(i).fadeTo(i,0);
+		$('.evtBg.bg0_1').delay(i).fadeTo(i,1);
+	}
+	
+	//팝업 내 닫기
+	$('.evtPop .close, .evtPop .cancle').click(function(){
+		$(this).parents('.evtPop').hide();
+	});
+	
+	//등록하기 버튼
+	$('.evt_align .enter').click(function(){
+		$('.evtPop.enter').show();
+	});
+	
+	//리스트 이미지 클릭
+	$('.evt_list li').click(function(){
+		$('.evtPop.view').show();
+		$('.evtPop.view p.img img').attr('src',$(this).find('img').attr('src'));
+	});
+	
+	//추천하기 클릭
+	$('.evtPop .recom').click(function(){
+		$(this).find('.ico').animate({top:'-10%',opacity:0},1000,function(){
+			$(this).css({top:'31%',opacity:1});
+		});
+	});
+	
+});
+$(window).scroll(function(){
+	if( $('.conTit .evtTab').hasClass('on') ){
+		if($(window).scrollTop() > $(document).height()*0.11){
+			$('.conTit').addClass('on');
+			$('.evtTab_con .bg1').addClass('on');
+			$('.evtTab_con .bg2').addClass('on');
+		}else{
+			$('.conTit').removeClass('on');
+			$('.evtTab_con .bg1').removeClass('on');
+			$('.evtTab_con .bg2').removeClass('on');
+		};
+	}else{
+		if($(window).scrollTop() > $(document).height()*0.15){
+			$('.conTit').addClass('on');
+			$('.evtTab_con .bg1').addClass('on');
+			$('.evtTab_con .bg2').addClass('on');
+		}else{
+			$('.conTit').removeClass('on');
+			$('.evtTab_con .bg1').removeClass('on');
+			$('.evtTab_con .bg2').removeClass('on');
+		};
+	}
+});
+</script>
+</head>
+<body>
+<div id="wrap">	
+
+	<section id="container">
+	
+		<!-- 이벤트 컨텐츠 //시작 -->
+		<div class="evtWrap">
+			
+			<!-- 이벤트 head -->
+			<div class="evtCon conTit">
+				<img src="./image/evt20180528_kis/mobile/bg0.jpg" class="evtBg" />
+				<img src="./image/evt20180528_kis/mobile/bg0_1.jpg" class="evtBg bg0_1" />
+				<img src="./image/evt20180528_kis/mobile/bg0_2.jpg" class="evtBg bg0_2" />
+				<a href="${ASPURL}" class="evtLogo" title="대한민국 no.1 게임전문거래사이트 아이템베이">대한민국 no.1 게임전문거래사이트 아이템베이</a>
+				<span class="date">5월 31일 ~ 6월 30일</span><!-- 이벤트 기간 -->
+				<a href="javascript:;" class="btnWeapon" title="대장간 매주 5만 캐시">대장간 매주 5만 캐시</a>
+			
+				<!-- event tab -->
+				<ul class="evtTab">
+					<li>거래 카이저 도전</li>
+					<li>파밍 카이저 도전</li>
+				</ul>
+				<!-- event tab // -->
+			</div>
+			<!-- 이벤트 head // -->
+			
+			<!-- 이벤트 con -->
+			<div class="evtCon evtTab_con">
+				<!-- 이벤트1:거래 카이저 도전 -->
+				<div class="bg1">
+					<img src="./image/evt20180528_kis/mobile/bg1.jpg" class="evtBg" />
+					<a href="javascript:;" class="btnCash c2" title="2건 완료 받기">2건 완료 받기</a>
+					<a href="javascript:;" class="btnCash c5" title="5건 완료 받기">5건 완료 받기</a>
+					<a href="javascript:;" class="btnCash c10" title="10건 완료 받기">10건 완료 받기</a>
+					<a href="javascript:;" class="btnCp p1" title="다이아 응모">다이아 응모</a>
+					<a href="javascript:;" class="btnCp p2" title="쿠폰 받기">쿠폰 받기</a>
+				</div>
+				<!-- 이벤트1:거래 카이저 도전 // -->
+				
+				<!-- 이벤트2:파밍 카이저 도전 -->
+				<div class="bg2">
+					<img src="./image/evt20180528_kis/mobile/bg2.jpg" class="evtBg" />
+					<!-- btn -->
+					<div class="evt_align"> 
+						<span class="a1">추천순</span> | <span class="a2">등록순</span>
+						<span class="enter">등록하기</span>
+					</div>
+					<!-- btn // -->
+					
+					<!-- 썸네일 리스트 -->
+					<ul class="evt_list">
+						<li><!-- 1 -->
+							<h5>제목</h5>
+							<h6>내용</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>1</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>게시물 제목 카이저입니다.스크린샷제목입니다.</h5>
+							<h6>제목보다 폰트 작게, 게시물 내용 카이저입니다더더더더더더</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+							<dl>
+								<dt>아이디***</dt>
+								<dd>85</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>제목</h5>
+							<h6>내용</h6>
+							<p><img src="/resources/image/design/event_ing/2018/evt20180528_kis/bg1_1.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>456</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>카이저 스크린샷</h5>
+							<h6>내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>12</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>제목</h5>
+							<h6>내용</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>0</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>카이저 스크린샷</h5>
+							<h6>내용</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>1000</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>카이저 스크린샷</h5>
+							<h6>내용</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>3000</dd>
+							</dl>
+						</li><!-- 1 // -->
+						<li><!-- 1 -->
+							<h5>제목</h5>
+							<h6>내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터</h6>
+							<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+							<dl>
+								<dt>아이디</dt>
+								<dd>3000</dd>
+							</dl>
+						</li><!-- 1 // -->
+					</ul>
+					<!-- 썸네일 리스트 // -->
+					
+					<!-- 페이징 -->
+					<dl class="evt_paging">
+						<dt>처음</dt>
+						<dd>◀ 이전페이지</dd>
+						<dd>다음페이지 ▶</dd>
+						<dt>마지막</dt>
+					</dl>
+					<!-- 페이징 // -->
+					
+					<!-- popup:등록하기 -->
+					<div class="evtPop enter">
+						<img src="./image/evt20180528_kis/mobile/bg_pop_smt.jpg" class="evtBg" />
+						<a href="javascript:;" class="close" title="닫기">닫기</a>
+						<div class="popWrap">
+							<input type="text" class="textTit" />
+							<textarea class="textCon"></textarea>
+							
+							<input type="text" class="textFileTxt" readonly="readonly" id="fileRoute" />
+							<label class="textFileBtn">
+								찾아보기
+								<input type="file" class="textFile" onchange="javascript:document.getElementById('fileRoute').value=this.value" />
+							</label>
+							
+						</div>
+						<a href="javascript:;" class="submit" title="등록">등록</a>
+						<a href="javascript:;" class="cancle" title="취소">취소</a>
+					</div>
+					<!-- popup:등록하기 // -->
+					
+					<!-- popup:자세히보기 -->
+					<div class="evtPop view">
+						<img src="./image/evt20180528_kis/mobile/bg_pop_img.jpg" class="evtBg" />
+						<a href="javascript:;" class="close" title="닫기">닫기</a>
+						<div class="popWrap">
+							<h5>제목</h5>
+							<ul>
+								<li>등록자 : abc***</li>
+								<li>등록일시 : 2018-05-28</li>
+								<li>추천수 : <span class="ht">200</span></li>
+							</ul>
+							<p class="txt">게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 
+								게시물 본문 게시물 본문 게게시물 본문 게시물 본문 게게시물 본문 게시물 본문 게게시물 본문 게시물 본문 게게시물 본문 게시물 본문 게</p>
+							<p class="img"><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+						</div>
+						<a href="javascript:;" class="recom" title="추천"><span class="ico"></span>추천</a>
+						<a href="javascript:;" class="cancle" title="닫기">닫기</a>
+					</div>
+					<!-- popup:자세히보기 // -->
+				</div>
+				<!-- 이벤트2:파밍 카이저 도전 // -->
+				
+				<!-- 안내사항 -->
+				<div class="notice">
+					<div class="ntc_con">
+						<ul>
+							<li>1. 거래 카이저 도전 안내</li><!-- title -->
+							<li>1. 카이저 물품 5만원 이상 거래 완료 시에만 거래 건수로 인정됩니다.</li>
+							<li>2. 거래 완료 시 받을 수 있는 마일리지는 출금 가능 마일리지로 지급되며, 최초 1회만 받으실 수 있습니다.</li>
+							<li>(10건 거래 완료하여도 2건 거래 완료 마일리지 받았을 경우 5만원 지급 불가)</li>
+							<li>3. 카이저 거래 도우미 아이템은 최초 1회만 받으실 수 있으며, 할인쿠폰은 사용 금액 제한이 있습니다.</li>
+						</ul>
+						<ul>					
+							<li>2. 파밍 카이저 도전 안내</li><!-- title -->		
+							<li>1. 등록한 스크린샷에는 캐릭터명과 “카이저 거래는 아이템베이” 채팅이 모두 노출되어 있어야 인정됩니다.</li>
+							<li>2. 타인의 계정 악용 방지를 위해 등록한 스크린샷에 확인되는 캐릭터명으로 경품이 지급됩니다.</li>
+							<li>3. 게시물은 하루에 최대 20개까지만 등록 가능합니다.</li>
+							<li>4. 본 이벤트와 무관한 게시물을 등록할 경우 사전 경고 없이 삭제 처리 됩니다.</li>
+						</ul>
+						<ul>
+							<li>3. 공통 안내</li><!-- title -->
+							<li>1. 이벤트 기간은 2018년 6월 30일까지 입니다.</li>
+							<li>2. 4천 다이아 지급 대상자는 이벤트 종료 후 2주 이내에 공지 및 별도 연락드릴 예정입니다.</li>
+							<li>3. 5만원 넘는 경품에 대한 제세공과금 22% 는 자사에서 부담하나, 관련 서류를 접수해야만 지급 가능합니다.</li>
+							<li>4. 내부 사정에 따라 사전 공지 없이 변경되거나 종료될 수 있습니다.</li>
+							<li>5. 비 정상적인 참여 및 악용 시 당첨자 대상에서 제외 및 지급된 경품 회수 등 불이익이 발생할 수 있습니다.</li>
+						</ul>
+					</div>
+				</div>
+				<!-- 안내사항 // -->
+				
+			</div>
+			<!-- 이벤트 con // -->
+			
+		</div>
+		<!-- 이벤트 컨텐츠 //끝 -->
+		
+	</section>
+	
+</div>	
+</body>
+</html>

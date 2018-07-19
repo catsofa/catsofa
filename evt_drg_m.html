@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<link rel="stylesheet" href="./style/reset.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.rotate.js"></script>
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+/* event common */
+div.evtWrap {position:relative; text-size-adjust:none; -webkit-text-size-adjust:none; -moz-text-size-adjust:none; -ms-text-size-adjust:none}
+div.evtCon {position:relative; height:100%}
+div.evtCon img.evtBg {width:100%}
+div.evtWrap a {text-indent:-9999px; font-size:0}
+div.evtWrap input {margin:0; padding:0}
+div.evtWrap div.none {width:1px; height:1px;; font-size:0; line-height:0; position:absolute; top:0; left:-1000%; overflow:hidden}
+
+div.evtWrap{overflow:hidden;}
+div.evtCon .date {position:absolute; right:2%; top:0.8%; color:#fff; font-size:1vw}
+div.evtCon div.img_egg{position:absolute; top:15.5%; left:35.4%; width:29%; height:11%; background:url("./image/evt20180125_drg/mobile/img_egg01.png") 0 0 no-repeat; background-size:cover; }
+div.evtCon div.img_egg.on{left:27.4%; width:45%; background:url("./image/evt20180125_drg/mobile/img_egg02.png") 0 0 no-repeat; background-size:cover;}
+div.evtCon div.img_z_01{position:absolute; top:18.9%; left:0; width:100%; height:6.4%; background:url("./image/evt20180125_drg/mobile/img_z_01.png") 0 0 no-repeat; background-size:cover; }
+div.evtCon a.btn.enter{position:absolute; top:17.9%; left:38.4%; width:23%; height:4.8%; background:url("./image/evt20180125_drg/mobile/img_tag.png") 0 0 no-repeat; background-size:cover; }
+div.evtCon div.evtScroll{width:100%; position:absolute; top:25.2%; left:0; z-index:9999;}
+div.evtCon div.evtScroll a{position:absolute; height:100%;}
+div.evtCon div.evtScroll a.s1{width:30%; left:0;}
+div.evtCon div.evtScroll a.s2{width:35%; left:30%;}
+div.evtCon div.evtScroll a.s3{width:35%; right:0;}
+div.evtCon div.evtScroll img{width:100%;}
+div.evtCon div.evtScroll.on{position:fixed; top:0; height:10%;}
+
+div.evtCon ul.inven{position:absolute; top:32.4%; left:4%; width:59%; height:10%;}
+div.evtCon ul.inven li {position:relative; float:left; width:23%; height:38%; margin:0 0.5vw 8.5vw 0}
+div.evtCon ul.inven li:after {content:''; position:absolute; left:24%; top:20%; width:54%; height:60%; background:url('./image/evt20180125_drg/mobile/img_txt.png') no-repeat 0 0; background-size:cover;}
+div.evtCon ul.inven li.tool:after {background:none}
+div.evtCon ul.inven li.d:after {background-position-y:0%}
+div.evtCon ul.inven li.u:after {background-position-y:16.6%}
+div.evtCon ul.inven li.r:after {background-position-y:33.3%}
+div.evtCon ul.inven li.a:after {background-position-y:50%}
+div.evtCon ul.inven li.n:after {background-position-y:66.6%}
+div.evtCon ul.inven li.g:after {background-position-y:83.3%}
+div.evtCon ul.inven li.o:after {background-position-y:100%}
+div.evtCon ul.inven li span {position:absolute; right:-2%; bottom:4%; width:31%; text-align:center; font-size:2vw; color:#fff; font-weight:bold}
+div.evtCon ul.inven li.off:after {opacity:0.15}
+
+/* popup:공룡알 */
+div.evtCon .evtPop.egg {display:none; position:absolute; top:9.5%; left:28%; width:47%; height:13.5%; z-index:998; background:url('./image/evt20180125_drg/mobile/img_popbg.png') no-repeat 0 0; background-size:cover;}
+div.evtCon .evtPop.egg .btn.close {position:absolute; left:14%; bottom:8%; width:72%; height:20%;}
+div.evtCon .evtPop.egg .img {position:absolute; top:17%; left:30%; width:40%; height:42%; background:url('./image/evt20180125_drg/mobile/img_poptxt.png') no-repeat 0 0; background-size:cover;}
+div.evtCon .evtPop.egg .img.d {background-position-y:0%} /* d */
+div.evtCon .evtPop.egg .img.u {background-position-y:16.6%} /* u */
+div.evtCon .evtPop.egg .img.r {background-position-y:33.3%} /* r */
+div.evtCon .evtPop.egg .img.a {background-position-y:50%} /* a */
+div.evtCon .evtPop.egg .img.n {background-position-y:66.6%} /* n */
+div.evtCon .evtPop.egg .img.g {background-position-y:83.3%} /* g */
+div.evtCon .evtPop.egg .img.o {background-position-y:100%} /* o */
+/* popup:조합하기 */
+div.evtCon .evtPop.comb {display:none; position:absolute; top:31.3%; right:0.2%; width:38%; height:13%; z-index:998; background:url('./image/evt20180125_drg/mobile/img_popbg2.png') no-repeat 0 0; background-size:cover;}
+div.evtCon .evtPop.comb .btn.close {position:absolute; left:25%; bottom:11%; width:50%; height:18%;}
+div.evtCon .evtPop.comb .img {position:absolute; top:7%; left:8%; width:83%; height:65%; background:url('./image/evt20180125_drg/mobile/img_poptxt2.png') no-repeat 0 0; background-size:cover;}
+div.evtCon .evtPop.comb .img.i {background-position-y:0%} /* ipad */
+div.evtCon .evtPop.comb .img.m {background-position-y:32%} /* mileage 5 */
+div.evtCon .evtPop.comb .img.g {background-position-y:65%} /* google */
+div.evtCon .evtPop.comb .img.p {background-position-y:99%} /* package */
+
+div.evtCon a.btn.comb{position:absolute; top:40.4%; right:5%; width:28%; height:2.6%;}
+div.evtCon .progress {position:absolute; left:46.5%; top:78.3%; width:43%; height:0.3%;}
+div.evtCon .progress .bar {height:100%; border-radius:5px; box-shadow:1px 1px 2px 0px rgba(0,0,0,0.5); background:url('./image/evt20180125_drg/mobile/img_bar.png') no-repeat 0 0; background-size:cover;}
+div.evtCon a.btn_market{position:absolute; top:67.2%; left:2.5%; width:95%; height:2.4%;}
+div.evtCon a.btn_google {position:absolute; top:80.2%; left:43.7%; width:49%; height:2.6%; background:url('./image/evt20180125_drg/mobile/btn_google.jpg') no-repeat 0 0; background-size:cover;}
+div.evtCon a.btn_google.on {background-position-y:100%}
+div.evtCon ul.notice{position:absolute; top:88%; left:7%; width:86%; height:9%; overflow-y:scroll;}
+div.evtCon ul.notice li{font-size:2vw; color:#6b7358; font-family:"Noto Sans KR"; margin-bottom:1.1%;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	//초기화
+	var toolTwItv,
+		popComb;
+	
+	//실행
+	btnEnter(); //btn:공룡알깨기 클릭
+	btnComb(); //btn:조합하기 클릭
+	
+	//인터랙션 시작
+	function twItvStr(){
+		$('.btn.enter').hide(); //깨기버튼 클리어
+		$('.img_egg').addClass('on');
+		setTimeout(function(){ //팝업 노출
+			$('.evtPop.egg').show();
+			$('.evtPop.egg').find('.img').addClass('u'); // d,u,r,a,n,g,o
+		},500);	
+	}
+	
+	//인터랙션 초기화
+	function twItvClr(){
+		btnEnter(); //뽑기 초기화
+		
+		$('.img_egg').removeClass('on'); //공룡알 이미지 초기화
+		$('.btn.enter').show(); //깨기버튼 초기화
+		$('.img_tool').hide(); //곡괭이 초기화
+	}
+	
+	//btn:공룡알 깨기
+	function btnEnter(){
+		$('.btn.enter').bind('click',function(){
+			$(this).unbind('click');
+			twItvStr(); //인터랙션 시작
+		});
+	}
+	
+	//btn:공룡알 팝업 내 확인 클릭
+	$('.evtPop.egg .btn.close').click(function(){
+		$(this).parents('.evtPop').hide(); //팝업 닫기
+		twItvClr(); //인터랙션 초기화
+	});
+	
+	//btn:조합하기 클릭
+	function btnComb(){
+		$('.btn.comb').bind('click',function(){
+			$(this).unbind('click');
+			$('.evtPop.comb').show();
+			$('.evtPop.comb').find('.img').addClass('p'); // i:아이패드,m:마일리지,g:구글,p:패키지
+			$('.btn.comb').removeClass('on');
+		});
+	}
+		
+	//btn:조합하기 팝업 내 확인 클릭
+	$('.evtPop.comb .btn.close').click(function(){
+		$(this).parents('.evtPop').hide(); //팝업 닫기
+		btnComb(); //조합하기 초기화
+	});
+	
+	//구글기프트 프로그레스바
+	$('div.evtCon .progress .bar').width(50+'%'); //수치로 퍼센트 표현
+	
+	//스크롤 배너 위치
+	$(window).scroll(function(){
+		if( $(this).scrollTop() > $(document).height()*0.252 ){
+			$('.evtScroll').addClass('on');		
+		}else{
+			$('.evtScroll').removeClass('on');
+		}
+	});	
+	//스크롤 배너
+	$('.evtScroll a').click(function(){        
+	    $('html,body').stop().animate({scrollTop:$(this.hash).offset().top},700);
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrap">
+	<section id="container">
+		<!-- 이벤트 컨텐츠 //시작 -->
+		<div class="evtWrap">
+			<div class="evtCon">
+				<div class="none">
+					[듀랑고 완성하고 아이패드 받자!]
+					- 이벤트 기간: 2018.01.25~02.15
+				</div>		
+				
+				<img src="./image/evt20180125_drg/mobile/bg01.jpg" class="evtBg" />	
+				<img src="./image/evt20180125_drg/mobile/bg02.jpg" class="evtBg" id="evt1" />
+				
+				<div class="date">기간:1월 25일~2월 15일</div>
+				<div class="img_egg"></div><!-- 공룡알 -->
+				<div class="img_z_01"></div><!-- front img 01 -->
+				<a href="javascript:;" class="btn enter" title="깨기!">깨기</a><!-- btn:깨기 -->
+				
+				<!-- 레이어팝업:공룡알 오픈 -->
+				<div class="evtPop egg">
+					<div class="img"></div><!-- d,u,r,a,n,g,o -->
+					<a href="javascript:;" class="btn close" title="확인">확인</a><!-- btn:확인 -->
+				</div>
+				
+				
+				<!-- 스크롤 배너 -->
+				<div class="evtScroll">
+					<a href="#evt1" class="s1" title="출시알림 신청하기">출시알림 신청하기</a>
+					<a href="#evt2" class="s2" title="실시간 인기투표">실시간 인기투표</a>
+					<a href="#evt3" class="s3" title="실시간 인기투표">실시간 인기투표</a>
+					<img src="./image/evt20180125_drg/mobile/scroll.png" />
+				</div>
+				
+				<!-- 인벤토리 -->
+				<ul class="inven">
+					<li class="tool"><span>999</span></li>
+					<li class="d"><span>38</span></li>
+					<li class="u"><span>1</span></li>
+					<li class="r off"><span>0</span></li>
+					<li class="a off"><span>0</span></li>
+					<li class="n"><span>425</span></li>
+					<li class="g"><span>7</span></li>
+					<li class="o off"><span>0</span></li>
+				</ul>			
+				
+				<!-- 레이어팝업:공룡알 오픈 -->
+				<div class="evtPop comb">
+					<div class="img i"></div><!-- i:아이패드,m:마일리지,g:구글,p:패키지 -->
+					<a href="javascript:;" class="btn close" title="확인">확인</a><!-- btn:확인 -->
+				</div>
+								
+				<a href="javascript:;" class="btn comb" id="evt2" title="조합하기">조합하기</a><!-- btn:조합 -->	
+				<a href="javascript:;" id="evt3" class="btn_market" title="장터 바로가기">장터 바로가기</a>	<!-- btn:장터 바로가기 -->
+				
+				<!-- 구글 프로그레스바 -->
+				<div class="progress">
+					<div class="bar"></div>
+				</div>
+				
+				<a href="javascript:;" class="btn_google" title="구글 기프트카드 받기">구글 기프트카드 받기</a><!-- btn:구글 -->
+				
+				<!-- 이벤트 안내사항 -->
+				<ul class="notice">
+					<li>-  이벤트 참여 방법은 이벤트 페이지 내 명시되어 있습니다.</li>
+					<li>-  할인 쿠폰의 경우 듀랑고 전용으로 지급되며,  할인 금액별 사용 금액이 제한됩니다.</li>
+					<li>-  보너스 이벤트의 경우 ID 당 1회만 참여 가능합니다.(구글 기프트카드 1회 당첨 시 참여 불가)</li>
+					<li>-  5만원 이상 경품의 경우 제세공과금 22%가 발생되며 고객님께서 부담합니다.</li>
+					<li>-  제세공과금 처리를 위한 개인 정보 수집 및 이용 동의서를 요청드립니다.</li>
+					<li>-  현물 경품에 당첨된 경우 이벤트 종료 후 개별 연락드립니다.</li>
+					<li>-  비정상적인 참여 및 이벤트 악용 시 경품 당첨 취소 등의 불이익이 발생할 수 있습니다.</li>
+					<li>-  내부 사정에 따라 별도 공지 없이 변경 또는 조기 종료될 수 있습니다.</li>
+					<li>-  19세 미만 회원은 이용하실 수 없습니다.</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 이벤트 컨텐츠 //끝 -->
+	</section>
+</div>
+</body>
+</html>

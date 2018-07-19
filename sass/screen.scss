@@ -356,14 +356,21 @@ section {
 				}
 				
 				div {
+					height:200px;
+					overflow:hidden;
 					border-bottom:1px solid $colorPit3;
-					
+										
+					img {
+						width:200%;
+						transform:translateX(-25%);
+					}
 				}
 				
 				a {
 					float:left;
 					width:50%;
 					box-sizing:border-box;
+					padding:10px 0;
 					text-align:center;
 					
 					&:last-child {

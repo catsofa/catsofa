@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<link rel="stylesheet" href="./style/reset.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.rotate.js"></script>
+<style type="text/css">
+/* event common */
+div.evtWrap {position:relative; text-size-adjust:none; -webkit-text-size-adjust:none; -moz-text-size-adjust:none; -ms-text-size-adjust:none}
+div.evtCon {position:relative; height:100%}
+div.evtCon img.evtBg {width:100%}
+div.evtWrap a {text-indent:-9999px; font-size:0}
+div.evtWrap input {margin:0; padding:0}
+div.evtWrap div.none {width:1px; height:1px;; font-size:0; line-height:0; position:absolute; top:0; left:-1000%; overflow:hidden}
+
+div.evtCon a.btn {position:absolute}
+div.evtCon .btn.build {right:4.3%; top:15.3%; width:51.5%; height:3.5%}
+div.evtCon .btn.face {left:4.3%; top:76.6%; width:44.4%; height:3.8%}
+div.evtCon .btn.kakao {left:51.5%; top:76.6%; width:44.4%; height:3.8%}
+div.evtCon .num {position:absolute; color:#fff}
+div.evtCon .num.date {right:0; top:1%; width:29%; font-size:2vw; letter-spacing:-0.05em}
+div.evtCon .num.spell {right:11%; top:11.5%; width:15%; height:2.5%; text-align:right; font-size:7vw;}
+div.evtCon .num.add {left:8%; top:12.6%; width:15%; height:2%; text-align:center; font-size:5vw;}
+div.evtCon .num.google {right:0.8%; top:49.9%; width:12%; text-align:center; font-size:2vw; font-weight:500}
+div.evtCon .num.google.off {color:#fff000}
+div.evtCon .ctrlist {position:absolute; top:40.4%; width:43%; height:1.75%}
+div.evtCon .ctrlist.game {left:5.7%}
+div.evtCon .ctrlist.server {left:51.4%}
+div.evtCon .ctrlist select {width:60%; height:100%; line-height:normal; background-color:#fff; font-size:2vw; padding:0 1vw; ; z-index:9995}
+div.evtCon .ctrlist a {position:absolute; right:0; top:0; width:40%; height:100%}
+div.evtCon .rankList {position:absolute; top:63.2%; left:4%; width:92%; height:9.7%}
+div.evtCon .rankList table {float:left; width:50%; height:100%; background:none; border:none}
+div.evtCon .rankList table th, div.evtCon .rankList table td {width:50%; color:#fff; border:none; font-size:2vw;}
+div.evtCon .rankList table th {text-align:center; font-weight:normal; padding:0}
+div.evtCon .rankList table td {text-align:right; padding:0 5% 0 0;}
+div.evtCon .notice {position:absolute; top:85.5%; left:3%; width:92%; height:12%; overflow-y:auto;}
+div.evtCon .notice li {color:#5b789f; letter-spacing:-0.1em; font-size:2vw; margin-bottom:1%; line-height:normal}
+div.evtCon .evtScroll {position:absolute; top:22%; left:0; width:100%; height:3.7%; z-index:9996}
+div.evtCon .evtScroll.on {position:fixed; top:0}
+div.evtCon .evtScroll a {position:absolute; width:50%; height:100%; top:0}
+div.evtCon .evtScroll a.s1 {left:0}
+div.evtCon .evtScroll a.s2 {right:0}
+div.evtCon .evtPop {display:none; position:absolute; left:10%; top:7%; width:80%; box-shadow:0px 5px 50px #000; z-index:9997}
+div.evtCon .evtPop > div {position:absolute; left:0; top:0; width:100%; z-index:9997}
+div.evtCon .evtPop > div > div {position:absolute; left:0; top:0; width:100%; z-index:9998}
+div.evtCon .evtPop > div .s0 {background:#fff; height:100%; z-index:9999}
+div.evtCon .btn.close {left:30%; top:85%; width:40%; text-indent:0; z-index:9999}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var $scs = $('.success'),
+	$fal = $('.fail'),
+	$light = $('.s0'),
+	$sword1_1 = $('.s1_1'),
+	$sword2_1 = $('.s2_1'), //성공
+	$sword3_1 = $('.s3_1'); //실패
+	
+	//레이어팝업
+	$('.evtPop > div').hide();
+	$('.btn.close').hide();
+	$('.s0, .s2_1, .s3_1').css('opacity','0');
+		
+	//레이어팝업:성공
+	function success(){
+		var box = $scs,
+			effect = 'easeInBack';
+		$('.evtPop').show();
+		$fal.hide();
+		$scs.show();
+		setTimeout(function(){ //whiteOut
+			$scs.find($light).animate({opacity:1},1500,effect);
+			$scs.find($light).animate({opacity:0},100,effect);
+		},500);
+		setTimeout(function(){
+			$scs.find($light).animate({opacity:0},1000,'easeInBack');
+			$sword1_1.css('opacity','0');
+			$sword2_1.css('opacity','1');
+			$scs.find('.btn.close').show();
+		},2000);
+	}
+	
+	//레이어팝업:실패
+	function fail(){
+		var box = $fal,
+			effect = 'easeInBack';
+		$('.evtPop').show();
+		$scs.hide();
+		$fal.show();
+		setTimeout(function(){ //whiteOut
+			$fal.find($light).animate({opacity:1},1500,effect);
+			$fal.find($light).animate({opacity:0},100,effect);
+		},500);
+		setTimeout(function(){
+			$fal.find($light).animate({opacity:0},1000,'easeInBack');
+			$sword1_1.css('opacity','0');
+			$sword3_1.css('opacity','1');
+			$fal.find('.btn.close').show();
+		},2000);
+	}
+	
+	//레이어팝업:btn확인
+	$('.btn.close').click(function(){
+		$(this).hide();
+		$(this).parents('.evtPop').hide();
+		$sword1_1.css('opacity','1');
+		$('.s2_1, .s3_1').css('opacity','0');
+	});
+	
+	//실행:레이어팝업
+	$('.btn.build').click(function(){
+		//setTimeout(success,500); //레이어팝업:성공
+		//setTimeout(fail,500); //레이어팝업:실패
+	});
+	
+	//테스트용:삭제요망
+	$('.evt1').click(function(){
+		setTimeout(success,500); //레이어팝업:성공
+	});
+	$('.evt2').click(function(){
+		setTimeout(fail,500); //레이어팝업:실패
+	});
+	
+	//스크롤 배너
+	$(".evtScroll a").click(function(){            
+	    $('html,body').animate({scrollTop:$(this.hash).offset().top},800);
+	});
+	
+	//스크롤 배너 위치
+	$(window).scroll(function(){
+		if( $(this).scrollTop() > $(document).height()*0.22 ){
+			$('.evtScroll').addClass('on');		
+		}else{
+			$('.evtScroll').removeClass('on');
+		}
+	});
+	
+});
+</script>
+</head>
+<body>
+<div id="wrap">
+<section id="container">
+
+	<!-- 이벤트 컨텐츠 //시작 -->
+	<div class="evtWrap">
+		<div class="evtCon" id="evt1">
+			<div class="none">
+				[리니지 리니지M 강화이벤트]
+			</div>
+			
+			<div class="num date">8월 9일 ~ 9월 8일</div><!-- 이벤트 기간 -->
+			<div class="num spell"><span>999</span></div><!-- 보유 강화주문서 -->
+			<div class="num add">+<span>99</span></div><!-- 강화 수치 -->
+			<a href="javascript:;" class="btn build" title="강화하기">강화하기</a><!-- btn:강화하기 -->
+			
+			<img src="./image/evt20170811_lng/mobile/bg1.jpg" class="evtBg" />
+			<img src="./image/evt20170811_lng/mobile/bg2.jpg" class="evtBg" />
+			<a href="javascript:;" class="btn" title="쿠폰받기">쿠폰받기</a>
+			
+			<!-- 스크롤 링크 -->
+			<div class="evtScroll">
+				<a href="#evt1" class="s1" title="집행검 강화">집행검 강화</a>
+				<a href="#evt2" class="s2" title="SNS 공유하기">SNS 공유하기</a>
+				<img src="./image/evt20170811_lng/mobile/scroll.png" class="evtBg" />
+			</div>
+			<!-- 스크롤 링크 // -->
+			
+			<!-- 테스트용:삭제요망 -->
+			<div style="width:25%; height:10%; position:absolute; top:9%; right:5%;">
+				<button class="evt1" style="background:rgba(255,255,255,0.5)">강화 성공(클릭)</button>
+				<button class="evt2" style="background:rgba(255,255,255,0.5)">강화 실패(클릭)</button>
+				</audio>
+			</div>
+			<!-- 테스트용:삭제요망 // -->
+			
+			<!-- 강화:레이어팝업 -->
+			<div class="evtPop">
+				<!-- 강화 성공 -->
+				<div class="success">
+					<img src="./image/evt20170811_lng/mobile/1_0.png" class="evtBg s1_1" />
+					<div class="s2_1"><img src="./image/evt20170811_lng/mobile/2_1.png" class="evtBg" /></div>
+					<div class="s0"></div>
+					<a href="javascript:;" class="btn close" title="확인"><img src="./image/evt20170811_lng/mobile/pop_btn.jpg" class="evtBg" /></a><!-- btn:확인 -->
+				</div>
+				<!-- 강화 성공 // -->
+				<!-- 강화 실패 -->
+				<div class="fail">
+					<img src="./image/evt20170811_lng/mobile/1_0.png" class="evtBg s1_1" />
+					<div class="s3_1"><img src="./image/evt20170811_lng/mobile/3_1.png" class="evtBg" /></div>
+					<div class="s0"></div>
+					<a href="javascript:;" class="btn close" title="확인"><img src="./image/evt20170811_lng/mobile/pop_btn.jpg" class="evtBg" /></a><!-- btn:확인 -->
+				</div>
+				<!-- 강화 실패 // -->
+			</div>
+			<!-- 강화:레이어팝업 // -->
+			
+			<!-- 게임 컨트롤러 -->
+			<div class="ctrlist game">
+				<select>
+					<option>게임검색</option>
+					<option>게임검색111</option>
+					<option>게임검색222</option>
+				</select>
+				<a href="javascript:;" title="게임 이동하기">게임 이동하기</a>
+			</div>
+			<div class="ctrlist server">
+				<select>
+					<option>서버검색</option>
+					<option>서버검색111</option>
+					<option>서버검색222</option>
+				</select>
+				<a href="javascript:;" title="서버 이동하기">서버 이동하기</a>
+			</div>
+			<!-- 게임 컨트롤러 // -->
+			
+			<!-- 구글기프트:지급--
+			<div class="num google">지급완료!</div> -->
+			<div class="num google off">소진완료</div>
+			<!-- 구글기프트:지급 // -->
+			
+			<!-- 강화 랭킹 -->
+			<div class="rankList">
+				<table>
+					<tr>
+						<th>+99</th>
+						<td>1</td>
+					</tr>
+					<tr>
+						<th>+90</th>
+						<td>1</td>
+					</tr>
+					<tr>
+						<th>+71</th>
+						<td>10</td>
+					</tr>
+					<tr>
+						<th>+70</th>
+						<td>9</td>
+					</tr>
+					<tr>
+						<th>+56</th>
+						<td>20</td>
+					</tr>
+					<tr>
+						<th>+50</th>
+						<td>30</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<th>+99</th>
+						<td>1</td>
+					</tr>
+					<tr>
+						<th>+90</th>
+						<td>1</td>
+					</tr>
+					<tr>
+						<th>+71</th>
+						<td>10</td>
+					</tr>
+					<tr>
+						<th>+70</th>
+						<td>9</td>
+					</tr>
+					<tr>
+						<th>+56</th>
+						<td>20</td>
+					</tr>
+					<tr>
+						<th>+50</th>
+						<td>30</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 강화 랭킹 // -->
+			
+			<a href="javascript:;" class="btn face" title="페이스북 공유">페이스북 공유</a><!-- btn:페이스북 -->
+			<a href="javascript:;" class="btn kakao" title="카카오톡 공유(모바일)">카카오톡 공유(모바일)</a><!-- btn:카카오톡 -->
+			
+			<!-- 이벤트 안내사항 -->
+			<ul class="notice" id="evt2">
+				<li>1. 19세 미만 회원은 본 이벤트에 참여하실 수 없습니다.</li>
+				<li>2. 집행검 경품은 이벤트 종료시점 최고강화순위를 달성한 참여자에게 지급됩니다. (종료 후 개별연락) 만약, 동일 강화수치의 회원이 다수일 경우에는 당첨금액(2,500만원)을 분할(1/n)하여 지급합니다.</li> 
+				<li>3. 집행검 경품은 단가 2,500만원을 기준으로 하며, 당사 사정상 수급이 어려울 경우 해당 금액의 출금가능 마일리지로 지급됩니다.</li>
+				<li>4. 지급되는 경품이 5만원을 초과할 경우 발생하는 제세공과금(22%)는 당첨자 부담이며, 제세공과금 처리를 위한 본인 신분증사본 및 개인정보 수집이용 동의서를 요청드립니다.</li> 
+				<li>5. 이벤트 내 모든 경품은 동일 경품에 중복당첨이 불가한 계정 당 1회 지급입니다.</li> 
+				<li>6. 강화주문서는 강화 시도 시 성공 또는 실패여부와 관계없이 1개씩 소모됩니다.</li>
+				<li>7. 2,000원 할인쿠폰은 리니지, 리니지M 각 1개씩 지급됩니다. (발급일로부터 15일 사용가능, 최소 사용금액 제한은 없음)</li>
+				<li>8. 구글 기프트가드 경품은 +7강 달성자 선착순 200명에게 즉시 지급됩니다. (운영자메시지를 통한 PIN번호 지급)</li>
+				<li>9. 비정상적인 참여 및 이벤트 악용 시 당첨취소, 불이익이 발생될 수 있습니다.</li>
+				<li>10. 이벤트 기간은 조정될 수 있습니다.</li> 
+			</ul>
+			<!-- 이벤트 안내사항 // -->
+
+		</div>
+	</div>
+	<!-- 이벤트 컨텐츠 //끝 -->
+	
+	
+</section>
+</div>
+</body>
+</html>

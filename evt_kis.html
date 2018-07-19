@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./style/reset.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/jquery.rotate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//tab
+	$('.evtTab_con > div').hide().eq(0).show();
+	$('.evtTab li').click(function(){
+		$('.evtTab_con > div').hide().eq($(this).index()).show();
+		$('html,body').stop().animate({scrollTop:35},500); //컨텐츠 최상단 이동
+		if($(this).index() == 1){
+			$('.conTit .evtTab').addClass('on'); //2번째 탭
+			$('.evtTab_con .ntc_con').addClass('on');
+		}else{
+			$('.conTit .evtTab').removeClass('on'); //1번째 탭
+			$('.evtTab_con .ntc_con').removeClass('on');
+		}
+	});
+	
+	//top_bg
+	$('.evtBg .bg0_2').css('opacity',0);
+	bg0(3000);
+	setInterval(function(){
+		bg0(3000);
+	},12000);
+	function bg0(i){
+		$('.evtBg .bg0_1').fadeTo(i,0);
+		$('.evtBg .bg0_2').fadeTo(i,1);
+		$('.evtBg .bg0_2').delay(i).fadeTo(i,0);
+		$('.evtBg .bg0_1').delay(i).fadeTo(i,1);
+	}
+	
+	//팝업 내 닫기
+	$('.evtPop .close, .evtPop .cancle').click(function(){
+		$(this).parents('.evtPop').hide();
+	});
+	
+	//등록하기 버튼
+	$('.evt_align .enter').click(function(){
+		$('.evtPop.enter').show();
+	});
+	
+	//리스트 이미지 클릭
+	$('.evt_list li').click(function(){
+		$('.evtPop.view').show();
+		$('.evtPop.view p.img img').attr('src',$(this).find('img').attr('src'));
+	});
+	
+	//추천하기 클릭
+	$('.evtPop .recom').click(function(){
+		$(this).find('.ico').animate({top:'-20px',opacity:0},1000,function(){
+			$(this).css({top:'18px',opacity:1});
+			console.log('후처리');
+		});
+	});
+	
+});
+$(window).scroll(function(){
+	if($(window).scrollTop() > 348){ //35 347
+		$('.evtBg.bg0').addClass('on');
+		$('.evtBg.bg1_1').addClass('on');
+		$('.evtBg.bg2_1').addClass('on');
+	}else{
+		$('.evtBg.bg0').removeClass('on');
+		$('.evtBg.bg1_1').removeClass('on');
+		$('.evtBg.bg2_1').removeClass('on');
+	};
+});
+</script>
+<style type="text/css">
+div.evtWrap {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#000}
+div.evtWrap a {text-indent:-9999px; font-size:0}
+div.evtWrap input, div.evtWrap textarea {margin:0; padding:0; border:1px solid #bac1c6; background:#fff}
+div.evtWrap input:focus,div.evtWrap input:hover, div.evtWrap textarea:focus, div.evtWrap textarea:hover {background:#fff}
+div.evtBg {min-width:1000px}
+div.evtBg.bg0 {position:relative; width:100%; height:427px; border-bottom:3px solid #cbd5dd; background:url('./image/evt20180528_kis/bg0.jpg') 50% 0 no-repeat}
+div.evtBg.bg0.on {position:fixed; top:-312px; left:0; z-index:2} /* -312 0 */
+div.evtBg .bg0_1 {position:absolute; left:0; top:0; width:100%; height:427px; background:url('./image/evt20180528_kis/bg0_1.jpg') 50% 0 no-repeat}
+div.evtBg .bg0_2 {position:absolute; left:0; top:0; width:100%; height:427px; background:url('./image/evt20180528_kis/bg0_2.jpg') 50% 0 no-repeat}
+div.evtBg.bg1_1 {position:relative; height:1438px; background:url('./image/evt20180528_kis/bg1_1.jpg') 50% 0 no-repeat}
+div.evtBg.bg1_2 {position:relative; height:1000px; background:url('./image/evt20180528_kis/bg1_2.jpg') 50% 0 no-repeat}
+div.evtBg.bg2_1 {position:relative; height:1700px; background:url('./image/evt20180528_kis/bg2_1.jpg') 50% 0 no-repeat}
+div.evtBg.bg2_2 {position:relative; height:738px; background:url('./image/evt20180528_kis/bg2_2.jpg') 50% 0 no-repeat}
+div.evtCon {position:relative; margin:0 auto; width:1000px; height:100%}
+div.evtCon .none {width:1px; height:1px; font-size:0; line-height:0; position:absolute; top:0; left:-1000%; overflow:hidden}
+div.evtCon .evtLogo {position:absolute; top:16px; left:50%; margin-left:-500px; width:235px; height:16px; z-index:9999}
+.evtCon.conTit {height:427px; background:url('./image/evt20180528_kis/bg_top.png') 50% 0 no-repeat; z-index:1}
+.evtCon.conTit .date {position:absolute; right:0; top:16px; font:14px notoCJK, sans-serif; color:#cbd5dd}
+.evtCon.conTit .evtTab {position:absolute; bottom:-3px; width:100%; background:url('./image/evt20180528_kis/bg_tab.png') 50% 0 no-repeat}
+.evtCon.conTit .evtTab.on {background-position-y:100%}
+.evtCon.conTit .evtTab li {float:left; width:50%; height:115px; cursor:pointer; font-size:0; text-indent:-9999px}
+.evtCon.conTit .btnWeapon {position:fixed; left:50%; top:180px; margin-left:550px; width:104px; height:120px; background:url('./image/evt20180528_kis/bg_sb.png') 0 0 no-repeat}
+.evtTab_con {position:relative}
+.evtTab_con .evtBg.on {margin-top:427px}
+.evtTab_con .btnCash {position:absolute; top:511px; width:220px; height:50px}
+.evtTab_con .btnCash.c2 {left:50px}
+.evtTab_con .btnCash.c5 {left:390px}
+.evtTab_con .btnCash.c10 {left:730px}
+.evtTab_con .btnCp {position:absolute; top:1242px; width:140px; height:70px}
+.evtTab_con .btnCp.p1 {left:180px}
+.evtTab_con .btnCp.p2 {left:680px}
+.evtTab_con .notice {display:block !important}
+.evtTab_con .ntc_con {position:absolute; left:220px; bottom:380px; font:14px/26px notoCJK, sans-serif; color:#788e9b}
+.evtTab_con .ntc_con.on {bottom:110px}
+.evtTab_con .ntc_con ul {margin-top:98px}
+.evtTab_con .ntc_con ul:first-child {margin-top:0}
+.evtTab_con .evt_align {position:absolute; right:23px; top:615px; height:60px; font:18px/60px notoCJK, sans-serif; color:#fff; cursor:pointer}
+.evtTab_con .evt_align .a1, .evtTab_con .evt_align .a2 {display:inline-block; vertical-align:top}
+.evtTab_con .evt_align .enter {display:inline-block; width:157px; height:60px; margin-left:10px; vertical-align:top; background:url('./image/evt20180528_kis/bg_ico.png') 0 -17px no-repeat; font-size:0; text-indent:-9999px} /* btn:등록하기 */
+.evtTab_con ul.evt_list {position:absolute; left:14px; top:680px; width:972px; color:#2d3439}
+.evtTab_con ul.evt_list li {float:left; width:304px; margin:10px; background:#fff; cursor:pointer}
+.evtTab_con ul.evt_list li h5 {margin:20px 15px 3px; font-size:16px} /* 제목 */
+.evtTab_con ul.evt_list li h6 {margin:0 15px 15px; font-weight:normal} /* 내용 */
+.evtTab_con ul.evt_list li h5, .evtTab_con ul.evt_list li h6 {text-overflow:ellipsis; overflow:hidden; white-space:nowrap}
+.evtTab_con ul.evt_list li p {height:170px; overflow:hidden} /* thumb */
+.evtTab_con ul.evt_list li p img {width:100%; height:100%; margin:0} /* thumb img */
+.evtTab_con ul.evt_list li dl {height:30px; padding:0 15px; overflow:hidden; line-height:30px} 
+.evtTab_con ul.evt_list li dt {float:left}
+.evtTab_con ul.evt_list li dd {float:right; text-align:right}
+.evtTab_con ul.evt_list li dd:before {content:''; display:inline-block; width:21px; height:16px; margin-right:5px; vertical-align:middle; background:url('./image/evt20180528_kis/bg_ico.png') 0 0 no-repeat}
+.evtTab_con dl.evt_paging {position:absolute; left:170px; top:1600px; height:46px; font:18px/46px notoCJK, sans-serif; color:#fff; text-align:center}
+.evtTab_con dl.evt_paging dt, .evtTab_con dl.evt_paging dd {float:left; margin-left:10px; background:#04070a; border:1px solid #fff; cursor:pointer}
+.evtTab_con dl.evt_paging dt {width:130px}
+.evtTab_con dl.evt_paging dd {width:180px}
+/* layerpopup */
+.evtPop {display:none; position:fixed; left:50%; top:25%; margin-left:-300px; overflow:hidden; z-index:1}
+.evtPop .close {position:absolute; right:15px; top:15px; width:66px; height:66px; z-index:1}
+.evtPop.enter {width:660px; height:599px; background:url('./image/evt20180528_kis/bg_pop_smt.jpg') 0 0 no-repeat}
+.evtPop.enter .popWrap {position:absolute; left:130px; top:164px; width:500px}
+.evtPop.enter .textTit {width:478px; height:38px; padding:0 10px; line-height:38px}
+.evtPop.enter .textCon {width:478px; height:179px; min-height:179px; min-width:478px; max-height:179px; max-width:478px; padding:10px; margin-top:10px}
+.evtPop.enter .textFileTxt {width:163px; height:38px; margin-top:10px; line-height:38px}
+.evtPop.enter .textFileBtn {position:relative; display:inline-block; width:110px; height:40px; margin:10px 0 0 -5px; overflow:hidden; vertical-align:top; cursor:pointer}
+.evtPop.enter .textFile {position:absolute; right:-10px; width:0; height:0; border:0}
+.evtPop .submit, .evtPop .recom {position:absolute; left:183px; bottom:34px; width:142px; height:50px}
+.evtPop .cancle {position:absolute; left:335px; bottom:34px; width:142px; height:50px}
+.evtPop.view {width:600px; height:589px; padding:30px; background:url('./image/evt20180528_kis/bg_pop_img.jpg') 0 0 no-repeat}
+.evtPop.view .popWrap {font:12px notoCJK, sans-serif; color:#2d3439}
+.evtPop.view h5 {font-size:16px}
+.evtPop.view ul {width:100%; overflow:hidden; margin-top:10px}
+.evtPop.view li {float:left; margin-right:20px}
+.evtPop.view li .ht {color:#ff5759}
+.evtPop.view p.img {width:600px; height:350px; overflow-y:auto}
+.evtPop.view p.img img {width:100%; height:auto}
+.evtPop.view p.txt {height:70px; margin:35px 0 20px; overflow-y:auto; line-height:24px}
+.evtPop .recom .ico {position:absolute; left:36px; top:18px; width:21px; height:17px; background:url('./image/evt20180528_kis/bg_ico.png') -21px 0 no-repeat}
+</style>
+</head>
+<body>
+<!-- header -->
+<div id="header"> 
+	<div class="area_gnb"><!-- gnb -->
+		<div class="area_con">
+			<ul class="gnb_left">
+				<li><a href="http://trade.itembay.com/main" title="아이템베이">아이템베이</a></li>
+				<li><a href="http://www.ongate.com/" title="온게이트">온게이트</a></li>
+				<li><a href="http://www.ticketbay.co.kr/web/main" title="티켓베이">티켓베이</a></li>
+			</ul>
+			<ul class="gnb_right">
+				<li id="hUtil01">
+					<a href="javascript:;" title="마이베이">마이베이<span class="ico">▼</span></a>
+					<!-- 마이베이:레이어팝업 -->
+					<div class="go_layer"> 
+		         			<p class="tit"><a href="/mybay/mybayMainView">마이베이<span class="ico">▲</span></a></p>
+		            	<ol>
+							<li><a href="/mybay/status/mybayStatusTakeList" onmousedown="HeaderMenu.SetLoggerDepth3(1); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">구매중 물품</a></li>
+							<li><a href="/mybay/status/mybayStatusGiveList" onmousedown="HeaderMenu.SetLoggerDepth3(2); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">판매중 물품</a></li>								 
+							<li><a href="/mybay/mileage/mybayMileageDepositView" onmousedown="HeaderMenu.SetLoggerDepth3(3); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">마일리지충전</a></li>			
+							<li><a href="http://trade.itembay.com/member/memberInfo/memberInfoView" onmousedown="HeaderMenu.SetLoggerDepth3(4); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">회원정보수정</a></li>
+							<li><a href="/securityService/service/securityServiceMain" onmousedown="HeaderMenu.SetLoggerDepth3(5); return false;" onblur="$('#hUtil01').removeClass();$('#hUtil01').addClass('off');" onclick="return HeaderMenu.SetMySearchMenu(this);">보안서비스관리</a></li>
+						</ol>
+		         		</div>
+		         		<!-- 마이베이:레이어팝업 // -->
+				</li>
+				<li><a href="#none" onclick="HeaderMenu.MoveItemList(); return false;" onmousedown="HeaderMenu.SetLoggerDepth3(6); return false;">아이템거래</a></li>
+				<li><a href="/mobileWorld/appMITP" onmousedown="HeaderMenu.SetLoggerDepth3(8); return false;">모바일</a></li>
+				<li><a href="/mileageMall/mileageMallMainView" onmousedown="HeaderMenu.SetLoggerDepth3(7); return false;">상품권샵</a></li>
+				<li><a href="/shop/mainView" onmousedown="HeaderMenu.SetLoggerDepth3(21); return false;">컨텐츠샵</a></li>
+				<li><a href="/event/eventMainView" onmousedown="HeaderMenu.SetLoggerDepth3(9); return false;">이벤트/쿠폰</a> </li>
+				<li id="hUtil02">
+					<a href="javascript:;" title="고객감동센터">고객감동센터<span class="ico">▼</span></a>
+					<!-- 고객감동센터:레이어팝업 -->
+		         		<div class="go_layer"> 
+		         			<p class="tit hand">
+		         				<a href="/help/helpMainView">고객감동센터<span class="ico">▲</span></a>
+		         			</p>
+		           		
+		           		<ol>
+		             			<li><a href="/help/rogueInfoView" title="안전거래센터" onclick="return HeaderMenu.SetMySearchMenu(this);">안전거래센터</a></li>
+							<li><a href="/help/helpDesk/recompenseMngView" onmousedown="HeaderMenu.SetLoggerDepth1(8); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">200%보상센터</a></li>
+							<li><a href="/help/guideInfoView" onmousedown="HeaderMenu.SetLoggerDepth1(9); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">이용안내</a></li>
+							<li><a href="/help/helpDesk/adviceMng/consultView" onmousedown="HeaderMenu.SetLoggerDepth1(10); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">1:1 이용문의</a></li>
+							<li><a href="/help/adviceMng/cancelTradeView" onmousedown="HeaderMenu.SetLoggerDepth1(11); return false;" onclick="return HeaderMenu.SetMySearchMenu(this);">거래취소</a>/<a href="/help/adviceMng/claimTradeView" onmousedown="HeaderMenu.SetLoggerDepth1(12); return false;" title="거래신고" onblur="$('#hUtil02').removeClass();$('#hUtil02').addClass('off');">신고</a></li>
+		           		</ol>
+		         		</div>
+		         		<!-- 고객감동센터:레이어팝업 // -->
+				</li>
+				<li class="off">
+		      			
+						
+							<a href="#none" onclick="HeaderMenu.SetLogOut();" onmousedown="HeaderMenu.SetLoggerDepth3(17); return false;">로그아웃</a>
+						
+						
+					
+		       	</li>
+				<li class="drtCheck">
+					<a href="javascript:drtLayerClick();" title="바로가기 상태">
+						바로가기<span class="check">ON</span>
+						<!-- 바로가기 상태 --
+						<span class="check">OFF</span>
+						<span class="check on">ON</span>
+						<!-- 바로가기 상태 // -->
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div><!-- gnb // -->
+</div>
+<!-- header // -->
+<div id="middle_event">
+
+	<!-- 이벤트 컨텐츠 //시작 -->
+	<div class="evtWrap">
+		
+		<!-- 이벤트 head -->
+		<div class="evtBg bg0">
+			<div class="bg0_1"></div>
+			<div class="bg0_2"></div>
+			<div class="evtCon conTit">
+				<a href="${ASPURL}" class="evtLogo" title="대한민국 no.1 게임전문거래사이트 아이템베이">대한민국 no.1 게임전문거래사이트 아이템베이</a>
+				<span class="date">2018년 5월 31일 ~ 6월 30일</span><!-- 이벤트 기간 -->
+				<a href="javascript:;" class="btnWeapon" title="대장간 매주 5만 캐시">대장간 매주 5만 캐시</a>
+			
+				<!-- event tab -->
+				<ul class="evtTab">
+					<li>거래 카이저 도전</li>
+					<li>파밍 카이저 도전</li>
+				</ul>
+				<!-- event tab // -->
+			
+			</div>
+		</div>
+		<!-- 이벤트 head // -->
+		
+		<!-- 이벤트 con -->
+		<div class="evtTab_con">
+			
+			<!-- 이벤트1:거래 카이저 도전 -->
+			<div>
+				<!-- 이벤트1_1 -->
+				<div class="evtBg bg1_1">
+					<div class="evtCon">
+						<a href="javascript:;" class="btnCash c2" title="2건 완료 받기">2건 완료 받기</a>
+						<a href="javascript:;" class="btnCash c5" title="5건 완료 받기">5건 완료 받기</a>
+						<a href="javascript:;" class="btnCash c10" title="10건 완료 받기">10건 완료 받기</a>
+						<a href="javascript:;" class="btnCp p1" title="다이아 응모">다이아 응모</a>
+						<a href="javascript:;" class="btnCp p2" title="쿠폰 받기">쿠폰 받기</a>
+					</div>
+				</div>
+				<!-- 이벤트1_1 // -->
+				
+				<!-- 이벤트1_2 -->
+				<div class="evtBg bg1_2"></div>
+				<!-- 이벤트1_2 // -->
+			</div>
+			<!-- 이벤트1:거래 카이저 도전 // -->
+			
+			<!-- 이벤트2:파밍 카이저 도전 -->
+			<div>
+				<!-- 이벤트2_1 -->
+				<div class="evtBg bg2_1">
+					<div class="evtCon">
+						
+						<!-- btn -->
+						<div class="evt_align"> 
+							<span class="a1">추천순</span> | <span class="a2">등록순</span>
+							<span class="enter">등록하기</span>
+						</div>
+						<!-- btn // -->
+						
+						<!-- 썸네일 리스트 -->
+						<ul class="evt_list">
+							<li><!-- 1 -->
+								<h5>제목</h5>
+								<h6>내용</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>1</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>게시물 제목 카이저입니다.스크린샷제목입니다.</h5>
+								<h6>제목보다 폰트 작게, 게시물 내용 카이저입니다더더더더더더</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+								<dl>
+									<dt>아이디***</dt>
+									<dd>85</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>제목</h5>
+								<h6>내용</h6>
+								<p><img src="./image/evt20180528_kis/bg1_1.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>456</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>카이저 스크린샷</h5>
+								<h6>내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>12</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>제목</h5>
+								<h6>내용</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>0</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>카이저 스크린샷</h5>
+								<h6>내용</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>1000</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>카이저 스크린샷</h5>
+								<h6>내용</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>3000</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>제목</h5>
+								<h6>내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img8.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>3000</dd>
+								</dl>
+							</li><!-- 1 // -->
+							<li><!-- 1 -->
+								<h5>제목</h5>
+								<h6>내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터내용 캐릭터</h6>
+								<p><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+								<dl>
+									<dt>아이디</dt>
+									<dd>3000</dd>
+								</dl>
+							</li><!-- 1 // -->
+						</ul>
+						<!-- 썸네일 리스트 // -->
+						
+						<!-- 페이징 -->
+						<dl class="evt_paging">
+							<dt>처음</dt>
+							<dd>◀ 이전페이지</dd>
+							<dd>다음페이지 ▶</dd>
+							<dt>마지막</dt>
+						</dl>
+						<!-- 페이징 // -->
+						
+						<!-- popup:등록하기 -->
+						<div class="evtPop enter">
+							<a href="javascript:;" class="close" title="닫기">닫기</a>
+							<div class="popWrap">
+								<input type="text" class="textTit" />
+								<textarea class="textCon"></textarea>
+								
+								<input type="text" class="textFileTxt" readonly="readonly" id="fileRoute" />
+								<label class="textFileBtn">
+									<input type="file" class="textFile" onchange="javascript:document.getElementById('fileRoute').value=this.value" />
+								</label>
+								
+							</div>
+							<a href="javascript:;" class="submit" title="등록">등록</a>
+							<a href="javascript:;" class="cancle" title="취소">취소</a>
+						</div>
+						<!-- popup:등록하기 // -->
+						
+						<!-- popup:자세히보기 -->
+						<div class="evtPop view">
+							<a href="javascript:;" class="close" title="닫기">닫기</a>
+							<div class="popWrap">
+								<h5>제목</h5>
+								<ul>
+									<li>등록자 : abc***</li>
+									<li>등록일시 : 2018-05-28</li>
+									<li>추천수 : <span class="ht">200</span></li>
+								</ul>
+								<p class="txt">게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 게시물 본문 
+									게시물 본문 게시물 본문 게</p>
+								<p class="img"><img src="http://nxm-mt.akamaized.net/Contents/kaiser.nexon.com/LaunchingPre/images/screen_img9.jpg" /></p>
+							</div>
+							<a href="javascript:;" class="recom" title="추천"><span class="ico"></span>추천</a>
+							<a href="javascript:;" class="cancle" title="닫기">닫기</a>
+						</div>
+						<!-- popup:자세히보기 // -->
+					
+					</div>				
+				</div>
+				<!-- 이벤트2_1 // -->
+				
+				<!-- 이벤트2_2 -->
+				<div class="evtBg bg2_2"></div>
+				<!-- 이벤트2_2 // -->
+			</div>
+			<!-- 이벤트2:파밍 카이저 도전 // -->
+			
+			<!-- 안내사항 -->
+			<div class="notice">
+				<div class="evtCon">
+					<div class="ntc_con">
+						<ul>
+							<li>카이저 물품 5만원 이상 거래 완료 시에만 거래 건수로 인정됩니다.</li>
+							<li>거래 완료 시 받을 수 있는 마일리지는 출금 가능 마일리지로 지급되며, 최초 1회만 받으실 수 있습니다.</li>
+							<li>(10건 거래 완료하여도 2건 거래 완료 마일리지 받았을 경우 5만원 지급 불가)</li>
+							<li>카이저 거래 도우미 아이템은 최초 1회만 받으실 수 있으며, 할인쿠폰은 사용 금액 제한이 있습니다.</li>
+						</ul>
+						<ul>
+							<li>등록한 스크린샷에는 캐릭터명과 “카이저 거래는 아이템베이” 채팅이 모두 노출되어 있어야 인정됩니다.</li>
+							<li>타인의 계정 악용 방지를 위해 등록한 스크린샷에 확인되는 캐릭터명으로 경품이 지급됩니다.</li>
+							<li>게시물은 하루에 최대 20개까지만 등록 가능합니다.</li>
+							<li>본 이벤트와 무관한 게시물을 등록할 경우 사전 경고 없이 삭제 처리 됩니다.</li>
+						</ul>
+						<ul>
+							<li>이벤트 기간은 2018년 6월 30일까지 입니다.</li>
+							<li>4천 다이아 지급 대상자는 이벤트 종료 후 2주 이내에 공지 및 별도 연락드릴 예정입니다.</li>
+							<li>5만원 넘는 경품에 대한 제세공과금 22% 는 자사에서 부담하나, 관련 서류를 접수해야만 지급 가능합니다.</li>
+							<li>내부 사정에 따라 사전 공지 없이 변경되거나 종료될 수 있습니다.</li>
+							<li>비 정상적인 참여 및 악용 시 당첨자 대상에서 제외 및 지급된 경품 회수 등 불이익이 발생할 수 있습니다.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 안내사항 // -->
+		</div>
+		<!-- 이벤트 con // -->
+		
+	</div>
+	<!-- 이벤트 컨텐츠 //끝 -->
+</div>
+</body>
+</html>
