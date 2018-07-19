@@ -275,8 +275,8 @@ section#tab4 ul {
 /* line 344, ../sass/screen.scss */
 section#tab4 ul li {
   float: left;
-  width: 30%;
-  margin-left: 5%;
+  width: 48%;
+  margin-left: 4%;
   margin-bottom: 20px;
   box-sizing: border-box;
   border: 1px solid #2b1d3e;
@@ -284,7 +284,7 @@ section#tab4 ul li {
   border-radius: 3px;
 }
 /* line 354, ../sass/screen.scss */
-section#tab4 ul li:nth-child(3n+1) {
+section#tab4 ul li:nth-child(2n-1) {
   margin-left: 0;
 }
 /* line 358, ../sass/screen.scss */

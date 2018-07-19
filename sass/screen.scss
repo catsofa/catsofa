@@ -343,15 +343,15 @@ section {
 			
 			li {
 				float:left;
-				width:30%;
-				margin-left:5%;
+				width:48%;
+				margin-left:4%;
 				margin-bottom:20px;
 				box-sizing:border-box;
 				border:1px solid $colorPit3;
 				background:#fff;
 				border-radius:3px;
 				
-				&:nth-child(3n+1) {
+				&:nth-child(2n-1) {
 					margin-left:0;
 				}
 				
