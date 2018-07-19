@@ -101,15 +101,8 @@ header nav.on {
   top: 0;
   opacity: 1;
 }
-/* line 176, ../sass/screen.scss */
-header i.btr {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  position: fixed;
-}
 
-/* line 182, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 article {
   position: relative;
   height: 100vh;
@@ -122,7 +115,7 @@ article {
   	}
   } */
 }
-/* line 188, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 article hgroup {
   position: absolute;
   top: 50%;
@@ -132,7 +125,7 @@ article hgroup {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-/* line 193, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 article hgroup h2 {
   position: absolute;
   top: 50%;
@@ -144,51 +137,42 @@ article hgroup h2 {
   mix-blend-mode: multiply;
 }
 @media (min-width: 1025px) {
-  /* line 193, ../sass/screen.scss */
+  /* line 189, ../sass/screen.scss */
   article hgroup h2 {
     font-size: 200px;
     line-height: 200px;
   }
 }
-/* line 205, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 article hgroup h2:first-child {
   color: #ffbccd;
 }
 
-/* line 220, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 section {
   position: relative;
   height: 100vh;
   overflow: hidden;
-  	/*
-  	&:nth-child(2) {
-  		background-color:$colorPit3;
-  
-  	}
-  	&:nth-child(3) {
-  		background-color:$colorPit4;
-  	}
-  	*/
 }
-/* line 225, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 section h3 {
   margin: 50px auto;
   text-align: center;
 }
-/* line 229, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 section h3 p {
   display: inline-block;
 }
-/* line 232, ../sass/screen.scss */
+/* line 228, ../sass/screen.scss */
 section h3 p.info_0 {
   border-bottom: 2px solid #19171c;
   font-size: 40px;
 }
-/* line 236, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 section h3 p.info_0 span {
   font-size: 30px;
 }
-/* line 244, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 section h4 {
   margin: 10px 20px;
   padding: 10px 0;
@@ -199,82 +183,122 @@ section h4 {
   text-align: center;
   font-weight: normal;
 }
-/* line 255, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 section#tab1 {
   background-color: #ffe898;
 }
-/* line 258, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 section#tab1 .info {
   text-align: center;
 }
-/* line 262, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 section#tab1 ul {
   margin: 50px auto;
 }
-/* line 265, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 section#tab1 ul li {
   font-size: 15px;
   line-height: 30px;
 }
-/* line 274, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 section#tab2 {
   background-color: #f8f4fe;
 }
-/* line 277, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 section#tab2 > div {
   position: relative;
 }
-/* line 280, ../sass/screen.scss */
+/* line 276, ../sass/screen.scss */
 section#tab2 > div pre {
   margin: 10px 20px;
   overflow: hidden;
   border-radius: 10px;
   background: #19171c;
 }
-/* line 286, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 section#tab2 > div pre .hljs {
   height: 25vh;
   overflow-y: auto;
   margin: 30px;
 }
-/* line 293, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 section#tab2 > div.half {
   width: 50%;
   float: left;
 }
-/* line 297, ../sass/screen.scss */
+/* line 293, ../sass/screen.scss */
 section#tab2 > div.half i {
   position: absolute;
   top: 50%;
   right: -20px;
   font-size: 40px;
 }
-/* line 308, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 section#tab3 {
   background-color: #ffbccd;
 }
-/* line 311, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 section#tab3 dl {
   width: 80%;
   margin: 0 auto 3vh;
   overflow: hidden;
   font-size: 14px;
 }
-/* line 317, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 section#tab3 dl:nth-child(2) {
   margin: 20vh auto 3vh;
 }
-/* line 321, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 section#tab3 dl dt {
   float: left;
   width: 40%;
 }
-/* line 326, ../sass/screen.scss */
+/* line 322, ../sass/screen.scss */
 section#tab3 dl dd {
   float: left;
   width: 60%;
 }
-/* line 330, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 section#tab3 dl dd i {
   vertical-align: middle;
+}
+/* line 336, ../sass/screen.scss */
+section#tab4 {
+  background-color: #e5d3ff;
+}
+/* line 339, ../sass/screen.scss */
+section#tab4 ul {
+  margin: 50px auto;
+  width: 80%;
+  overflow: hidden;
+}
+/* line 344, ../sass/screen.scss */
+section#tab4 ul li {
+  float: left;
+  width: 30%;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #2b1d3e;
+  background: #fff;
+  border-radius: 3px;
+}
+/* line 354, ../sass/screen.scss */
+section#tab4 ul li:nth-child(3n+1) {
+  margin-left: 0;
+}
+/* line 358, ../sass/screen.scss */
+section#tab4 ul li div {
+  border-bottom: 1px solid #2b1d3e;
+}
+/* line 363, ../sass/screen.scss */
+section#tab4 ul li a {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+}
+/* line 369, ../sass/screen.scss */
+section#tab4 ul li a:last-child {
+  border-left: 1px solid #2b1d3e;
 }

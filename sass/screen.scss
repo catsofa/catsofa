@@ -172,11 +172,7 @@ header {
 			opacity:1;
 		}
 	}
-	
-	i.btr {
-		@include setAb($right:10px,$top:10px);
-		position:fixed;
-	}
+
 }
 
 article {
@@ -337,14 +333,48 @@ section {
 		
 	}
 
-	/*
-	&:nth-child(2) {
-		background-color:$colorPit3;
-
-	}
-	&:nth-child(3) {
+	&#tab4 {
 		background-color:$colorPit4;
+		
+		ul {
+			margin:50px auto;
+			width:80%;
+			overflow:hidden;
+			
+			li {
+				float:left;
+				width:30%;
+				margin-left:5%;
+				margin-bottom:20px;
+				box-sizing:border-box;
+				border:1px solid $colorPit3;
+				background:#fff;
+				border-radius:3px;
+				
+				&:nth-child(3n+1) {
+					margin-left:0;
+				}
+				
+				div {
+					border-bottom:1px solid $colorPit3;
+					
+				}
+				
+				a {
+					float:left;
+					width:50%;
+					box-sizing:border-box;
+					text-align:center;
+					
+					&:last-child {
+						border-left:1px solid $colorPit3;
+					}
+					
+				}
+			}
+			
+		}
+		
 	}
-	*/
 	
 }
