@@ -21,14 +21,18 @@ html, body {height:100%}
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=252a5b49be4cff2ea2416e616d730a26"></script>
 	<script>
 	
+		var a,
+			b;
+
 	
 		/* 지도 객체 생성 */
 		var container = document.getElementById('map');
 		var options = {
-			center: new daum.maps.LatLng(37.522612, 126.921778),
+			//center: new daum.maps.LatLng(37.522612, 126.921778),
+			center: new daum.maps.LatLng(a, b),
 			level: 3
 		};
-
+		
 		var map = new daum.maps.Map(container, options);
 		
 		// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
@@ -43,7 +47,9 @@ html, body {height:100%}
 		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 		
 		// 마커가 표시될 위치입니다 
-		var markerPosition  = new daum.maps.LatLng(37.522612, 126.921778); 
+		//var markerPosition  = new daum.maps.LatLng(37.522612, 126.921778); 
+		//var markerPosition  = new daum.maps.LatLng(a, b);
+		
 
 		// 마커를 생성합니다
 		var marker = new daum.maps.Marker({
@@ -55,6 +61,32 @@ html, body {height:100%}
 
 		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 		// marker.setMap(null);    
+		
+		
+		/****************************************************************************/
+		
+		getLocation();
+		
+		function getLocation() {
+		  if (navigator.geolocation) { // GPS를 지원하면
+			navigator.geolocation.getCurrentPosition(function(position) {
+			  console.log(position.coords.latitude + ' ' + position.coords.longitude);
+			  //$txt.text(position.coords.latitude + ' ' + position.coords.longitude);
+			  a = position.coords.latitude;
+			  b = position.coords.longitude;
+			}, function(error) {
+			  console.error(error);
+			}, {
+			  enableHighAccuracy: false,
+			  maximumAge: 0,
+			  timeout: Infinity
+			});
+		  } else {
+			alert('GPS를 지원하지 않습니다');
+		  }
+		}
+		
+		
 	</script>
 </body>
 </html>
