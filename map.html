@@ -16,13 +16,29 @@ $(window).resize(function(){
 </script> -->
 <style>
 * {margin:0; padding:0}
-#map {min-height:500px}
 </style>
 </head>
 <body>
-	<div id="map"></div>
+	<!-- <div id="map"></div> -->
+	
+	<TABLE cellSpacing=0 cellPadding=0 width="100%" height="100%" border=0 align="center">
+       <TR>
+             <TD height="100%">
+             <div id='map' style='width:100%;height:100%;'></div>
+             </TD>
+       </TR>
+	</TABLE>
+	
+	
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=252a5b49be4cff2ea2416e616d730a26"></script>
 	<script>
+	
+	
+		/* 지도 객체 생성 */
+
+		var opts = {contextMenu:true, level:3, map_hybrid:true, autosize:true, offsetX:0, offsetY:24, shortLogo:true, logoImage : false };
+		var objMap = new DMap( "map", opts );
+	
 		var container = document.getElementById('map');
 		var options = {
 			center: new daum.maps.LatLng(37.522612, 126.921778),
