@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+
+.wrap {background:#eee; height:auto}
+
+.box_head {position:relative; height:51px; padding-left:25px; background:#fff}
+.box_head h2 {height:51px; line-height:51px; padding-right:46px; padding-left:21px; text-align:center; font-size:1.25rem}
+.box_head .btn_close {position:absolute; top:0; right:25px; height:51px}
+.box_top {margin-bottom:10px; padding:25px; background:#fff; /* border-bottom:1px solid #eee */}
+.box_top.on {position:fixed; top:0; width:100%; z-index:1}
+.box_top.on + .box_con {margin-top:106px}
+.box_top h3 {color:#666; font-size:0.875rem}
+.box_top h4 {}
+
+
+
+
+.box_con {margin-bottom:10px; padding:25px; background:#fff}
+.box_con h5 {}
+.box_con .con {margin-top:20px; overflow:hidden}
+.box_con .con + h5 {margin-top:30px}
+
+
+
+.fund_view {}
+
+.fund_view .txt_pct {display:inline-block; margin-left:10px; font-size:1.25rem; color:#f00; font-weight:900}
+.fund_view .txt_act {display:inline-block; margin-left:5px; font-size:0.85rem; color:#666; font-weight:300}
+
+.fund_view .list_cms {overflow:hidden}
+.fund_view .list_cms li {float:left; box-sizing:border-box; width:50%; margin-bottom:5px; padding:10px; border:1px solid #eee; text-align:center; font-size:0.875rem; color:#666}
+.fund_view .list_cms li:nth-child(2n+1) {width:calc(50% - 5px); margin:0 5px 5px 0;}
+.fund_view .list_cms li .txt {display:block; margin-top:5px; font-size:1rem; color:#000; font-weight:700}
+
+.list_actDay {float:left; width:50%; position:relative}
+.list_actDay .tit {display:inline-block; padding:5px 10px; border-radius:20px; color:#fff; font-size:0.8rem}
+.list_actDay ul {margin-left:10px}
+.list_actDay ul::before {content:''; position:absolute; left:12px; top:38px; width:2px; height:55%; background:#eee}
+.list_actDay li {position:relative; line-height:250%; font-size:0.75rem}
+.list_actDay li::before {content:''; display:inline-block; width:7px; height:7px; margin-right:10px; border-radius:10px}
+
+.list_actDay.buy {}
+.list_actDay.buy .tit {background:#008485}
+.list_actDay.buy li {color:#008485}
+.list_actDay.buy li::before {background:#008485}
+
+.list_actDay.sell {}
+.list_actDay.sell .tit {background:#666}
+.list_actDay.sell li {color:#666}
+.list_actDay.sell li::before {background:#666}
+
+
+
+
+
+
+
+
+
+
