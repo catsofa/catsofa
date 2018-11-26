@@ -10,12 +10,12 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
     #map {width:100%; height:100%}
-    .wrap {position: absolute;left: 0;bottom: 50px;margin-left: -210px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 50px;margin-left: -210px;text-align: left;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {box-sizing:border-box;height:420px;padding:0 30px 30px;border:1px solid #36959b;overflow: hidden;background: #fff;}
+    .wrap .info {box-sizing:border-box;width:420px;padding:0 30px 30px;border:1px solid #36959b;overflow: hidden;background: #fff;}
     .info:after {content:'';position:absolute;left:0;bottom:-7px;width:100%;height:8px;background:url('http://openhanafn.tritops.co.kr/images/layer/infobox_bt.png') center}
     .info .title {height:auto;padding:20px 0;border-bottom:2px solid #efefef;font-size:20px;font-weight: bold;color:#008486}
-    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close {position: absolute;top:30px;right:30px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
     .info .body {position: relative;overflow: hidden;}
     .info dl.desc {position: relative; line-height:2; overflow:hidden; margin:20px 0;}
@@ -135,7 +135,7 @@
 			for (var i = 0; i < positions.length; i ++) {
 				
                 // 마커 이미지의 이미지 주소입니다
-                var imageSrc = "http://openhanafn.tritops.co.kr/images/map_hana_i1.png",
+                var imageSrc = "https://download.wunderlist.io/018c09a0-d36c-0136-3d31-22000a08b88a-1543210957-825955?AWSAccessKeyId=AKIAJEN6W4AO3LJODOAA&Expires=1545802960&Signature=XONPyYwaoKQT1Bcyh5AnrFdDrPM%3D",
                     imageSize = new daum.maps.Size(35, 35); // 마커이미지의 크기입니다; 
                 
                 // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
