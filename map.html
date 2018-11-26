@@ -113,9 +113,6 @@
 				position: markerPosition
 			});
 
-			// 마커가 지도 위에 표시되도록 설정합니다
-			marker.setMap(map);
-
 			// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 			// marker.setMap(null);  
 			
@@ -211,7 +208,9 @@
                 overlay.setMap(null);
                 console.log('닫기');
             }
-			
+            
+            // 마커가 지도 위에 표시되도록 설정합니다
+			marker.setMap(map);			
 			
 			// 지도에 표시할 원을 생성합니다
 			var circle = new daum.maps.Circle({
