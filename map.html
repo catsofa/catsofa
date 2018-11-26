@@ -12,7 +12,8 @@
     #map {width:100%; height:100%}
     .wrap {position: absolute;left: 0;bottom: 50px;margin-left: -210px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {box-sizing:border-box;padding:0 30px 30px;border:1px solid #36959b;overflow: hidden;background: #fff;}
+    .wrap .info {box-sizing:border-box;height:420px;padding:0 30px 30px;border:1px solid #36959b;overflow: hidden;background: #fff;}
+    .info:after {content:'';position:absolute;left:0;bottom:-7px;width:100%;height:8px;background:url('http://openhanafn.tritops.co.kr/images/layer/infobox_bt.png') center}
     .info .title {height:auto;padding:20px 0;border-bottom:2px solid #efefef;font-size:20px;font-weight: bold;color:#008486}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
@@ -20,9 +21,6 @@
     .info dl.desc {position: relative; line-height:2; overflow:hidden; margin:20px 0;}
     .info dl.desc dt {width:30%;float:left;font-weight:bold;}
     .info dl.desc dd {width:70%;float:left;}
-
-    .info:after {content:'';position:absolute;left:0;bottom:2px;width:100%;height:9px;background:url('http://openhanafn.tritops.co.kr/images/layer/infobox_bt.png') center}
-    .info .link {color: #5085BB;}
 </style>
 </head>
 <body>
