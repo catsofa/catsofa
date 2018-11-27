@@ -224,7 +224,7 @@
             '    <div class="info">' + 
             '        <div class="title">' + 
             '            하나금융투자' + 
-            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+            '            <div class="close" onclick="$(this).parents(".wrap").hide();" title="닫기"></div>' + 
             '        </div>' + 
             '        <div class="body">' + 
             '            <dl class="desc">' + 
@@ -266,7 +266,7 @@
             // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
             daum.maps.event.addListener(marker, 'click', function() {
                 overlay.setMap(map);
-            });			
+            });
 			
 			// 지도에 표시할 원을 생성합니다
 			var circle = new daum.maps.Circle({
