@@ -21,6 +21,10 @@
     .info dl.desc {position: relative; line-height:2; overflow:hidden; margin:20px 0;}
     .info dl.desc dt {width:30%;float:left;font-weight:bold;}
     .info dl.desc dd {width:70%;float:left;}
+    .info dl.btn {position: relative; overflow:hidden}
+    .info dl.btn dt {width:30%;float:left;}
+    .info dl.btn dd {width:70%;float:left;text-align:right}
+    .info dl.btn .btn1 {display:inline-block; padding:10px 30px; border:1px solid #aed5d2}
 </style>
 </head>
 <body>
@@ -167,13 +171,17 @@
             '               <dd>02) 780-3394</dd>' + 
             '               <dt>취급업무</dt>' + 
             '               <dd>수익증권,해외펀드,주식,채권,방카</dd>' + 
-            '            </dl>' + 
+            '            </dl>' +
+            '            <dl class="btn">' + 
+            '               <dt><a href="#" class="btn1" title="인근영업점"></a></dt>' + 
+            '               <dd><a href="#"><img src="http://openhanafn.tritops.co.kr//images/layer/btn_print.gif" alt="인쇄" width="30" height="24"></a><a href="#"><img src="http://openhanafn.tritops.co.kr//images/layer/btn_radius.gif" alt="반경" width="24" height="24"></a></dd>' + 
+            '            </dl>' +
             '        </div>' + 
             '    </div>' +    
             '</div>',
             // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			iwPosition = new daum.maps.LatLng(37.522612, 126.921778); //인포윈도우 표시 위치입니다
-
+            
 			// 인포윈도우를 생성합니다
             /*
 			var infowindow = new daum.maps.InfoWindow({
