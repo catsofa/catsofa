@@ -10,16 +10,17 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
     #map {width:100%; height:100%}
-    #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 200px); background:#fff; z-index:10;}
+    #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 250px); background:#fff; z-index:10;}
     #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486; color:#fff; font-size:25px; font-weight:bold}
     #mapList .tit span {position:absolute; bottom:20px}
     #mapList .search {display:flex; box-sizing:border-box; padding:20px 15px; background:#F6F5F3;}
     #mapList input.searchInput {flex:1; box-sizing:border-box; height:45px; padding:0 10px; border:3px solid #008486}
-    #mapList input.searchInput::placeholder {font-size:10px}
+    #mapList input.searchInput::placeholder {font-size:11px}
     #mapList .searchBtn {display:inline-block; box-sizing:border-box; width:65px; height:45px; line-height:45px; text-align:center; background:#008486;color:#fff; font-size:15px; font-weight:500}
     #mapList .txt {padding:30px 15px 10px;}
+    #mapList .txt strong {color:#000}
     #mapList .list {padding:0 15px 10px;}
-    #mapList .list li {padding:20px 15px; border:1px solid #B0DAD1}
+    #mapList .list li {padding:20px 15px; line-height:1.5; border:1px solid #B0DAD1}
     #mapList .list li > p {color:#008486; font-weight:bold;}
     #mapList .list li + li {margin-top:5px}
     
@@ -63,22 +64,28 @@
             <input type="text" class="searchInput" placeholder="영업점명, 주소, 지하철역을 검색" />
             <a href="#" class="searchBtn">검색</a>
         </div>
-        <div class="txt">총 <strong>3</strong>건의 검색결과가 있습니다.</div>
+        <div class="txt">총 <strong>3 건</strong>의 검색결과가 있습니다.</div>
         <ul class="list">
             <li>
-                <p>하나금융투자</p>
-                서울특별시 영등포구 의사당대로 82
-                (여의도동 27-3) <strong>02)785-0961</strong>
+                <a href="#">
+                    <p>하나금융투자</p>
+                    서울특별시 영등포구 의사당대로 82
+                    (여의도동 27-3) <strong>02)785-0961</strong>
+                </a>
             </li>
             <li>
-                <p>하나금융투자 영업부금융센터</p>
-                서울특별시 영등포구 의사당대로 82
-                (여의도동 27-3) <strong>02)3771-7193</strong>
+               <a href="#">
+                    <p>하나금융투자 영업부금융센터</p>
+                    서울특별시 영등포구 의사당대로 82
+                    (여의도동 27-3) <strong>02)3771-7193</strong>
+                </a>
             </li>
             <li>
-                <p>하나금융투자 여의도골드클럽</p>
-                서울특별시 영등포구 의사당대로 72
-                (여의도동 43-2) <strong>02)3771-3400</strong>
+                <a href="#">
+                    <p>하나금융투자 여의도골드클럽</p>
+                    서울특별시 영등포구 의사당대로 72
+                    (여의도동 43-2) <strong>02)3771-3400</strong>
+                </a>
             </li>
         </ul>
         
