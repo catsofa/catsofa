@@ -10,7 +10,7 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
     #map {width:100%; height:100%}
-    #mapList {position:fixed; left:40px; top:200px; width:280px; background:#fff; z-index:10;}
+    #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 200px); background:#fff; z-index:10;}
     #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486; color:#fff; font-size:25px; font-weight:bold}
     #mapList .tit span {position:absolute; bottom:20px}
     #mapList .search {display:flex; box-sizing:border-box; padding:20px 15px; background:#F6F5F3;}
@@ -18,7 +18,7 @@
     #mapList input.searchInput::placeholder {font-size:10px}
     #mapList .searchBtn {display:inline-block; box-sizing:border-box; width:65px; height:45px; line-height:45px; text-align:center; background:#008486;color:#fff; font-size:15px; font-weight:500}
     #mapList .info {padding:30px 15px 10px;}
-    #mapList .list {}
+    #mapList .list {padding:0 15px 10px;}
     #mapList .list li {padding:20px 15px; border:1px solid #B0DAD1}
     #mapList .list li > p {color:#008486; font-weight:bold;}
     #mapList .list li + li {margin-top:5px}
