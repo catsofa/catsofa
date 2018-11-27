@@ -24,7 +24,6 @@
     #mapList .list li > a {display:block; height:100%; padding:20px 15px; box-sizing:border-box}
     #mapList .list li > a > p {color:#008486; font-weight:bold;}
     #mapList .list li + li {margin-top:5px}
-    
     .wrap {position: absolute;left: 0;bottom: 50px;margin-left: -210px;text-align: left;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
     .wrap .info {box-sizing:border-box;width:420px;padding:0 30px 30px;border:1px solid #36959b;overflow: hidden;background: #fff;}
@@ -42,6 +41,10 @@
     .info dl.btn dd {width:70%;float:left;text-align:right}
     .info dl.btn .btn1 {display:inline-block; padding:10px 20px 12px; border:1px solid #aed5d2; line-height:1; color:#008486; font-weight:bold;}
     .info dl.btn dd > a {display:inline-block; margin-top:6px;}
+    
+    @media screen and (max-height:720px){
+        
+    }
 </style>
 </head>
 <body>
@@ -136,8 +139,8 @@
 			/* 지도 객체 생성 */
 			var container = document.getElementById('map');
 			var options = {
-				//center: new daum.maps.LatLng(37.522612, 126.921778),
-				center: new daum.maps.LatLng(a, b),
+				center: new daum.maps.LatLng(37.522000, 126.921778),
+				//center: new daum.maps.LatLng(a, b),
 				level: 5
 			};
 			
@@ -245,8 +248,7 @@
             '    </div>' +    
             '</div>',
             // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			iwPosition = new daum.maps.LatLng(37.522612, 126.921778), //인포윈도우 표시 위치입니다
-            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+			iwPosition = new daum.maps.LatLng(37.522612, 126.921778); //인포윈도우 표시 위치입니다
 
 			// 인포윈도우를 생성합니다
             /*
@@ -259,12 +261,6 @@
                 content: iwContent,
                 map: map,
                 position: iwPosition     
-            });
-			  
-			// 마커에 클릭이벤트를 등록합니다
-            daum.maps.event.addListener(marker, 'click', function() {
-                  // 마커 위에 인포윈도우를 표시합니다
-                  infowindow.open(map, marker);  
             });
 			
 			// 지도에 표시할 원을 생성합니다
