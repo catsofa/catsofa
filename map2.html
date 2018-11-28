@@ -64,7 +64,7 @@ html, body {height:100%}
 	<div id="map"></div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=252a5b49be4cff2ea2416e616d730a26"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=252a5b49be4cff2ea2416e616d730a26&libraries=services"></script>
 <script>
 /****************************************************************************/
 
@@ -137,7 +137,7 @@ function startMap(a,b){
 		}
 
 		// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-		ps.keywordSearch( keyword, placesSearchCB); 
+		ps.keywordSearch(keyword, placesSearchCB); 
 	}
 
 	// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
