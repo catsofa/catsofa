@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <title>키워드로 장소검색하고 목록으로 표출하기</title>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 * {margin:0; padding:0}
 html, body {height:100%}
@@ -44,7 +45,7 @@ html, body {height:100%}
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
-.hAddr {position:absolute;left:10px;buttom:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+.hAddr {position:absolute;left:10px;bottom:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
 #centerAddr {display:block;margin-top:2px;font-weight: normal;}
 </style>
 </head>
@@ -54,7 +55,7 @@ html, body {height:100%}
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="여의도" id="keyword" size="15"> 
+                    키워드 : <input type="text" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -103,6 +104,13 @@ function getLocation() {
 
 /****************************************************************************/
 
+    
+$(document).ready(function(){
+    
+    $('#keyword').val('여의도');
+    //$('#keyword').val(displayCenterInfo);
+    
+});
 
 
 
