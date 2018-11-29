@@ -12,7 +12,7 @@
     #map {width:100%; height:100%}
     #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 250px); z-index:10;}
     #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486; color:#fff; font-size:25px; font-weight:bold}
-    #mapList .tit::after {contetnt:''; position:absolute; right:10px; top:15px; width:100px; height:25px; background:#008486 url('https://download.wunderlist.io/65211580-d504-0136-3b85-22000a20c8b7-1543386359-562833?AWSAccessKeyId=AKIAJEN6W4AO3LJODOAA&Expires=1545978362&Signature=GuMw71LByiWnBM9fEglR8qeEFKM%3D') no-repeat; background-size:contain}
+    #mapList .tit::after {content:''; position:absolute; right:10px; top:15px; width:100px; height:25px; background:#008486 url('https://download.wunderlist.io/65211580-d504-0136-3b85-22000a20c8b7-1543386359-562833?AWSAccessKeyId=AKIAJEN6W4AO3LJODOAA&Expires=1545978362&Signature=GuMw71LByiWnBM9fEglR8qeEFKM%3D') no-repeat; background-size:contain}
     #mapList .tit span {position:absolute; bottom:20px}
     #mapList .search {display:flex; box-sizing:border-box; padding:20px 15px; background:#F6F5F3;}
     #mapList input.searchInput {flex:1; box-sizing:border-box; height:45px; padding:0 10px; border:3px solid #008486}
@@ -47,9 +47,9 @@
     @media screen and (max-height:720px){
         .top_div, .title {display:none}
         #mapList {left:0; top:0; width:100%; height:100%;}
-        #mapList .con {position:absolute; left:0; bottom:0; height:50%}
-        #mapList .con .list {height:auto}
-        
+        #mapList .con {position:absolute; left:0; bottom:0; height:40%}
+        #mapList .con .list {height:calc(100% - 149px)}
+        #map {zoom:0.7}        
     }
 </style>
 </head>
@@ -134,7 +134,7 @@
 			});
 		  } else {
             startMap(37.522612, 126.911994); //지도 실행
-			//alert('GPS를 지원하지 않습니다');
+			alert('GPS를 지원하지 않습니다');
 		  }
 		}
 		
