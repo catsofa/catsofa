@@ -46,10 +46,10 @@
     
     @media screen and (max-height:720px){
         .top_div, .title {display:none}
-        #mapList {left:0; top:0; width:100%; height:100%;}
+        #mapList {position:absolute; left:0; top:0; width:100%; height:100%;}
         #mapList .con {position:absolute; left:0; bottom:0; height:40%}
         #mapList .con .list {height:calc(100% - 149px)}
-        #map {zoom:0.7}        
+        #map {position:absolute; top:100px; left:0; height:50%; zoom:0.7}        
     }
 </style>
 </head>
