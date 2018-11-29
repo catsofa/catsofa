@@ -11,7 +11,7 @@
 <style>
     #map {width:100%; height:100%}
     #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 250px); background:#fff; z-index:10;}
-    #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486; color:#fff; font-size:25px; font-weight:bold}
+    #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486 url('https://download.wunderlist.io/65211580-d504-0136-3b85-22000a20c8b7-1543386359-562833?AWSAccessKeyId=AKIAJEN6W4AO3LJODOAA&Expires=1545978362&Signature=GuMw71LByiWnBM9fEglR8qeEFKM%3D') no-repeat 170px 15px/100px; color:#fff; font-size:25px; font-weight:bold}
     #mapList .tit span {position:absolute; bottom:20px}
     #mapList .search {display:flex; box-sizing:border-box; padding:20px 15px; background:#F6F5F3;}
     #mapList input.searchInput {flex:1; box-sizing:border-box; height:45px; padding:0 10px; border:3px solid #008486}
@@ -23,6 +23,7 @@
     #mapList .list li {line-height:1.5; border:1px solid #B0DAD1}
     #mapList .list li > a {display:block; height:100%; padding:20px 15px; box-sizing:border-box}
     #mapList .list li > a > p {color:#008486; font-weight:bold;}
+    #mapList .list li > a > p .num {display:inline-block; box-sizing:border-box; padding:2px 3px; color:#008486; background:#fff; border-radius:50%; border:2px solid #008486;
     #mapList .list li + li {margin-top:5px}
     .wrap {position: absolute;left: 0;bottom: 50px;margin-left: -210px;text-align: left;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
@@ -74,21 +75,21 @@
         <ul class="list">
             <li>
                 <a href="#">
-                    <p>하나금융투자</p>
+                    <p><span class="num">1</span>하나금융투자</p>
                     서울특별시 영등포구 의사당대로 82
                     (여의도동 27-3) <strong>02)785-0961</strong>
                 </a>
             </li>
             <li>
                <a href="#">
-                    <p>하나금융투자 영업부금융센터</p>
+                    <p><span class="num">2</span>하나금융투자 영업부금융센터</p>
                     서울특별시 영등포구 의사당대로 82
                     (여의도동 27-3) <strong>02)3771-7193</strong>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <p>하나금융투자 여의도골드클럽</p>
+                    <p><span class="num">3</span>하나금융투자 여의도골드클럽</p>
                     서울특별시 영등포구 의사당대로 72
                     (여의도동 43-2) <strong>02)3771-3400</strong>
                 </a>
