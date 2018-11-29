@@ -127,7 +127,13 @@
 			  b = position.coords.longitude;
 			  //console.log(position.coords.latitude + ' ' + position.coords.longitude);
 			  console.log(a + ', ' + b);
-			  startMap(a,b); //지도 실행
+			  
+              if($(window).width() < 720){
+                    startMap(a,b,3); //지도 실행
+              }else{
+                    startMap(a,b,6); //지도 실행 
+              }
+
 			}, function(error) {
 			  console.error(error);
 			}, {
@@ -136,7 +142,7 @@
 			  timeout: Infinity
 			});
 		  } else {
-            startMap(37.522612, 126.911994); //지도 실행
+            startMap(37.522612, 126.911994, 6); //지도 실행
 			alert('GPS를 지원하지 않습니다');
 		  }
 		}
@@ -145,14 +151,14 @@
 		/****************************************************************************/
 		
 		
-		function startMap(a,b){
+		function startMap(a,b,c){
 		
 			/* 지도 객체 생성 */
 			var container = document.getElementById('map');
 			var options = {
-				center: new daum.maps.LatLng(37.522612, 126.911994),
-				//center: new daum.maps.LatLng(a, b),
-				level: 6
+				//center: new daum.maps.LatLng(37.522612, 126.911994),
+				center: new daum.maps.LatLng(a, b),
+				level: c
 			};
 			
 			var map = new daum.maps.Map(container, options);
