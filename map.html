@@ -10,16 +10,17 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
     #map {width:100%; height:100%}
-    #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 250px); background:#fff; z-index:10;}
-    #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486 url('https://download.wunderlist.io/65211580-d504-0136-3b85-22000a20c8b7-1543386359-562833?AWSAccessKeyId=AKIAJEN6W4AO3LJODOAA&Expires=1545978362&Signature=GuMw71LByiWnBM9fEglR8qeEFKM%3D') no-repeat 170px 15px/100px; color:#fff; font-size:25px; font-weight:bold}
+    #mapList {position:fixed; left:40px; top:200px; width:280px; height:calc(100% - 250px); z-index:10;}
+    #mapList .tit {position:relative; box-sizing:border-box; height:100px; padding:20px; background:#008486; color:#fff; font-size:25px; font-weight:bold}
+    #mapList .tit::after {contetnt:''; position:absolute; right:10px; top:15px; width:100px; height:25px; background:#008486 url('https://download.wunderlist.io/65211580-d504-0136-3b85-22000a20c8b7-1543386359-562833?AWSAccessKeyId=AKIAJEN6W4AO3LJODOAA&Expires=1545978362&Signature=GuMw71LByiWnBM9fEglR8qeEFKM%3D') no-repeat; background-size:contain}
     #mapList .tit span {position:absolute; bottom:20px}
     #mapList .search {display:flex; box-sizing:border-box; padding:20px 15px; background:#F6F5F3;}
     #mapList input.searchInput {flex:1; box-sizing:border-box; height:45px; padding:0 10px; border:3px solid #008486}
     #mapList input.searchInput::placeholder {font-size:11px}
     #mapList .searchBtn {display:inline-block; box-sizing:border-box; width:65px; height:45px; line-height:45px; text-align:center; background:#008486;color:#fff; font-size:15px; font-weight:500}
-    #mapList .txt {padding:30px 15px 10px;}
+    #mapList .txt {padding:30px 15px 10px; background:#fff;}
     #mapList .txt strong {color:#000}
-    #mapList .list {height:calc(100% - 250px); padding:0 15px 10px; overflow-y:auto}
+    #mapList .list {height:calc(100% - 250px); padding:0 15px 10px; overflow-y:auto; background:#fff;}
     #mapList .list li {line-height:1.5; border:1px solid #B0DAD1}
     #mapList .list li > a {display:block; height:100%; padding:20px 15px; box-sizing:border-box}
     #mapList .list li > a > p {color:#008486; font-weight:bold;}
@@ -44,6 +45,10 @@
     .info dl.btn dd > a {display:inline-block; margin-top:6px;}
     
     @media screen and (max-height:720px){
+        .top_div, .title {display:none}
+        #mapList {left:0; top:0; width:100%; height:100%;}
+        #mapList .con {position:absolute; left:0; bottom:0; height:50%}
+        #mapList .con .list {height:auto}
         
     }
 </style>
@@ -67,34 +72,36 @@
     
     <div id="mapList">
         <div class="tit"><span>영업점 찾기</span></div>
-        <div class="search">
-            <input type="text" class="searchInput" placeholder="영업점명, 주소, 지하철역을 검색" />
-            <a href="#" class="searchBtn">검색</a>
+        <div class="con">
+            <div class="search">
+                <input type="text" class="searchInput" placeholder="영업점명, 주소, 지하철역을 검색" />
+                <a href="#" class="searchBtn">검색</a>
+            </div>
+            <div class="txt">총 <strong>3 건</strong>의 검색결과가 있습니다.</div>
+            <ul class="list">
+                <li>
+                    <a href="#">
+                        <p><span class="num">1</span>하나금융투자</p>
+                        서울특별시 영등포구 의사당대로 82
+                        (여의도동 27-3) <strong>02)785-0961</strong>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                        <p><span class="num">2</span>하나금융투자 영업부금융센터</p>
+                        서울특별시 영등포구 의사당대로 82
+                        (여의도동 27-3) <strong>02)3771-7193</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p><span class="num">3</span>하나금융투자 여의도골드클럽</p>
+                        서울특별시 영등포구 의사당대로 72
+                        (여의도동 43-2) <strong>02)3771-3400</strong>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="txt">총 <strong>3 건</strong>의 검색결과가 있습니다.</div>
-        <ul class="list">
-            <li>
-                <a href="#">
-                    <p><span class="num">1</span>하나금융투자</p>
-                    서울특별시 영등포구 의사당대로 82
-                    (여의도동 27-3) <strong>02)785-0961</strong>
-                </a>
-            </li>
-            <li>
-               <a href="#">
-                    <p><span class="num">2</span>하나금융투자 영업부금융센터</p>
-                    서울특별시 영등포구 의사당대로 82
-                    (여의도동 27-3) <strong>02)3771-7193</strong>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p><span class="num">3</span>하나금융투자 여의도골드클럽</p>
-                    서울특별시 영등포구 의사당대로 72
-                    (여의도동 43-2) <strong>02)3771-3400</strong>
-                </a>
-            </li>
-        </ul>
         
     </div>
     <!-- <script type="text/javascript" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
