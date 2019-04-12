@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=yes" />
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://catsofa.github.io/js/slick.min.js"></script>    
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900|Yeon+Sung" rel="stylesheet" />
+<link href="http://catsofa.github.io/css/slick.css" rel="stylesheet" />
+<link href="http://catsofa.github.io/css/slick-theme.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $('header').height($(window).height());
+        
+        
+         $('.single-item').slick();
+        
+    });
+    $(window).resize(function(){
+        
+        $('header').height($(window).height());
+        
+    });
+</script>
+<style type="text/css">
+    * {font-family:'Noto Sans KR', sans-serif;}
+    body, p {margin:0; padding:0}
+    
+    header {position:relative; text-align:center; background:#fff url('img_main.jpg') no-repeat center top; background-size:cover; text-align:center}
+    header .mainTxt {width:80%; margin-top:8vh}
+    header .name {margin-top:3vh; font-size:8vw; font-family:'Yeon Sung', cursive}
+    header .name i {margin:0 5px; font-size:6vw; color:#ff1b86}
+    header .date {position:absolute; bottom:18vh; width:100%; font-size:7.5vw; font-weight:300; letter-spacing:0.2vw}
+    header .fa-angle-double-down {position:absolute; bottom:9vh; left:50%; transform:translateX(-50%); color:#cdb5c8; font-size:7vw}
+    header::before {content:''; box-sizing:border-box; width:86vw; height:92vh; position:absolute; top:4vh; left:7vw; border:3px solid #cdb5c8}
+    
+    section {text-align:center}
+    
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+      margin: 0px 20px;
+    }
+
+    .slick-slide img {
+      width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+    }
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+
+    .slick-active {
+      opacity: .5;
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
+    
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <img src="img_txt.png" class="mainTxt" />
+    <p class="name">조지훈<i class="fas fa-heart"></i>김혜미</p>
+    <p class="date">2019.05.05<br />PM 12:00</p>
+    <i class="fas fa-angle-double-down"></i>
+</header>
+<section>
+	텍스트텍스트<br />
+    텍스트텍스트<br />
+    텍스트텍스트<br />
+    텍스트텍스트<br />
+    텍스트텍스트<br />
+    텍스트텍스트
+</section>
+<article class="single-item">
+	<div>
+        <img src="http://placehold.it/350x100?text=1" />
+    </div>
+    <div>
+        <img src="http://placehold.it/350x100?text=2" />
+    </div>
+    <div>
+        <img src="http://placehold.it/350x100?text=3" />
+    </div>
+</article>
+<aside>
+	aside
+</aside>
+<footer>
+	footer
+</footer>
+
+</body>
+
+</html>
