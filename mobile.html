@@ -34,8 +34,10 @@
     });
 </script>
 <style type="text/css">
-    * {font-family:'Noto Sans KR', sans-serif;}
+    * {font-family:'Noto Sans KR', sans-serif; color:#333}
     body, p {margin:0; padding:0}
+    h5 {margin:20px 10px 10px; font-size:5vw; font-family:'Yeon Sung', cursive}
+    a {text-decoration:none; color:#333}
     
     header {position:relative; text-align:center; background:#fff url('img_main.jpg') no-repeat center top; background-size:cover; text-align:center}
     header .mainTxt {width:80%; margin-top:8vh}
@@ -48,8 +50,9 @@
     section {text-align:center}
     
     .slider {width:50%; margin:100px auto}
-    .slick-slide {margin:0px}
-    .slick-slide img {width:100%}
+    .slick-slide {margin:0px; height:70vw}
+    .slick-slide div {height:100%}
+    .slick-slide img {width:auto; height:100%}
     .slick-prev:before, .slick-next:before {color:black}
     .slick-slide {transition:all ease-in-out .3s; opacity:.2}
     .slick-active {opacity:.5}
@@ -61,6 +64,11 @@
     
     footer {padding:30px}
     .root_daum_roughmap {width:100% !important}
+    
+    aside {margin-bottom:30px; text-align:center}
+    aside .male, aside .male i {color:#298af7}
+    aside .female, aside .female i {color:#f7298a}
+    aside .male, aside .female {display:inline-block; width:25%; margin-right:10px; font-size:6vw; text-align:right}
     
 </style>
 
@@ -82,20 +90,21 @@
     텍스트텍스트<br />
     텍스트텍스트
 </section>
+    
+<h5><i class="far fa-images"></i> 우리모습 어떄요?</h5>
 <article class="single-item">
 	<div>
-        <img src="http://placehold.it/350x100?text=1" />
+        <img src="img1.jpg" />
     </div>
     <div>
-        <img src="http://placehold.it/350x100?text=2" />
+        <img src="img2.jpg" />
     </div>
     <div>
         <img src="http://placehold.it/350x100?text=3" />
     </div>
 </article>
-<aside>
-	aside
-</aside>
+
+<h5><i class="fas fa-map-marker-alt"></i> 이곳에서 만나요.</h5>
 <footer>
     <!-- * 카카오맵 - 지도퍼가기 -->
     <!-- 1. 지도 노드 -->
@@ -117,6 +126,18 @@
     </script>
 </footer>
 
+<h5><i class="far fa-address-book"></i> 비상연락망</h5>
+<aside>
+    <span class="male"><i class="fas fa-male"></i> 조지훈</span>
+    <a href="tel:01039368356"><i class="fas fa-phone"></i> 전화걸기</a>
+	<a href="sms:01039368356"><i class="fas fa-sms"></i> 문자하기</a>
+    <br />
+    <span class="female"><i class="fas fa-female"></i> 김혜미</span>
+    <a href="tel:01028130231"><i class="fas fa-phone"></i> 전화걸기</a>
+	<a href="sms:01028130231"><i class="fas fa-sms"></i> 문자하기</a>
+    
+</aside>
+    
 </body>
 
 </html>
