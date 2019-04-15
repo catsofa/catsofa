@@ -98,16 +98,39 @@ $(document).ready(function(){
 </section>
     
     
-<div id="kakaostory-share-button"><button>초대합니다.</button></div>
+<a id="kakao-link-btn" href="javascript:sendLink()">
+<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+</a>
+    
+    
 <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    //<![CDATA[
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('feb1366def376d38c708ed3f8b28a610');
-    // 스토리 공유 버튼을 생성합니다.
-    Kakao.Story.createShareButton({
-      container: '#kakaostory-share-button',
-      url: 'http://catsofa.github.io/mobile.html',
-      text: '초대합니다.'
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createDefaultButton({
+      container: '#kakao-link-btn',
+      objectType: 'location',
+      address: '경기 성남시 분당구 판교역로 235 에이치스퀘어 N동 8층',
+      addressTitle: '나린하우스웨딩',
+      content: {
+        title: '초대합니다! 조지훈♥김혜미',
+        description: '2019.05.05(일) PM12',
+        imageUrl: 'https://catsofa.github.io/image/img1.jpg',
+        link: {
+          mobileWebUrl: 'https://catsofa.github.io/mobile.html',
+          webUrl: 'https://catsofa.github.io/mobile.html'
+        }
+      },
+      buttons: [
+        {
+          title: '모바일청첩장',
+          link: {
+            mobileWebUrl: 'https://catsofa.github.io/mobile.html',
+            webUrl: 'https://catsofa.github.io/mobile.html'
+          }
+        }
+      ]
     });
   //]]>
 </script>
