@@ -36,23 +36,19 @@ $(document).ready(function(){
 </script>
 <style type="text/css">
     * {font-family:'Noto Sans KR', sans-serif; margin:0; padding:0; color:#333; box-sizing:border-box}
-    body {margin:10px 10px 30px}
+    body {margin-bottom:30px}
     h5 {margin:30px 10px 10px; font-size:5vw; font-family:'Yeon Sung', cursive}
     a {text-decoration:none; color:#333}
-    
     header {position:relative; height:100vh; background:#fff url('img_main.jpg') no-repeat center top; background-size:cover; text-align:center}
     header .mainTxt {width:80%; margin-top:8vh}
     header .name {margin-top:3vh; font-size:8vw; font-family:'Yeon Sung', cursive}
     header .name i {margin:0 5px; font-size:6vw; color:#ff1b86}
     header .date {position:absolute; bottom:18vh; width:100%; font-size:7.5vw; font-weight:300; letter-spacing:0.2vw}
     header .fa-angle-double-down {position:absolute; bottom:9vh; left:50%; transform:translateX(-50%); color:#cdb5c8; font-size:7vw}
-    header::before {content:''; box-sizing:border-box; width:86vw; height:92vh; position:absolute; top:calc(4vh - 10px); left:calc(7vw - 10px); border:3px solid #cdb5c8}
-    
+    header::before {content:''; box-sizing:border-box; width:86vw; height:92vh; position:absolute; top:4vh; left:7vw; border:3px solid #cdb5c8}
     section {text-align:center}
-
     article {position:relative}
     .img_list {}
-    
     .slider {}
     .slick-slide {margin:0px; transition:all ease-in-out .3s; opacity:.2}
     .slick-slide img {width:100%; height:auto}
@@ -64,18 +60,18 @@ $(document).ready(function(){
     .slick-prev, .slick-next {z-index:1; color:#fff}
     .slick-prev:before, .slick-next:before {color:black}
     .slick-dots li button:before {content:''; width:8px; height:8px; border-radius:10px; background:#000; transform:translate(50%, 50%)}
-    
-
-    
-    
-    footer {}
-    .root_daum_roughmap {width:100% !important}
-    
     aside {text-align:center}
     aside .male, aside .male i {color:#298af7}
     aside .female, aside .female i {color:#f7298a}
     aside .male, aside .female {display:inline-block; width:25%; margin-right:10px; font-size:6vw; text-align:right}
-    
+    footer {margin:0 10px}
+    .root_daum_roughmap {width:100% !important}
+    footer .link_station {}
+    footer .link_station::after {content:'1'; display:inline-block; width:15px; height:15px; text-align:center; color:#fff; background:#3356b4; border-radius:10px; font-size:11px; line-height:15px; margin-left:5px}
+    footer .txt_walk {color:#ff1b86}
+    footer .txt_wayout::before {content:''; display:inline-block; width:1px; height:12px; background:#ccc; margin:0 7px}
+    #kakao-link-btn {position:fixed; bottom:20px; right:20px; z-index:1}
+    #kakao-link-btn img {width:30px; height:auto}
 </style>
 
 </head>
@@ -95,13 +91,11 @@ $(document).ready(function(){
     텍스트텍스트<br />
     텍스트텍스트<br />
     텍스트텍스트
-</section>
-    
+</section>    
     
 <a id="kakao-link-btn" href="javascript:sendLink()">
-<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-</a>
-    
+    <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+</a>    
     
 <script type='text/javascript'>
     //<![CDATA[
@@ -111,10 +105,10 @@ $(document).ready(function(){
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
       objectType: 'location',
-      address: '경기 성남시 분당구 판교역로 235 에이치스퀘어 N동 8층',
+      address: '경기 부천시 경인로 505 역곡하이뷰 4층',
       addressTitle: '나린하우스웨딩',
       content: {
-        title: '초대합니다! 조지훈♥김혜미',
+        title: '초대합니다! 조지훈♡김혜미',
         description: '2019.05.05(일) PM12',
         imageUrl: 'https://catsofa.github.io/image/img1.jpg',
         link: {
@@ -134,8 +128,7 @@ $(document).ready(function(){
     });
   //]]>
 </script>
-    
-    
+        
 <h5><i class="far fa-address-book"></i> 전화나 문자 좋아요.</h5>
 <aside>
     <span class="male"><i class="fas fa-male"></i> 조지훈</span>
@@ -178,32 +171,11 @@ $(document).ready(function(){
         </div>
     </div>
 </article>
-    
-    <!--<article class="single-item">
-	<div>
-        <img src="./image/img1.jpg" />
-    </div>
-    <div>
-        <img src="./image/img2.jpg" />
-    </div>
-    <div>
-        <img src="http://placehold.it/350x100?text=3" />
-    </div>
-</article>-->
 
 <h5><i class="fas fa-map-marker-alt"></i> 이곳에서 만나요.</h5>
 <footer>
-    <!-- * 카카오맵 - 지도퍼가기 -->
-    <!-- 1. 지도 노드 -->
     <div id="daumRoughmapContainer1555292413025" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-
-    <!--
-        2. 설치 스크립트
-        * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
-    -->
     <script charset="UTF-8" class="daum_roughmap_loader_script" src="//ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-    <!-- 3. 실행 스크립트 -->
     <script charset="UTF-8">
         new daum.roughmap.Lander({
             "timestamp" : "1555292413025",
@@ -211,6 +183,12 @@ $(document).ready(function(){
             "mapHeight" : "360"
         }).render();
     </script>
+    <div class="station_wayout">
+        <i class="fas fa-subway"></i> <a href="https://map.kakao.com?subwayId=SES1803" target="_blank" class="link_station" data-logtarget="" data-logevent="waytogo,subway">역곡역</a>
+        <span class="txt_wayout">1번 출구 <span class="txt_walk">도보 4분</span></span>
+        <p><i class="fas fa-map"></i> 경기 부천시 경인로 505 역곡하이뷰 4층</p>
+        <p><a href="tel:0323518000"><i class="fas fa-phone"></i> 032-351-8000</a></p>
+    </div>
 </footer>
     
 </body>
