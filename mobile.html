@@ -7,65 +7,71 @@
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900|Yeon+Sung" />
 <link rel="stylesheet" type="text/css" href="//catsofa.github.io/css/slick.css" />
 <link rel="stylesheet" type="text/css" href="//catsofa.github.io/css/slick-theme.css" />
-<script type="text/javascript" src="//catsofa.github.io/js/jquery-1.12.3.min.js"></script>
+<!--<script type="text/javascript" src="//catsofa.github.io/js/jquery-1.12.3.min.js"></script>-->
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//catsofa.github.io/js/slick.min.js"></script>
-    
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        
-        //$('header').height($(window).height());
-        
-        
-         $('.single-item').slick({
-             dots: true
-         });
-        
-        $('.slider-nav').slick({
-          dots: true,
-          centerMode: true,
-          focusOnSelect: true
-        });
-        
+$(document).ready(function(){
+
+     $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+     });
+
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
     });
-    $(window).resize(function(){
-        
-        //$('header').height($(window).height());
-        
-    });
+
+});
 </script>
 <style type="text/css">
-    * {font-family:'Noto Sans KR', sans-serif; color:#333}
-    body, p {margin:0; padding:0}
-    h5 {margin:20px 10px 10px; font-size:5vw; font-family:'Yeon Sung', cursive}
+    * {font-family:'Noto Sans KR', sans-serif; margin:0; padding:0; color:#333; box-sizing:border-box}
+    body {margin:10px 10px 30px}
+    h5 {margin:30px 10px 10px; font-size:5vw; font-family:'Yeon Sung', cursive}
     a {text-decoration:none; color:#333}
     
-    header {position:relative; box-sizing:border-box; height:100vh; background:#fff url('img_main.jpg') no-repeat center top; background-size:cover; text-align:center}
+    header {position:relative; height:100vh; background:#fff url('img_main.jpg') no-repeat center top; background-size:cover; text-align:center}
     header .mainTxt {width:80%; margin-top:8vh}
     header .name {margin-top:3vh; font-size:8vw; font-family:'Yeon Sung', cursive}
     header .name i {margin:0 5px; font-size:6vw; color:#ff1b86}
     header .date {position:absolute; bottom:18vh; width:100%; font-size:7.5vw; font-weight:300; letter-spacing:0.2vw}
     header .fa-angle-double-down {position:absolute; bottom:9vh; left:50%; transform:translateX(-50%); color:#cdb5c8; font-size:7vw}
-    header::before {content:''; box-sizing:border-box; width:86vw; height:92vh; position:absolute; top:4vh; left:7vw; border:3px solid #cdb5c8}
+    header::before {content:''; box-sizing:border-box; width:86vw; height:92vh; position:absolute; top:calc(4vh - 10px); left:calc(7vw - 10px); border:3px solid #cdb5c8}
     
     section {text-align:center}
+
+    article {position:relative}
+    .img_list {}
     
-    .slider {width:50%; margin:100px auto}
-    .slick-slide {margin:0px; height:70vw}
-    .slick-slide div {height:100%}
-    .slick-slide img {width:auto; height:100%}
-    .slick-prev:before, .slick-next:before {color:black}
-    .slick-slide {transition:all ease-in-out .3s; opacity:.2}
+    .slider {}
+    .slick-slide {margin:0px; transition:all ease-in-out .3s; opacity:.2}
+    .slick-slide img {width:100%; height:auto}
+    .slick-list {width:100%; height:100%}
     .slick-active {opacity:.5}
     .slick-current {opacity:1}
     .slick-prev {left:5px}
     .slick-next {right:5px}
     .slick-prev, .slick-next {z-index:1; color:#fff}
+    .slick-prev:before, .slick-next:before {color:black}
     .slick-dots li button:before {content:''; width:8px; height:8px; border-radius:10px; background:#000; transform:translate(50%, 50%)}
     
-    footer {padding:30px}
+
+    
+    
+    footer {}
     .root_daum_roughmap {width:100% !important}
     
-    aside {margin-bottom:30px; text-align:center}
+    aside {text-align:center}
     aside .male, aside .male i {color:#298af7}
     aside .female, aside .female i {color:#f7298a}
     aside .male, aside .female {display:inline-block; width:25%; margin-right:10px; font-size:6vw; text-align:right}
@@ -91,18 +97,76 @@
     텍스트텍스트
 </section>
     
-<h5><i class="far fa-images"></i> 우리모습 어떄요?</h5>
-<article class="single-item">
+    
+<div id="kakaostory-share-button"><button>초대합니다.</button></div>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('feb1366def376d38c708ed3f8b28a610');
+    // 스토리 공유 버튼을 생성합니다.
+    Kakao.Story.createShareButton({
+      container: '#kakaostory-share-button',
+      url: 'http://catsofa.github.io/mobile.html',
+      text: '초대합니다.'
+    });
+  //]]>
+</script>
+    
+    
+<h5><i class="far fa-address-book"></i> 전화나 문자 좋아요.</h5>
+<aside>
+    <span class="male"><i class="fas fa-male"></i> 조지훈</span>
+    <a href="tel:01039368356"><i class="fas fa-phone"></i> 전화걸기</a>
+	<a href="sms:01039368356"><i class="fas fa-sms"></i> 문자하기</a>
+    <br />
+    <span class="female"><i class="fas fa-female"></i> 김혜미</span>
+    <a href="tel:01028130231"><i class="fas fa-phone"></i> 전화걸기</a>
+	<a href="sms:01028130231"><i class="fas fa-sms"></i> 문자하기</a>
+</aside>
+    
+<h5><i class="far fa-images"></i> 우리모습 어때요?</h5>
+<article>
+    <div class="img_list slider-for">
+        <div>
+            <img src="./image/img1.jpg" />
+        </div>
+        <div>
+            <img src="./image/img2.jpg" />
+        </div>
+        <div>
+            <img src="http://placehold.it/350x100?text=3" />
+        </div>
+        <div>
+            <img src="http://placehold.it/350x100?text=4" />
+        </div>
+    </div>
+    <div class="slider slider-nav">
+        <div>
+            <img src="./image/img1.jpg" />
+        </div>
+        <div>
+            <img src="./image/img2.jpg" />
+        </div>
+        <div>
+            <img src="http://placehold.it/350x100?text=3" />
+        </div>
+        <div>
+            <img src="http://placehold.it/350x100?text=4" />
+        </div>
+    </div>
+</article>
+    
+    <!--<article class="single-item">
 	<div>
-        <img src="/image/img1.jpg" />
+        <img src="./image/img1.jpg" />
     </div>
     <div>
-        <img src="/image/img2.jpg" />
+        <img src="./image/img2.jpg" />
     </div>
     <div>
         <img src="http://placehold.it/350x100?text=3" />
     </div>
-</article>
+</article>-->
 
 <h5><i class="fas fa-map-marker-alt"></i> 이곳에서 만나요.</h5>
 <footer>
@@ -125,18 +189,6 @@
         }).render();
     </script>
 </footer>
-
-<h5><i class="far fa-address-book"></i> 비상연락망</h5>
-<aside>
-    <span class="male"><i class="fas fa-male"></i> 조지훈</span>
-    <a href="tel:01039368356"><i class="fas fa-phone"></i> 전화걸기</a>
-	<a href="sms:01039368356"><i class="fas fa-sms"></i> 문자하기</a>
-    <br />
-    <span class="female"><i class="fas fa-female"></i> 김혜미</span>
-    <a href="tel:01028130231"><i class="fas fa-phone"></i> 전화걸기</a>
-	<a href="sms:01028130231"><i class="fas fa-sms"></i> 문자하기</a>
-    
-</aside>
     
 </body>
 
