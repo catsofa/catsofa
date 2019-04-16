@@ -46,12 +46,12 @@ $(document).ready(function(){
     header .date {position:absolute; bottom:18vh; width:100%; font-size:7.5vw; font-weight:300; letter-spacing:0.2vw}
     header .fa-angle-double-down {position:absolute; bottom:9vh; left:50%; transform:translateX(-50%); color:#cdb5c8; font-size:7vw}
     header::before {content:''; box-sizing:border-box; width:86vw; height:92vh; position:absolute; top:4vh; left:7vw; border:3px solid #cdb5c8}
-    section {margin-top:50px; text-align:center; font-family:'Hi Melody', cursive; font-size:5vw; line-height:6vw}
+    section {padding:50px 0 20px; text-align:center; font-family:'Hi Melody', cursive; font-size:5vw; line-height:6vw}
     article {position:relative; overflow:hidden}
     .slick-slide {margin:0px; transition:all ease-in-out .3s; opacity:.2}
-    .slider-for .slick-slide {height:68vw; overflow:hidden; margin-bottom:10px; background:rgba(0,0,0,.3)}
+    .slider-for .slick-slide {height:68vw; overflow:hidden; margin-bottom:10px; background:rgba(0,0,0,.2)}
     .slider-for .slick-slide img {width:auto; height:68vw; margin:0 auto}
-    .slider-nav .slick-slide {height:16vw; overflow:hidden; background:#ccc}
+    .slider-nav .slick-slide {height:16vw; overflow:hidden}
     .slider-nav .slick-slide img {width:100%; height:auto}
     .slick-list {width:100%; height:100%}
     .slick-active {opacity:.5}
@@ -59,9 +59,9 @@ $(document).ready(function(){
     .slick-prev {left:5px}
     .slick-next {right:5px}
     .slick-prev, .slick-next {top:-35vw; z-index:1}
-    .slick-prev:before, .slick-next:before {color:#fff}
+    .slick-prev:before, .slick-next:before {color:#fff; font-size:30px}
     .slick-dots {bottom:-30px}
-    .slick-dots li button:before {content:''; width:8px; height:8px; border-radius:10px; background:#000; transform:translate(50%, 50%)}
+    .slick-dots li button:before {content:''; width:8px; height:8px; border-radius:10px; background:#c074b0; transform:translate(50%, 50%)}
     aside {text-align:center; line-height:8vw}
     aside .male, aside .male i {color:#298af7}
     aside .female, aside .female i {color:#f7298a}
@@ -72,6 +72,7 @@ $(document).ready(function(){
     footer .link_station::after {content:'1'; display:inline-block; width:15px; height:15px; text-align:center; color:#fff; background:#3356b4; border-radius:10px; font-size:11px; line-height:15px; margin-left:5px}
     footer .txt_walk {color:#ff1b86}
     footer .txt_wayout::before {content:''; display:inline-block; width:1px; height:12px; background:#ccc; margin:0 7px}
+    footer .date {margin-top:10px; padding:7px 0; text-align:center; font-size:5vw; font-weight:300; letter-spacing:0.2vw; border-top:1px solid #ccc; border-bottom:1px solid #ccc}
     .txt_cat {text-align:center; font-size:8vw; margin:50px 0; font-family:'Yeon Sung', cursive; color:#ccc}
     .txt_cat i {color:#ccc}
     #kakao-link-btn {position:fixed; bottom:5px; right:5%; width:40px; height:40px; line-height:40px; margin:10px auto; background:#ffdd23; border-radius:25px; text-align:center; color:#381e1f; z-index:30}
@@ -104,10 +105,10 @@ $(document).ready(function(){
             <img src="./image/img2.jpg" />
         </div>
         <div>
-            <img src="http://placehold.it/350x100?text=3" />
+            <img src="./image/img1.jpg" />
         </div>
         <div>
-            <img src="http://placehold.it/350x100?text=4" />
+            <img src="./image/img2.jpg" />
         </div>
     </div>
     <div class="slider slider-nav">
@@ -118,10 +119,10 @@ $(document).ready(function(){
             <img src="./image/img2.jpg" />
         </div>
         <div>
-            <img src="http://placehold.it/350x100?text=3" />
+            <img src="./image/img1.jpg" />
         </div>
         <div>
-            <img src="http://placehold.it/350x100?text=4" />
+            <img src="./image/img2.jpg" />
         </div>
     </div>
 </article>
@@ -142,6 +143,7 @@ $(document).ready(function(){
         <p><i class="fas fa-map"></i> 경기 부천시 경인로 505 역곡하이뷰 4층</p>
         <p><a href="tel:0323518000"><i class="fas fa-phone"></i> 032-351-8000</a></p>
     </div>
+    <p class="date">2019.05.05(일) PM 12:00</p>
 </footer>
     
 <h5><i class="far fa-address-book"></i> 전화나 문자 좋아요.</h5>
