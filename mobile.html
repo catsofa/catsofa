@@ -37,10 +37,12 @@ $(document).ready(function(){
         var $imgSrc = $(this).attr('src');
         $('.img_pop').show();
         $('.img_pop img').attr('src',$imgSrc);
+        $('body').css('overflow','hidden');
     });
     
     $('.img_pop i').click(function(){
         $('.img_pop').hide();
+        $('body').css('overflow','auto');
     });
 
 });
