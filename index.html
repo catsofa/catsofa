@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+<script type="text/javascript" src="js/parallax.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+
+
+<script>
+$(function(){
+
+    $('.slick').slick({
+
+        dots : true, //페이지 네비게이션
+        arrows : true, // next, prev 이동 버튼
+        autoplay : true, // 자동 넘김 여부
+        infinite : true, //반복설정
+        speed: 1000, //슬라이드 속도
+        autoplaySpeed : 3000, // 자동 넘김시 슬라이드 시간
+        pauseOnHover : true,// 마우스 hover시 슬라이드 멈춤
+        /*
+        vertical : false, // 세로 방향 슬라이드 옵션
+        prevArrow : "<button type='button' class='slick-prev'>Previous</button>",
+        nextArrow : "<button type='button' class='slick-next'>Next</button>", //화살표 커스텀
+        slidesToShow: 4, //보여질 슬라이드 수
+        slidesToScroll: 4, //넘겨질 슬라이드 수
+        responsive: [ // -> 반응형 옵션
+            {
+                breakpoint: 1024, // 반응형 ~ 1024
+                settings: { 
+                    slidesToShow: 3, 
+                    slidesToScroll: 3, 
+                    infinite: true, 
+                    dots: true 
+                } 
+            }, { 
+                breakpoint: 600,// 반응형 ~ 600
+                settings: { 
+                    slidesToShow: 2, 
+                    slidesToScroll: 2
+                }
+            }, { 
+                breakpoint: 480,// 반응형 ~ 480 
+                settings: { 
+                    slidesToShow: 1, 
+                    slidesToScroll: 1 
+                } 
+            } 
+        ] 
+        */
+    });
+
+    //nav - side
+    $('.btn_nav').on('click',function(){
+        if( $('nav.side').hasClass('on') ){
+        }else{
+            $('nav.side').addClass('on');
+        }        
+    });
+
+    $('nav.side .btn_close').on('click',function(){
+        $('nav.side').removeClass('on');
+    });
+
+    //footer
+    $('footer').before('<div class="footer_height"></div>');
+    $('.footer_height').css('height',$('footer').outerHeight());
+    
+
+    // scroll
+    $(window).on('scroll',function(){
+
+        //nav - side
+        if( $(this).scrollTop() > 0 ){
+            $('nav.gnb').addClass('on');
+        }else{
+            $('nav.gnb').removeClass('on');
+        }
+
+        //ani-box
+        if( $(this).scrollTop() > $('.ani_box').offset().top - $(window).outerHeight() + 100 ){
+            $('.ani_box .bg').addClass('on');
+        }else{
+            $('.ani_box .bg').removeClass('on');
+        }
+
+    });
+
+    
+
+});    
+</script>
+</head>
+<body>
+
+    <header>
+        
+        <nav class="gnb">
+            <h1>Logo</h1>
+            <ul>
+                <li>HOME</li>
+                <li>COMPANY</li>
+                <li>BUSINESS</li>
+                <li>PRODUCT</li>
+                <li>CUSTOMER</li>
+            </ul>
+            <button class="btn_nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <nav class="side">
+            <h1>Logo</h1>
+            <ul>
+                <li>HOME</li>
+                <li>COMPANY</li>
+                <li>BUSINESS</li>
+                <li>PRODUCT</li>
+                <li>CUSTOMER</li>
+            </ul>
+            <button class="btn_close">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+
+        <!-- slick -->
+        <div class="slick">
+            <div>
+                <p class="h1">The Leading Partner for exercise</p>
+                <p class="h2">Enjoy Your Life</p>
+                <p class="h3">원픽셀 피트니스는 고객여러분의 건강한 삶을 응원하고 있습니다.<br />전문적인 트레이너와 활력있는 삶을 만나보세요 !</p>
+            </div>
+            <div>
+                <p class="h1">The Leading Partner for exercise</p>
+                <p class="h2">Enjoy Your Life</p>
+                <p class="h3">원픽셀 피트니스는 고객여러분의 건강한 삶을 응원하고 있습니다.<br />전문적인 트레이너와 활력있는 삶을 만나보세요 !</p>
+            </div>
+            <div>
+                <p class="h1">The Leading Partner for exercise</p>
+                <p class="h2">Enjoy Your Life</p>
+                <p class="h3">원픽셀 피트니스는 고객여러분의 건강한 삶을 응원하고 있습니다.<br />전문적인 트레이너와 활력있는 삶을 만나보세요 !</p>
+            </div>
+        </div>
+        <!-- // slick -->
+
+    </header>
+
+    
+
+    <section>        
+        <div class="container">
+            <article>            
+                <div class="item_list">
+                    
+                    <!-- 0 -->
+                    <div class="item_box">
+                        <strong>Title 0</strong>
+                        <div class="txt">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </div>
+                    </div>
+                    <!-- // 0 -->
+                </div>
+                <div class="item_list">
+                    <!-- 1 -->
+                    <div class="item_box">
+                        <strong>Title 1</strong>
+                        <div class="txt">
+                            <img src="" alt="" />
+                        </div>
+                    </div>
+                    <!-- // 1 -->
+                    <!-- 2 -->
+                    <div class="item_box">
+                        <strong>Title 2</strong>
+                        <div class="txt">
+                            <img src="" alt="" />
+                        </div>
+                    </div>
+                    <!-- // 2 -->
+                </div>
+            </article>
+
+            <div class="ani_box">
+                <div class="bg"></div>
+                <p class="h1">Various Services</p>
+                <p class="h2">원픽셀 피트니스는 다양한 서비스를 제공하고 있습니다. <br />최신시설을 통해 특별한 서비스를 누려보세요!</p>            
+            </div>
+
+            <article>            
+                <div class="item_list">
+                    
+                    <!-- 0 -->
+                    <div class="item_box">
+                        <strong>Title 0</strong>
+                        <div class="txt">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </div>
+                    </div>
+                    <!-- // 0 -->
+                </div>
+                <div class="item_list">
+                    <!-- 1 -->
+                    <div class="item_box">
+                        <strong>Title 1</strong>
+                        <div class="txt">
+                            <img src="" alt="" />
+                        </div>
+                    </div>
+                    <!-- // 1 -->
+                    <!-- 2 -->
+                    <div class="item_box">
+                        <strong>Title 2</strong>
+                        <div class="txt">
+                            <img src="" alt="" />
+                        </div>
+                    </div>
+                    <!-- // 2 -->
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <h1>Logo</h1>
+        <ul>
+            <li>HOME</li>
+            <li>COMPANY</li>
+            <li>BUSINESS</li>
+            <li>PRODUCT</li>
+            <li>CUSTOMER</li>
+        </ul>
+        <address>© 2022 Logo All Rights Reserved.</address>
+    </footer>
+
+
+
+
+</body>
+</html>
