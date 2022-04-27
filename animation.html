@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="js/parallax.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/animation.css"/>
+<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+<style>
+section {width:500px; margin:0 auto; text-align:center;}
+/* {display:grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(10, 150px); width:1000px; margin:50px auto;} */
+div[class^='wrap_'] {padding-bottom:200px;}
+div[class^='wrap_'] > div {margin:0 auto; padding-top:200px; height:100px; font-size:14px;}
+button {padding:3px 10px; border:1px solid #ccc;}
+
+/* media query */
+@media screen and (max-width:768px) { 
+    section {width:100%; padding:0 30px;}
+}
+</style>
+<script>
+$(function(){
+
+    $('.wrap_go > div').each(function(i){   
+        //console.log("["+i+"번째]: "+$(this).offset().top);
+        var $this = $(this);
+        $(window).on('scroll',function(){
+            if( $(window).scrollTop() > $this.offset().top - $(window).outerHeight()/2 ){
+                $this.addClass('go');
+            }else{
+                $this.removeClass('go');
+            }
+        });
+    });
+
+    $('.wrap_goAway > div').each(function(i){   
+        var $this = $(this);
+        $(window).on('scroll',function(){
+            if( $(window).scrollTop() > $this.offset().top - $(window).outerHeight()/2 ){
+                $this.addClass('goAway');
+            }else{
+                $this.removeClass('goAway');
+            }
+        });
+    });
+});
+</script>
+</head>
+<body>
+<section>
+
+    <div class="wrap_go">
+        <div class="slower bounceIn"><strong>bounceIn</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceInRight"><strong>bounceInRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceInLeft"><strong>bounceInLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceInUp"><strong>bounceInUp</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceInDown"><strong>bounceInDown</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeIn"><strong>fadeIn</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower growIn"><strong>growIn</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower shake"><strong>shake</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower shakeUp"><strong>shakeUp</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInLeft"><strong>fadeInLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInRight"><strong>fadeInRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInUp"><strong>fadeInUp</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInDown"><strong>fadeInDown</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateIn"><strong>rotateIn</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateInUpLeft"><strong>rotateInUpLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateInDownLeft"><strong>rotateInDownLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateInUpRight"><strong>rotateInUpRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateInDownRight"><strong>rotateInDownRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rollIn"><strong>rollIn</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower wiggle"><strong>wiggle</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower swing"><strong>swing</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower tada"><strong>tada</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower wobble"><strong>wobble</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower tada"><strong>tada</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower pulse"><strong>pulse</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower lightSpeedInRight"><strong>lightSpeedInRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower lightSpeedInLeft"><strong>lightSpeedInLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower flip"><strong>flip</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower flipInX"><strong>flipInX</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower flipInY"><strong>flipInY</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInUpShort"><strong>fadeInUpShort</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInDownShort"><strong>fadeInDownShort</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInRightShort"><strong>fadeInRightShort</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeInLeftShort"><strong>fadeInLeftShort</strong><br />가나다라마바사아자차카타파하</div>
+    </div>
+
+
+    <div class="wrap_goAway">
+        <div class="slower bounceOut"><strong>bounceOut</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceOutUp"><strong>bounceOutUp</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceOutDown"><strong>bounceOutDown</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceOutLeft"><strong>bounceOutLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower bounceOutRight"><strong>bounceOutRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeOut"><strong>fadeOut</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeOutUp"><strong>fadeOutUp</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeOutDown"><strong>fadeOutDown</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeOutLeft"><strong>fadeOutLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower fadeOutRight"><strong>fadeOutRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower flipOutX"><strong>flipOutX</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower flipOutY"><strong>flipOutY</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower lightSpeedOutRight"><strong>lightSpeedOutRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower lightSpeedOutLeft"><strong>lightSpeedOutLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateOut"><strong>rotateOut</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateOutUpLeft"><strong>rotateOutUpLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateOutDownLeft"><strong>rotateOutDownLeft</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rotateOutUpRight"><strong>rotateOutUpRight</strong><br />가나다라마바사아자차카타파하</div>
+        <div class="slower rollOut"><strong>rollOut</strong><br />가나다라마바사아자차카타파하</div>
+    </div>
+
+
+</section>
+</body>
+</html>
