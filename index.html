@@ -9,8 +9,8 @@
 <script type="text/javascript" src="js/parallax.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/slick.css"/>
 <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="css/animation.css"/>
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
-
 
 <script>
 $(function(){
@@ -84,15 +84,49 @@ $(function(){
         }
 
         //ani-box
-        if( $(this).scrollTop() > $('.ani_box').offset().top - $(window).outerHeight() + 100 ){
+        if( $(this).scrollTop() > $('.ani_box').offset().top - $(window).outerHeight() + 200 ){
             $('.ani_box .bg').addClass('on');
         }else{
             $('.ani_box .bg').removeClass('on');
         }
 
+        //move-img    
+        function scrollGo(e){
+            if( $(this).scrollTop() > e.offset().top - $(window).outerHeight() + 200 ){
+                e.addClass('go');
+            }else{
+                e .removeClass('go');
+            }
+        }
+
+        scrollGo($('.move_img'));
+        scrollGo($('.bg_fixed > .animated'));
+        animate_bg_init();
+
     });
 
-    
+    // animated background effect
+    function animate_bg_init() { 
+    var $elem = $('.animated-bg');
+    $elem.length && $elem.each(function() {
+        var $this = $(this),
+        $size = $this.outerHeight(),
+        $pos = $this.offset().top,
+        $calc = $size + $pos,
+        $scrollTop = $(window).scrollTop(),
+        $winHeight = $(window).outerHeight(),
+        $areaStart = $pos - $winHeight,
+        $areaEnd = $calc - $size / 2 - $winHeight / 2,
+        $factor = 0;
+            
+        if ( $scrollTop >= $areaStart && $scrollTop <= $areaEnd ) {
+            var $scale = ($scrollTop - $areaStart) / ($areaEnd - $areaStart);
+            $factor = 0.7 + 0.3 * $scale,
+            $factor >= 0.98 ? $factor = 1 : $factor < 0.7 && ($factor = 0.3),
+            $this.css({ transform: 'matrix(' + $factor + ', 0, 0, 1, 0, 0)' });
+            } 
+        }); 
+    }    
 
 });    
 </script>
@@ -153,11 +187,14 @@ $(function(){
         </div>
         <!-- // slick -->
 
-    </header>
+    </header>    
 
-    
+    <section>
 
-    <section>        
+         <!-- move_line -->
+         <div class="move_line"></div>
+         <!-- // move_line -->
+
         <div class="container">
             <article>            
                 <div class="item_list">
@@ -190,19 +227,55 @@ $(function(){
                     <!-- // 2 -->
                 </div>
             </article>
-
-            <div class="ani_box">
-                <div class="bg"></div>
-                <p class="h1">Various Services</p>
-                <p class="h2">원픽셀 피트니스는 다양한 서비스를 제공하고 있습니다. <br />최신시설을 통해 특별한 서비스를 누려보세요!</p>            
+            
+            <!-- move_box 1 -->
+            <div class="animated-bg-section main-animate-section01">
+                <div class="caption container">
+                    <h2 lang="en">Various Services</h2>
+                    <p lang="en">원픽셀 피트니스는 다양한 서비스를 제공하고 있습니다. <br />최신시설을 통해 특별한 서비스를 누려보세요!</p>
+                </div>
+                <div class="row">
+                    <div class="animated-bg"></div>
+                </div>
             </div>
+            <!-- // move_box 1 -->
 
-            <article>            
+            <article>
+
+                <ul class="thumb_list">
+                    <li>
+                        <a href="#none" class="link">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none" class="link">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none" class="link">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none" class="link">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none" class="link">
+                            <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
+                        </a>
+                    </li>
+                </ul>
+
+
                 <div class="item_list">
                     
                     <!-- 0 -->
-                    <div class="item_box">
-                        <strong>Title 0</strong>
+                    <div class="item_box type2">
+                        <strong>Title 0 type2</strong>
                         <div class="txt">
                             <img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" alt="" />
                         </div>
@@ -211,16 +284,16 @@ $(function(){
                 </div>
                 <div class="item_list">
                     <!-- 1 -->
-                    <div class="item_box">
-                        <strong>Title 1</strong>
+                    <div class="item_box type2">
+                        <strong>Title 1 type2</strong>
                         <div class="txt">
                             <img src="" alt="" />
                         </div>
                     </div>
                     <!-- // 1 -->
                     <!-- 2 -->
-                    <div class="item_box">
-                        <strong>Title 2</strong>
+                    <div class="item_box type2">
+                        <strong>Title 2 type2</strong>
                         <div class="txt">
                             <img src="" alt="" />
                         </div>
@@ -228,7 +301,87 @@ $(function(){
                     <!-- // 2 -->
                 </div>
             </article>
+
+            <!-- move_box 2 -->
+            <div class="ani_box">
+                <div class="bg"></div>
+                <p class="h1">Various Services</p>
+                <p class="h2">원픽셀 피트니스는 다양한 서비스를 제공하고 있습니다. <br />최신시설을 통해 특별한 서비스를 누려보세요!</p>            
+            </div>
+            <!-- // move_box 2 -->
+
+            <!-- move_img -->
+            <div class="move_img slower fadeInDownShort">
+                <img src="images/img_01.jpg" alt="" />
+                <img src="images/img_02.jpg" alt="" />
+            </div>
+            <!-- // move_img -->
+
         </div>
+
+        <!-- bg_fixed -->
+        <div class="bg_fixed animatedParent animateOnce">
+            <p class="animated fadeInUpShort">Our Healthy Life</p>
+            <h2 class="animated fadeInUpShort">We support our customers' healthy lives.<br />Let's switch to a healthy life with us!</h2>
+        </div>
+        <!-- // bg_fixed -->
+
+        <!-- progress -->
+        <div class="col-md-6 col-text">
+            <h2 lang="en">Satisfaction</h2>
+            <h3>성공을 추구하지 않습니다. 1%라도 고객들의 만족도를 우선으로 합니다.</h3>
+            <p>
+                고객들의 만족도를 통해 증명된 원픽셀 피트니스를 확인해보세요! <br>
+                건강한 삶을 누리기 위해 모든 직원들이 노력하고 있습니다.
+            </p>
+            <!--
+                ## 프로그레스 바 퍼센트 지정 방법 ##
+                ㆍ아래 각 <div class="progress-group" data-percentage="숫자"> ... </div> 태그에서 data-percentage 부분에 숫자를 입력하시면 됩니다.
+                ㆍdata-percentage 속성에는 0 ~ 100 까지의 정수만 입력해 주시고, % 등의 특수문자는 절대 넣지 말아 주세요!
+            -->
+            <!-- progress group : s -->
+            <div class="progress-group active" data-percentage="98">
+                <div class="progress-heading" lang="en">
+                    <span class="title">재방문율</span>
+                    <span class="percent" style="left: 98%;">
+                        <span class="percent-text">98</span>
+                    </span>
+                </div>
+                <div class="progress-wrap">
+                    <div class="bar" style="width: 98%;"></div>
+                </div>
+            </div>
+            <!-- progress group : e -->
+            <!-- progress group : s -->
+            <div class="progress-group active" data-percentage="95">
+                <div class="progress-heading" lang="en">
+                    <span class="title">감량 목표 성공율</span>
+                    <span class="percent" style="left: 95%;">
+                        <span class="percent-text">95</span>
+                    </span>
+                </div>
+                <div class="progress-wrap">
+                    <div class="bar" style="width: 95%;"></div>
+                </div>
+            </div>
+            <!-- progress group : e -->
+            <!-- progress group : s -->
+            <div class="progress-group active" data-percentage="99">
+                <div class="progress-heading" lang="en">
+                    <span class="title">고객만족도</span>
+                    <span class="percent" style="left: 99%;">
+                        <span class="percent-text">99</span>
+                    </span>
+                </div>
+                <div class="progress-wrap">
+                    <div class="bar" style="width: 99%;"></div>
+                </div>
+            </div>
+            <!-- progress group : e -->
+        </div>
+        <!-- // progress -->
+        
+
     </section>
 
     <footer>
