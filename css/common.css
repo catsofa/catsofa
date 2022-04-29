@@ -8,6 +8,22 @@ body {font-family: 'Noto Sans KR', sans-serif;}
 ul,ol,li {list-style:none;}
 button {border:none; background-color:transparent; cursor:pointer; outline:0; vertical-align:middle;}
 
+/* animation */
+@keyframes moveLR {
+    from {background-position-x:0;}
+    to {background-position-x:-300%;}
+}
+
+@keyframes fadeInUp {
+    from {opacity:0; transform:translate3d(0,50px,0);}
+    to {opacity:1; transform:translate3d(0,0,0);}
+}
+
+/* layout */
+section {position:relative; background:#fff; z-index:10;}
+.container {max-width:1000px; margin:0 auto; padding:50px 0;}
+article {display:flex; padding:50px 0;}
+article:first-child {padding:0 0 50px;}
 
 /* header */
 header {z-index:10;}
@@ -34,7 +50,6 @@ nav.side ul li {padding:20px 0; border-bottom:1px solid rgba(255,255,255, .2); c
 .btn_close span:nth-child(1) {transform:rotate(45deg);}
 .btn_close span:nth-child(2) {transform:rotate(-45deg);}
 
-
 /* slick */
 .slick {width:100%; height:100vh; overflow:hidden; background:#fff; z-index:10;}
 .slick-slide {padding:40vh 0 0 100px; color:#fff;}
@@ -60,12 +75,7 @@ nav.side ul li {padding:20px 0; border-bottom:1px solid rgba(255,255,255, .2); c
 #slick-slide01 {background-image:url('../images/main_02.jpg');}
 #slick-slide02 {background-image:url('../images/main_03.jpg');}
 
-
-
 /* box */
-section {position:relative; background:#fff; z-index:10;}
-.container {max-width:1000px; margin:0 auto;}
-article {display:flex; padding:50px 0;}
 .item_list {flex:1; padding:0 15px;}
 .item_list:last-child {max-width:300px;}
 .item_list:last-child .item_box + .item_box {margin-top:20px;}
@@ -74,13 +84,43 @@ article {display:flex; padding:50px 0;}
 .item_box strong {font-size:20px;}
 .item_box .txt {min-height:100px; margin-top:20px;}
 .item_box .txt img {width:100%; height:auto;}
+.item_box.type2 {box-shadow:none; border:1px solid #fa5c5c;}
+.item_box.type2:hover {box-shadow:none; transform:none; border-width:3px;}
 
+.thumb_list {display:grid;}
+.thumb_list li {grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr);}
+.thumb_list li a {}
+.thumb_list li img {}
+
+
+/* ani_box */
 .ani_box {position:relative; padding:50px 0; text-align:center;}
 .ani_box .h1, .ani_box .h2 {position:relative; z-index:10;}
 .ani_box .h1 {}
 .ani_box .h2 {}
 .ani_box .bg {position:absolute; left:0; top:0; right:0; bottom:0; background:#fc0; transition:all .5s ease; transform:matrix(.62,0,0,1,0,0); z-index:1;}
 .ani_box .bg.on {transition:all .5s ease; transform:matrix(1,0,0,1,0,0);}
+
+.animated-bg-section {position: relative; padding:50px 0;}
+.animated-bg-section .container {position: relative; z-index: 5}
+.animated-bg-section .caption {text-align: center; padding: 0 15%}
+.animated-bg-section .caption h2 {font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px}
+.animated-bg-section .caption p {font-weight: 300; color: #fff; line-height: 1.75; margin-bottom: 35px; opacity: .8}
+.animated-bg-section .animated-bg {position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color: #fa5c5c; z-index: 1; transform: matrix(.62,0,0,1,0,0)}
+
+
+/* move_line */
+.move_line {height:50px; background:#fff200 url('../images/moveLR_img.gif') repeat-x 0 10px; animation:moveLR 100s infinite linear;}
+
+/* move_img */
+.move_img {position:relative; margin-top:100px; padding-bottom:100px;}
+.move_img img {width:350px; box-shadow:20px 20px 40px -8px rgb(0 0 0 / 16%);}
+.move_img img:nth-child(1) {transform:translate(50%,0);}
+.move_img img:nth-child(2) {transform:translate(0%,100px);}
+
+/* bg_fixed */
+.bg_fixed {padding:100px; background:url('../images/main_04.jpg') no-repeat center/cover fixed; color:#fff; text-align:center;}
+
 
 /* footer */
 footer {position:fixed; bottom:0; left:0; width:100%; padding:50px; background:#222; color:rgba(255,255,255, .3); z-index:1;}
@@ -101,6 +141,7 @@ address {}
     article {display:block;}
     .item_list:first-child, .item_list:last-child {flex:none; width:100%;}
     .item_list:last-child {max-width:100%; margin-top:20px;}
+    .move_line {animation-duration:40s;}
 
     /* slick */
     .slick {height:50vh;}
