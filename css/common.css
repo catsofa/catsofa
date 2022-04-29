@@ -87,10 +87,12 @@ nav.side ul li {padding:20px 0; border-bottom:1px solid rgba(255,255,255, .2); c
 .item_box.type2 {box-shadow:none; border:1px solid #fa5c5c;}
 .item_box.type2:hover {box-shadow:none; transform:none; border-width:3px;}
 
-.thumb_list {display:grid;}
-.thumb_list li {grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr);}
-.thumb_list li a {}
-.thumb_list li img {}
+.thumb_list {display:grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap:20px;}
+.thumb_list li {position:relative;}
+.thumb_list li a::after {content:''; position:absolute; left:0; top:0; right:0; bottom:0; border:0px solid #fa5c5c; transition:all .2s;}
+.thumb_list li a:hover {}
+.thumb_list li a:hover::after {border-width:5px;}
+.thumb_list li img {display:block; width:100%;}
 
 
 /* ani_box */
