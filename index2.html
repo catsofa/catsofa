@@ -1,250 +1,197 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="utf-8" />
-	<!-- <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"> -->
-	<title>[index]</title>
-	<link rel="stylesheet" href="./style/reset.css" />
-	<link rel="stylesheet" href="./style/screen.css" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-dark.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-	<script src="./js/common.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="css/animation.css"/>
+<link rel="stylesheet" type="text/css" href="css/common2.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="js/parallax.min.js"></script>
+<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+<script>
+$(function(){
+
+    //nav - side
+    $('.btn_nav').on('click',function(){
+        if( $('nav.side').hasClass('on') ){
+        }else{
+            $('nav.side').addClass('on');
+        }        
+    });
+
+    $('nav.side .btn_close').on('click',function(){
+        $('nav.side').removeClass('on');
+    });
+
+    //footer
+    $('footer').before('<div class="footer_height"></div>');
+    $('.footer_height').css('height',$('footer').outerHeight());
+    
+
+    // scroll
+    $(window).on('scroll',function(){
+
+        //nav - side
+        if( $(this).scrollTop() > 0 ){
+            $('nav.gnb').addClass('on');
+        }else{
+            $('nav.gnb').removeClass('on');
+        }
+
+    });
+
+    // main skills progressbar
+    function animate_progress_bar() { 
+        $('.progress-group').each(function() { 
+            var $percentage = $(this).data('percentage'); 
+            var $beforeCount = ($(this).find('.percent-text').text() == '') ? 0 : $(this).find('.percent-text').text(); 
+            $(this).addClass('active'); 
+            $(this).find('.percent-text').each(function() { 
+                var $this = $(this); 
+                $({Counter: $beforeCount}).animate({Counter: $percentage}, { 
+                    duration: 2000, 
+                    easing: 'swing', 
+                    step: function() { 
+                        $this.text(Math.ceil(this.Counter)); 
+                    } 
+                }); 
+            }); 
+            $(this).find('.percent').stop().animate({left: $percentage + '%'}, 2000); 
+            $(this).find('.progress-wrap .bar').stop().animate({width: $percentage + '%'}, 2000);
+        }); 
+    } 
+    if ( $('.progress-group').length ) { var waypoint = new Waypoint({ element: $('.progress-group'), handler: function(direction) { animate_progress_bar(); }, offset: '100%' }); } 
+
+});    
+</script>
 </head>
 <body>
 
-	
-	<!--
-<!-- header --
-<header>
-	
-	<!-- btn --
-	<button class="menu">
-		<span class="line"></span>
-		<span class="line"></span>
-		<span>MENU</span>
-	</button>
-	<!-- // btn --
-	
-	<!-- nav --
-	<nav>
-		<ul>
-			<li>Sass : SCSS</li>
-			<li>Conversion</li>
-			<li>Reference</li>
-			<li>Portfolio</li>
-		</ul>
-	</nav>
-	<!-- // nav --
-	
-</header>
-<!-- // header --
+    <header>
+        
+        <nav class="gnb">
+            <h1>Logo</h1>
+            <ul>
+                <li>HOME</li>
+                <li>COMPANY</li>
+                <li>BUSINESS</li>
+                <li>PRODUCT</li>
+                <li>CUSTOMER</li>
+            </ul>
+            <button class="btn_nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
 
-<!-- main view --
-<article id="tab0">
-	<hgroup>
-		<h2>ABCDE<br>FGHIJK<br>LMNOP</h2>
-		<h2>QRSTUV<br>WXYZA<br>BCDEF</h2>
-    </hgroup>
-</article>
-<!-- // main view --
+        <nav class="side">
+            <h1>Logo</h1>
+            <ul>
+                <li>HOME</li>
+                <li>COMPANY</li>
+                <li>BUSINESS</li>
+                <li>PRODUCT</li>
+                <li>CUSTOMER</li>
+            </ul>
+            <button class="btn_close">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
 
-<!-- list --
-<section id="tab1"><!-- 1 --
-	<h3>
-		<p class="info_0">Sass<span> : SCSS</span></p>
-	</h3>
+    </header>    
 
-	<div class="info">
-		<img alt="Sass" src="https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" />
-		<ul>
-			<li>CSS pre-processor</li>
-			<li>CSS 를 확장하는 스크립팅 언어로서,<br />프로그래밍 개념을 사용하여 코드를 작성한 뒤 기존 CSS 문법으로 컴파일 해주는 전처리기</li>
-			<li>가장 역사가 오래된 전처리기다.</li>
-			<li>Ruby 언어를 기반으로 동작한다.</li>
-			<li>기존 CSS 문법과 호환성이 높다.</li>
-			<li>함수, 제어문까지 제공하며 완성도 높은 프로그래밍 언어처럼 동작한다.</li>
-		</ul>
-	</div>
-	
+    <section>
 
-</section><!-- 1 // --
-<section id="tab2"><!-- 2 --
-	<h3>
-		<p class="info_0">Conversion</p>
-	</h3>
-	<div>
-		<h4>HTML5</h4>
-		<pre><code class="html">&lt;!-- header --&gt;
-&lt;header&gt;
-	&lt;!-- btn --&gt;
-	&lt;button class="menu"&gt;
-		&lt;span class="line"&gt;&lt;/span&gt;
-		&lt;span class="line"&gt;&lt;/span&gt;
-		&lt;span&gt;MENU&lt;/span&gt;
-	&lt;/button&gt;
-	&lt;!-- // btn --&gt;
-	&lt;!-- nav --&gt;
-	&lt;nav&gt;
-		&lt;ul&gt;
-			&lt;li&gt;SCSS&lt;/li&gt;
-			&lt;li&gt;SVG&lt;/li&gt;
-			&lt;li&gt;234&lt;/li&gt;
-			&lt;li&gt;456&lt;/li&gt;
-			&lt;li&gt;567&lt;/li&gt;
-		&lt;/ul&gt;
-	&lt;/nav&gt;
-	&lt;!-- // nav --&gt;
-&lt;/header&gt;
-&lt;!-- // header --&gt;
-		</code></pre>
-	</div>
-	<div class="half">
-		<h4>SCSS</h4>
-		<i class="material-icons">settings_ethernet</i>
-		<pre><code class="css">article {
-	height:100vh;
-	overflow:hidden;
-	background-color:$colorBase;
-		
-	hgroup {
-		@include setAb($left:50%,$top:50%,$width:80%,$height:80%);
-		transform:translate(-50%,-50%);
-		text-align:center;
-		
-		h2 {
-			@include setAb($top:50%,$width:100%);
-			@include mq(pc){
-				font-size:200px;
-				line-height:200px;
-			}
-			transform:translateY(-50%);
-			font-size:20vw;
-			line-height:20vw;
-			color:$colorPit4;
-			mix-blend-mode:multiply;
-			
-			&:first-child {
-				color:$colorPit1;
-			}
-		}
-		
-	}
-}
-		</code></pre>
-	</div>
-	<div class="half">
-		<h4>CSS</h4>
-		<pre><code class="css">/* line 174, ../sass/screen.scss */
-article {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #6e5f96;
-}
-/* line 180, ../sass/screen.scss */
-article hgroup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80%;
-  height: 80%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-/* line 185, ../sass/screen.scss */
-article hgroup h2 {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  transform: translateY(-50%);
-  font-size: 20vw;
-  line-height: 20vw;
-  color: #e5d3ff;
-  mix-blend-mode: multiply;
-}
-@media (min-width: 1025px) {
-  /* line 185, ../sass/screen.scss */
-  article hgroup h2 {
-	font-size: 200px;
-	line-height: 200px;
-  }
-}
-/* line 197, ../sass/screen.scss */
-article hgroup h2:first-child {
-  color: #ffbccd;
-}
-		</code></pre>
-	</div>
+        <div class="container">
+            <article>            
 
-</section><!-- 2 // --
+            </article>
+        </div>
 
-<section id="tab3"><!-- 3 --
-	<h3>
-		<p class="info_0">Reference</p>
-	</h3>
-	<dl>
-		<dt>Sass: Syntactically Awesome Style Sheets</dt>
-		<dd><i class="material-icons">launch</i> <a href="https://sass-lang.com/" target="_blank">https://sass-lang.com/</a></dd>
-	</dl>
-	<dl>
-		<dt>Sass(SCSS) 완전 정복!</dt>
-		<dd><i class="material-icons">launch</i> <a href="https://heropy.blog/2018/01/31/sass/" target="_blank">https://heropy.blog/2018/01/31/sass/</a></dd>
-	</dl>
-	<dl>
-		<dt>Sass 기초 - 박재선</dt>
-		<dd><i class="material-icons">launch</i> <a href="https://sass.urbanzakapa.kr/" target="_blank">https://sass.urbanzakapa.kr/</a></dd>
-	</dl>
-	<dl>
-		<dt>Sass 기초와 활용 - 2017 하드코딩하는사람들 오픈세미나</dt>
-		<dd><i class="material-icons">launch</i> <a href="http://hwangsunsoo.org/lecture/src/sass_article_seminar_2017_2nd_half.html" target="_blank">http://hwangsunsoo.org/lecture/src/sass_article_seminar_2017_2nd_half.html</a></dd>
-	</dl>
-	<dl>
-		<dt>SCSS 컴파일</dt>
-		<dd><i class="material-icons">launch</i> <a href="http://frontend.diffthink.kr/2016/09/scss.html" target="_blank">http://frontend.diffthink.kr/2016/09/scss.html</a></dd>
-	</dl>
-</section><!-- 3 // --
+        <!-- bg_fixed -->
+        <div class="bg_fixed animatedParent animateOnce">
+            <p class="animated fadeInUpShort">Our Healthy Life</p>
+            <h2 class="animated fadeInUpShort">We support our customers' healthy lives.<br />Let's switch to a healthy life with us!</h2>
+        </div>
+        <!-- // bg_fixed -->
 
-	<!--
-<section id="tab4"><!-- 4 --
-	<h3>
-		<p class="info_0">Portfolio</p>
-	</h3>
-	<ul>
-		<li>
-			<div><img src="http://trade.itembay.com/resources/image/design/event_ing/2018/evt20180416_forge/bg1.jpg" alt="리니지" /></div>
-			<a href="http://itembay.com" target="_blank"><i class="material-icons">desktop_mac</i></a>
-			<a href="http://m.itembay.com" target="_blank"><i class="material-icons">phone_iphone</i></a>
-		</li>
-		<li>
-			<div><img src="./image/evt20170811_lng/bg1.jpg" alt="리니지" /></div>
-			<a href="./evt_lng.html" target="_blank"><i class="material-icons">desktop_mac</i></a>
-			<a href="./evt_lng_m.html" target="_blank"><i class="material-icons">phone_iphone</i></a>
-		</li>
-		<li>
-			<div><img src="./image/evt20180125_drg/bg1.jpg" alt="듀랑고" /></div>
-			<a href="./evt_drg.html" target="_blank"><i class="material-icons">desktop_mac</i></a>
-			<a href="./evt_drg_m.html" target="_blank"><i class="material-icons">phone_iphone</i></a>
-		</li>
-		<li>
-			<div><img src="./image/evt20180528_kis/bg2_1.jpg" alt="카이저" /></div>
-			<a href="./evt_kis.html" target="_blank"><i class="material-icons">desktop_mac</i></a>
-			<a href="./evt_kis_m.html" target="_blank"><i class="material-icons">phone_iphone</i></a>
-		</li>
-	</ul>
-</section><!-- 4 // --
-	-->
-<!-- // list -->
+        <!-- progress -->
+        <div class="col-md-6 col-text">
+            <h2 lang="en">Satisfaction</h2>
+            <h3>성공을 추구하지 않습니다. 1%라도 고객들의 만족도를 우선으로 합니다.</h3>
+            <p>
+                고객들의 만족도를 통해 증명된 원픽셀 피트니스를 확인해보세요! <br>
+                건강한 삶을 누리기 위해 모든 직원들이 노력하고 있습니다.
+            </p>
+            <!--
+                ## 프로그레스 바 퍼센트 지정 방법 ##
+                ㆍ아래 각 <div class="progress-group" data-percentage="숫자"> ... </div> 태그에서 data-percentage 부분에 숫자를 입력하시면 됩니다.
+                ㆍdata-percentage 속성에는 0 ~ 100 까지의 정수만 입력해 주시고, % 등의 특수문자는 절대 넣지 말아 주세요!
+            -->
+            <!-- progress group : s -->
+            <div class="progress-group" data-percentage="98">
+                <div class="progress-heading" lang="en">
+                    <span class="title">재방문율</span>
+                    <span class="percent">
+                        <span class="percent-text"></span>
+                    </span>
+                </div>
+                <div class="progress-wrap">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <!-- progress group : e -->
+            <!-- progress group : s -->
+            <div class="progress-group" data-percentage="95">
+                <div class="progress-heading" lang="en">
+                    <span class="title">감량 목표 성공율</span>
+                    <span class="percent">
+                        <span class="percent-text"></span>
+                    </span>
+                </div>
+                <div class="progress-wrap">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <!-- progress group : e -->
+            <!-- progress group : s -->
+            <div class="progress-group" data-percentage="99">
+                <div class="progress-heading" lang="en">
+                    <span class="title">고객만족도</span>
+                    <span class="percent">
+                        <span class="percent-text"></span>
+                    </span>
+                </div>
+                <div class="progress-wrap">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <!-- progress group : e -->
+        </div>
+        <!-- // progress -->
+        
+        <div style="height:500px;"></div>
 
-<!--
-<aside>
-	[사이드바 내용]
-</aside>
-<footer>
-	<address>[주소 내용]</address>
-</footer>
--->
+    </section>
+
+    <footer>
+        <h1>Logo</h1>
+        <ul>
+            <li>HOME</li>
+            <li>COMPANY</li>
+            <li>BUSINESS</li>
+            <li>PRODUCT</li>
+            <li>CUSTOMER</li>
+        </ul>
+        <address>© 2022 Logo All Rights Reserved.</address>
+    </footer>
+
 </body>
 </html>
