@@ -31,43 +31,131 @@ $(function(){
     //footer
     $('footer').before('<div class="footer_height"></div>');
     $('.footer_height').css('height',$('footer').outerHeight());
-    
 
-    // scroll
-    $(window).on('scroll',function(){
-
-        //nav - side
-        if( $(this).scrollTop() > 0 ){
-            $('nav.gnb').addClass('on');
-        }else{
-            $('nav.gnb').removeClass('on');
-        }
-
-    });
+    //probar
+    proBar(50);
 
     // main skills progressbar
-    function animate_progress_bar() { 
-        $('.progress-group').each(function() { 
-            var $percentage = $(this).data('percentage'); 
-            var $beforeCount = ($(this).find('.percent-text').text() == '') ? 0 : $(this).find('.percent-text').text(); 
-            $(this).addClass('active'); 
-            $(this).find('.percent-text').each(function() { 
-                var $this = $(this); 
-                $({Counter: $beforeCount}).animate({Counter: $percentage}, { 
-                    duration: 2000, 
-                    easing: 'swing', 
-                    step: function() { 
-                        $this.text(Math.ceil(this.Counter)); 
-                    } 
-                }); 
-            }); 
-            $(this).find('.percent').stop().animate({left: $percentage + '%'}, 2000); 
-            $(this).find('.progress-wrap .bar').stop().animate({width: $percentage + '%'}, 2000);
-        }); 
+    if ( $('.progress-group').length ) { 
+        var waypoint = new Waypoint({ element: $('.progress-group'),
+            handler: function(direction) { animate_progress_bar(); }, offset: '100%' }); 
     } 
-    if ( $('.progress-group').length ) { var waypoint = new Waypoint({ element: $('.progress-group'), handler: function(direction) { animate_progress_bar(); }, offset: '100%' }); } 
 
-});    
+});
+
+// scroll
+$(window).on('scroll',function(){
+
+    //nav - side
+    if( $(this).scrollTop() > 0 ){
+        $('nav.gnb').addClass('on');
+    }else{
+        $('nav.gnb').removeClass('on');
+    }
+
+    //scroll indicator
+    scrollIndicator();
+
+});
+$(window).resize(function () {
+
+    //scroll indicator
+    scrollIndicator();
+
+});
+
+// scroll indicator
+function scrollIndicator() {
+    if ($('.scroll_indicator').length) {
+        var articleHeight = $('.footer_height').offset().top - $('section').offset().top - window.innerHeight;
+        var articleStart = $(window).scrollTop() - $('section').offset().top;
+        if (articleStart > 0 && $(window).scrollTop() > $('section').offset().top ) {
+            var percentage = (articleStart / articleHeight) * 100;
+            percentage = percentage > 100 ? 100 : percentage;
+            $('.scroll_indicator span').css('width', Math.floor(percentage) + '%');
+            $('.scroll_indicator').removeClass('hide');
+        } else {
+            $('.scroll_indicator span').css('width', '0%');
+            $('.scroll_indicator').addClass('hide');
+        }
+    }
+}
+
+/*
+    function scrollIndicator() {
+        if ($('.scroll_indicator').length) {
+            var articleHeight = $('.article_footer').offset().top - $('.article').offset().top - window.innerHeight;
+            var articleStart = $(window).scrollTop() - $('.article').offset().top;
+            if (articleStart > 0 && $(window).scrollTop() > ($('.article').offset().top - $('.issue_sticky').height() ? $('.issue_sticky').height() : 0 + $('#header').height())) {
+                var percentage = (articleStart / articleHeight) * 100;
+                percentage = percentage > 100 ? 100 : percentage;
+                $('.scroll_indicator span').css('width', Math.floor(percentage) + '%');
+                $('.scroll_indicator').removeClass('hide');
+            } else {
+                $('.scroll_indicator span').css('width', '0%');
+                $('.scroll_indicator').addClass('hide');
+            }
+        }
+    }
+*/
+
+//move-ani    
+function scrollGo(e){
+    if( $(this).scrollTop() > e.offset().top - $(window).outerHeight() + 200 ){
+        e.addClass('go');
+    }else{
+        e .removeClass('go');
+    }
+}
+
+//probar
+function proBar(i){
+
+    var memberCountConTxt = i;
+
+
+    $('.probar_wrap').find('.bar').width(memberCountConTxt + '%');
+    
+    $({ val : 0 }).animate({ val : memberCountConTxt }, {
+        duration: 1000,
+        step: function() {
+        var num = numberWithCommas(Math.floor(this.val));
+        $('.probar_wrap').find('.text').text(num).css('left',i+'%');
+    },
+    complete: function() {
+        var num = numberWithCommas(Math.floor(this.val));
+        $('.probar_wrap').find('.text').text(num).css('left',i+'%');
+        }
+    });
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+   
+}
+
+// main skills progressbar
+function animate_progress_bar() { 
+    $('.progress-group').each(function() { 
+        var $percentage = $(this).data('percentage'); 
+        var $beforeCount = ($(this).find('.text').text() == '') ? 0 : $(this).find('.text').text(); 
+        $(this).addClass('active'); 
+        $(this).find('.percent-text').each(function() { 
+            var $this = $(this); 
+            $({Counter: $beforeCount}).animate({Counter: $percentage}, { 
+                duration: 2000, 
+                easing: 'swing', 
+                step: function() { 
+                    $this.text(Math.ceil(this.Counter)); 
+                } 
+            }); 
+        }); 
+        $(this).find('.percent').stop().animate({left: $percentage + '%'}, 2000); 
+        $(this).find('.progress-wrap .bar').stop().animate({width: $percentage + '%'}, 2000);
+    }); 
+}
+
+
 </script>
 </head>
 <body>
@@ -105,14 +193,22 @@ $(function(){
             </button>
         </nav>
 
+        <div class="scroll_indicator">
+            <span></span>
+        </div>
+
     </header>    
 
     <section>
 
         <div class="container">
-            <article>            
-
-            </article>
+            <div class="probar_wrap">
+                <div class="tit">타이틀 퍼센트</div>
+                <div class="percent">
+                    <div class="bar"></div>
+                    <div class="text"></div>
+                </div>
+            </div>
         </div>
 
         <!-- bg_fixed -->
@@ -176,6 +272,23 @@ $(function(){
             <!-- progress group : e -->
         </div>
         <!-- // progress -->
+
+        <!-- toggle -->
+        <div class="toggle_box">
+            <span class="toggle-wrapper pull-right">
+                <input class="toggle" id="toggle1" type="checkbox" />
+                <label class="toggle-inner toggle-grey" for="toggle1">
+                    <span class="toggle-text"></span>
+                </label>
+            </span>
+            <span class="toggle-wrapper pull-right">
+                <input class="toggle toggle-bright" id="toggle2" type="checkbox" />
+                <label class="toggle-inner toggle-grey" for="toggle2">
+                    <span class="toggle-text"></span>
+                </label>
+            </span>
+        </div>
+        <!-- // toggle -->
         
         <div style="height:500px;"></div>
 
