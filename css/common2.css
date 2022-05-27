@@ -8,20 +8,9 @@ body {font-family: 'Noto Sans KR', sans-serif;}
 ul,ol,li {list-style:none;}
 button {border:none; background-color:transparent; cursor:pointer; outline:0; vertical-align:middle;}
 
-/* animation */
-@keyframes moveLR {
-    from {background-position-x:0;}
-    to {background-position-x:-300%;}
-}
-
-@keyframes fadeInUp {
-    from {opacity:0; transform:translate3d(0,50px,0);}
-    to {opacity:1; transform:translate3d(0,0,0);}
-}
-
 /* layout */
 section {position:relative; background:#fff; z-index:10;}
-.container {max-width:1000px; margin:0 auto; padding:50px 0;}
+.container {max-width:1000px; margin:0 auto; padding:25px; height:1000px}
 article {display:flex; padding:50px 0;}
 article:first-child {padding:0 0 50px;}
 .hide {display:none!important;}
@@ -55,9 +44,10 @@ nav.side ul li {padding:20px 0; border-bottom:1px solid rgba(255,255,255, .2); c
 .scroll_indicator {position:fixed; left:0; width:100%; height:4px; z-index:150;}
 .scroll_indicator span {position: absolute;height: 4px;background-color: #f6d30a; transition: width .4s ease-out; transform: rotateZ(0deg);}
 
-/* contents */
-.container {height:100vh;}
+/* main */
+main {height:50vh; background:#ddd;}
 
+/* contents */
 .probar_wrap {}
 .probar_wrap .tit {}
 .probar_wrap .percent {position:relative;}
@@ -65,6 +55,15 @@ nav.side ul li {padding:20px 0; border-bottom:1px solid rgba(255,255,255, .2); c
 .probar_wrap .text {position:absolute; left:0; top:10px;}
 .probar_wrap .text::after {content:'%';}
 .probar_wrap .bar, .probar_wrap .text {transition:all 1s ease-out;}
+
+/* list_box */
+.item_list {flex:1;}
+.item_box {position:relative; padding:15px; background:#fff; border-radius:10px; box-shadow:4px 12px 30px 6px rgb(0 0 0/9%);}
+.item_box:hover {cursor:pointer; transition:all .3s ease; transform:translateY(-5px); box-shadow:4px 12px 20px 6px rgba(0,0,0,.18)}
+.item_box + .item_box {margin-top:30px;}
+.item_box strong {font-size:20px;}
+.item_box .txt {min-height:100px; margin-top:20px;}
+.item_box .txt img {width:100%; height:auto;}
 
 /* progress */
 .col-text {margin-top:100px;}
@@ -128,9 +127,6 @@ address {}
 
     /* box */
     article {display:block;}
-    .item_list:first-child, .item_list:last-child {flex:none; width:100%;}
-    .item_list:last-child {max-width:100%; margin-top:20px;}
-    .move_line {animation-duration:40s;}
 
     /* slick */
     .slick {height:50vh;}
@@ -139,4 +135,15 @@ address {}
     .slick-slide .h2 {font-size:30px;}
     .slick-slide .h3 {font-size:14px;}
 
+}
+
+/* animation */
+@keyframes moveLR {
+    from {background-position-x:0;}
+    to {background-position-x:-300%;}
+}
+
+@keyframes fadeInUp {
+    from {opacity:0; transform:translate3d(0,50px,0);}
+    to {opacity:1; transform:translate3d(0,0,0);}
 }
