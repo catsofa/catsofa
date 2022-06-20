@@ -15,7 +15,7 @@ button {padding:3px 10px; border:1px solid #ccc;}
 
 
 @-webkit-keyframes swing { 
-    20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: 50% 50%s; } 
+    20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: 50% 50%; } 
     20% { -webkit-transform: rotate(15deg); } 
     40% { -webkit-transform: rotate(-10deg); } 
     60% { -webkit-transform: rotate(5deg); } 
@@ -49,15 +49,15 @@ button {padding:3px 10px; border:1px solid #ccc;}
 */
 .pop .swing {margin-top:100px;}
 .pop {display:none; position:absolute; top:50%; left:50%; width:300px; height:300px; transform:translate(-50%, -50%); background:#eee}
-.pop .swing {-webkit-animation-duration: 2s; 
-    animation-duration: 2s; 
+.pop .swing {-webkit-animation-duration: .5s; 
+    animation-duration: .5s; 
     -webkit-animation-fill-mode: both; 
     animation-fill-mode: both; }
 .pop .swing.go { 
-    -webkit-transform-origin: 50% 50%s; 
-    transform-origin: 50% 50%s; 
-    -webkit-animation: swing .5s; 
-    animation: swing .5s; 
+    -webkit-transform-origin: 50% 50%; 
+    transform-origin: 50% 50%; 
+    -webkit-animation-name: swing; 
+    animation-name: swing; 
 }
 
 /* .pop .swing.go {-webkit-transform-origin:center center; transform-origin:center center; -webkit-animation:swing .5s; animation:swing .5s;} */
