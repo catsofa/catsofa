@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+<style>
+section {width:500px; margin:0 auto; text-align:center;}
+/* {display:grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(10, 150px); width:1000px; margin:50px auto;} */
+div[class^='wrap_'] {padding-bottom:200px;}
+div[class^='wrap_'] > div {margin:0 auto; padding-top:200px; height:100px; font-size:14px;}
+button {padding:3px 10px; border:1px solid #ccc;}
+
+
+@-webkit-keyframes swing{
+    20%, 40%, 60%, 80%, 100% {-webkit-transform-origin:center center;}
+    20% {-webkit-transform:rotate(15deg);}
+    40% {-webkit-transform:rotate(-10deg);}
+    60% {-webkit-transform:rotate(5deg);}
+    80% {-webkit-transform:rotate(-5deg);}
+    100% {-webkit-transform:rotate(0deg);}
+}
+@keyframes swing{
+    20% {transform:rotate(15deg);}
+    40% {transform:rotate(-10deg);}
+    60% {transform:rotate(5deg);}
+    80% {transform:rotate(-5deg);}
+    100% {transform:rotate(0deg);}
+}
+.pop .swing {margin-top:100px;}
+.pop {display:none; position:absolute; top:50%; left:50%; width:300px; height:300px; transform:translate(-50%, -50%); background:#eee}
+.pop .swing.on {-webkit-transform-origin:center center; transform-origin:center center; -webkit-animation:swing .5s; animation:swing .5s;}
+</style>
+<script>
+$(function(){
+
+    $('button').on('click',function(){
+        $('.pop').show();
+        setTimeout(function(){
+            $('.swing').addClass('on');
+        },700);        
+    });
+
+});
+</script>
+</head>
+<body>
+<section>
+
+    <button>swing</button>
+
+
+    <div class="pop">
+        <div class="swing"><strong>swing</strong><br />가나다라마바사아자차카타파하</div>
+    </div>
+
+
+
+
+</section>
+</body>
+</html>
